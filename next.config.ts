@@ -14,16 +14,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.kural.website" }],
-        destination: "https://kural.website/:path*",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default nextConfig;
