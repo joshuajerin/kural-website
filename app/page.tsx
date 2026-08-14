@@ -1,16 +1,12 @@
 import {
-  ArrowDown,
   ArrowRight,
   ChefHat,
   CircleDot,
-  Eye,
   Grip,
   Lightbulb,
   Move3d,
   Navigation,
   ScanLine,
-  Sparkles,
-  Target,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,39 +15,21 @@ import styles from "./page.module.css";
 
 const videos = [
   {
-    label: "Base manipulator",
-    detail: "Mobile + articulated",
     stem: "base",
     position: "50% 50%",
   },
   {
-    label: "Pancake flip",
-    detail: "Spatula module",
     stem: "pancake",
     position: "50% 50%",
   },
   {
-    label: "Fruit pick",
-    detail: "Vision + grasping",
     stem: "fruit",
     position: "50% 50%",
   },
   {
-    label: "Reader light",
-    detail: "Light module",
     stem: "light",
     position: "50% 50%",
   },
-] as const;
-
-const tasks = [
-  ["01", "Pick and place", "Reach, grasp, lift, and release small objects."],
-  ["02", "Fruit sorting", "Identify and relocate multiple objects across a work surface."],
-  ["03", "Small-item handling", "Manipulate cans, containers, and everyday objects."],
-  ["04", "Pancake flipping", "Use an attached spatula to engage a cooking surface."],
-  ["05", "Reading assistance", "Position a task light beside a seated reader."],
-  ["06", "Home navigation", "Move through room-scale environments and approach work zones."],
-  ["07", "Camera perception", "Observe from top and wrist-mounted viewpoints."],
 ] as const;
 
 const modules = [
@@ -131,26 +109,16 @@ export default function Home() {
                 sizes="50vw"
                 style={{ objectPosition: video.position }}
               />
-              <div className={styles.videoLabel}>
-                <span>{video.label}</span>
-                <small>{video.detail}</small>
-              </div>
             </div>
           ))}
         </div>
 
         <div className={styles.heroShade} aria-hidden="true" />
         <div className={styles.heroCopy}>
-          <p className={styles.heroKicker}>A modular mobile manipulator</p>
           <h1 id="hero-title">Introducing Kural</h1>
-          <p className={styles.heroSummary}>
-            One adaptable robot for perception, movement, and useful work.
-          </p>
+          <p className={styles.heroSummary}>A modular mobile manipulator</p>
         </div>
-        <Link className={styles.scrollCue} href="#product">
-          <span>Explore the system</span>
-          <ArrowDown aria-hidden="true" size={18} />
-        </Link>
+        <Link className={styles.heroCta} href="#early-access">Join waitlist</Link>
       </section>
 
       <section className={styles.intro} id="product">
@@ -216,42 +184,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.tasks} id="tasks">
-        <div className={styles.tasksHeading}>
-          <div className={styles.sectionLabel}>
-            <span>03</span>
-            <p>Demonstrated tasks</p>
-          </div>
-          <div>
-            <p className={styles.eyebrow}>A platform, not a party trick.</p>
-            <h2>From the kitchen<br />to the workbench.</h2>
-          </div>
-          <p className={styles.prototypeNote}>
-            Current footage shows simulated prototype demonstrations using the
-            authored Kural robot and task environments.
-          </p>
-        </div>
-        <div className={styles.taskList}>
-          {tasks.map(([number, name, description], index) => {
-            const icons = [Target, Sparkles, Grip, ChefHat, Lightbulb, Navigation, Eye];
-            const Icon = icons[index];
-            return (
-              <article className={styles.taskRow} key={number}>
-                <span className={styles.taskNumber}>{number}</span>
-                <Icon aria-hidden="true" size={23} strokeWidth={1.6} />
-                <h3>{name}</h3>
-                <p>{description}</p>
-                <span className={styles.demonstrated}>Demonstrated</span>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
       <section className={styles.modules} id="modules">
         <div className={styles.modulesHeading}>
           <div className={`${styles.sectionLabel} ${styles.sectionLabelDark}`}>
-            <span>04</span>
+            <span>03</span>
             <p>Wrist modules</p>
           </div>
           <h2>Change the tool.<br />Keep the platform.</h2>
@@ -283,7 +219,7 @@ export default function Home() {
       <section className={styles.earlyAccess} id="early-access">
         <div className={styles.pricingCopy}>
           <div className={styles.sectionLabel}>
-            <span>05</span>
+            <span>04</span>
             <p>Early access</p>
           </div>
           <p className={styles.eyebrow}>Reserve your place. No charge today.</p>
@@ -308,14 +244,7 @@ export default function Home() {
       </section>
 
       <footer className={styles.footer}>
-        <Link className={styles.wordmarkDark} href="#top" aria-label="Kural home">KURAL</Link>
-        <p>Modular mobile manipulation.</p>
-        <div>
-          <Link href="#product">Product</Link>
-          <Link href="#modules">Modules</Link>
-          <Link href="#early-access">Early access</Link>
-        </div>
-        <small>© {new Date().getFullYear()} Kural. Prototype imagery shown.</small>
+        <small>© 2026 Kural</small>
       </footer>
     </main>
   );
