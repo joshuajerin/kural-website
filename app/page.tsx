@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   ChefHat,
   CircleDot,
   Grip,
@@ -10,6 +9,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { SiteHeader } from "./site-header";
 import { WaitlistForm } from "./waitlist-form";
 import styles from "./page.module.css";
 
@@ -70,21 +70,10 @@ export default function Home() {
 
   return (
     <main>
-      <section className={styles.hero} aria-labelledby="hero-title">
-        <header className={styles.header}>
-          <Link className={styles.wordmark} href="#top" aria-label="Kural home">
-            KURAL
-          </Link>
-          <nav className={styles.nav} aria-label="Primary navigation">
-            <Link href="#product">Product</Link>
-            <Link href="#modules">Modules</Link>
-            <Link className={styles.navCta} href="#early-access">
-              Early access <ArrowRight aria-hidden="true" size={15} />
-            </Link>
-          </nav>
-        </header>
+      <section className={styles.hero} id="top" aria-labelledby="hero-title">
+        <SiteHeader />
 
-        <div className={styles.videoGrid} id="top" aria-hidden="true">
+        <div className={styles.videoGrid} aria-hidden="true">
           {videos.map((video, index) => (
             <div className={styles.videoTile} key={video.stem}>
               <video
@@ -117,8 +106,8 @@ export default function Home() {
         <div className={styles.heroCopy}>
           <h1 id="hero-title">Introducing Kural</h1>
           <p className={styles.heroSummary}>A modular mobile manipulator</p>
+          <Link className={styles.heroCta} href="#early-access">Join waitlist</Link>
         </div>
-        <Link className={styles.heroCta} href="#early-access">Join waitlist</Link>
       </section>
 
       <section className={styles.intro} id="product">
