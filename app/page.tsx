@@ -224,11 +224,6 @@ export default function Home() {
         </div>
         <div className={styles.formArea}>
           <WaitlistForm configured={clerkConfigured} />
-          <ul className={styles.terms}>
-            <li>Availability and final plan inclusions are confirmed before activation.</li>
-            <li>Taxes and shipping are not included.</li>
-            <li>Cancel any time before billing begins.</li>
-          </ul>
         </div>
       </section>
 
