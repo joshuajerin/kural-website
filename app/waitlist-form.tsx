@@ -1,5 +1,6 @@
 "use client";
 
+import { useWaitlist } from "@clerk/nextjs";
 import { ArrowRight, Check, LoaderCircle } from "lucide-react";
 import { FormEvent, useState } from "react";
 import styles from "./waitlist-form.module.css";
@@ -13,10 +14,11 @@ export function WaitlistForm({ configured }: WaitlistFormProps) {
 }
 
 function ClerkWaitlistForm() {
+  const { waitlist, fetchStatus } = useWaitlist();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const loading = fetchStatus === "fetching";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,16 +31,9 @@ function ClerkWaitlistForm() {
     }
 
     try {
-      setLoading(true);
-      const response = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: normalizedEmail }),
-      });
-      const result = (await response.json()) as { error?: string };
-
-      if (!response.ok) {
-        const providerMessage = result.error?.toLowerCase() ?? "";
+      const result = await waitlist.join({ emailAddress: normalizedEmail });
+      if (result.error) {
+        const providerMessage = result.error.message.toLowerCase();
         setMessage(
           providerMessage.includes("already")
             ? "You’re already on the Kural early-access list."
@@ -50,8 +45,6 @@ function ClerkWaitlistForm() {
       setSubmitted(true);
     } catch {
       setMessage("The reservation service is temporarily unavailable. Please try again.");
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -61,7 +54,7 @@ function ClerkWaitlistForm() {
         <Check aria-hidden="true" size={28} />
         <div>
           <strong>Your place is reserved.</strong>
-          <p>We’ll email you when Kural early access opens.</p>
+          <p>Check your inbox for confirmation from Kural.</p>
         </div>
       </div>
     );
