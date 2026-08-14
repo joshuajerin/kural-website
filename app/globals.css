@@ -11,6 +11,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
   background: #11120f;
 }
 
@@ -21,6 +22,10 @@ body {
   font-family: var(--font-geist-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  padding-top: 72px;
 }
 
 a {
@@ -45,4 +50,9 @@ input {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+}
+
+@media (max-width: 640px) {
+  html { scroll-padding-top: 62px; }
+  main { padding-top: 62px; }
 }
