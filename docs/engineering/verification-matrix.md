@@ -4,3 +4,4 @@ Manual checks for the current implementation. This checklist describes checks to
 
 ## Homepage shell
 - [ ] Open `/` and confirm the hero, demonstration, modules, early-access, and footer sections render in order.
+- [ ] Follow the hero CTA and verify it lands on the early-access section.
