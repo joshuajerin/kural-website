@@ -12,3 +12,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Confirm the simulator route declares `/sim` as its canonical path.
 ## Site header
 - [ ] At the top of the page, verify the wordmark links to `#top` and has an accessible name.
+- [ ] Scroll beyond the hero and confirm the header changes to its solid state.
