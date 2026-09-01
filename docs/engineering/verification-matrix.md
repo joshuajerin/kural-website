@@ -10,3 +10,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Load `/`, `/sim`, `/robots.txt`, and `/sitemap.xml`; confirm each returns its intended page or metadata response.
 - [ ] Inspect page title and description on the home and simulator routes.
 - [ ] Confirm the simulator route declares `/sim` as its canonical path.
+## Site header
+- [ ] At the top of the page, verify the wordmark links to `#top` and has an accessible name.
