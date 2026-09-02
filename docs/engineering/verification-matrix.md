@@ -16,3 +16,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Use the header Pre-order link and verify the early-access section receives focus/scroll navigation.
 ## Interactive hero
 - [ ] Wait for the hero scene to load and confirm the main heading remains readable above it.
+- [ ] Move the pointer across the hero and check the robot scene responds without page-wide horizontal overflow.
