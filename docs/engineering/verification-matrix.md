@@ -14,3 +14,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] At the top of the page, verify the wordmark links to `#top` and has an accessible name.
 - [ ] Scroll beyond the hero and confirm the header changes to its solid state.
 - [ ] Use the header Pre-order link and verify the early-access section receives focus/scroll navigation.
+## Interactive hero
+- [ ] Wait for the hero scene to load and confirm the main heading remains readable above it.
