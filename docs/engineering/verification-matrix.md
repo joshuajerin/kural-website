@@ -18,3 +18,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Wait for the hero scene to load and confirm the main heading remains readable above it.
 - [ ] Move the pointer across the hero and check the robot scene responds without page-wide horizontal overflow.
 - [ ] Test the hero at a narrow viewport and verify the primary CTA remains visible and operable.
+## Hero scene lifecycle
+- [ ] Navigate away or unmount the hero and check that animation/listener resources are cleaned up.
