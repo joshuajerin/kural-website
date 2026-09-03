@@ -20,3 +20,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Test the hero at a narrow viewport and verify the primary CTA remains visible and operable.
 ## Hero scene lifecycle
 - [ ] Navigate away or unmount the hero and check that animation/listener resources are cleaned up.
+- [ ] Reload with reduced-motion preferences and inspect that the scene does not block access to page content.
