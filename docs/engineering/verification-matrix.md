@@ -22,3 +22,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Navigate away or unmount the hero and check that animation/listener resources are cleaned up.
 - [ ] Reload with reduced-motion preferences and inspect that the scene does not block access to page content.
 - [ ] Check the browser console for asset-load or WebGL errors while opening the homepage.
+## Showcase media
+- [ ] Confirm the showcase has its labelled region and visible section heading.
