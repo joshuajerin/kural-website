@@ -26,3 +26,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Confirm the showcase has its labelled region and visible section heading.
 - [ ] Check that showcase media remains within its stage at desktop and mobile widths.
 - [ ] Verify decorative fades do not intercept pointer or keyboard interaction.
+## Tool gallery
+- [ ] Confirm module cards appear in the documented Lamp, Gripper, Pump order.
