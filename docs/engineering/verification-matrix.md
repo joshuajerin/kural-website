@@ -28,3 +28,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Verify decorative fades do not intercept pointer or keyboard interaction.
 ## Tool gallery
 - [ ] Confirm module cards appear in the documented Lamp, Gripper, Pump order.
+- [ ] Check that “Coming soon” badges are visible on the Gripper and Pump cards.
