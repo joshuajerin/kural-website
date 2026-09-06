@@ -30,3 +30,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Confirm module cards appear in the documented Lamp, Gripper, Pump order.
 - [ ] Check that “Coming soon” badges are visible on the Gripper and Pump cards.
 - [ ] At mobile width, verify the gallery can be explored without clipping card content.
+## Waitlist configuration states
+- [ ] Without Clerk configuration, verify the preview form is disabled and explains that reservations are not open.
