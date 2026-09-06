@@ -32,3 +32,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] At mobile width, verify the gallery can be explored without clipping card content.
 ## Waitlist configuration states
 - [ ] Without Clerk configuration, verify the preview form is disabled and explains that reservations are not open.
+- [ ] With test Clerk configuration, verify the configured email form is enabled.
