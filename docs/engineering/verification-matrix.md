@@ -36,3 +36,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Confirm the early-access copy communicates that registration does not collect payment.
 ## Waitlist client validation
 - [ ] Submit an invalid email and verify the form shows its validation message without issuing a request.
+- [ ] Enter a valid email with surrounding whitespace and confirm the submitted value is trimmed.
