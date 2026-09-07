@@ -37,3 +37,4 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Waitlist client validation
 - [ ] Submit an invalid email and verify the form shows its validation message without issuing a request.
 - [ ] Enter a valid email with surrounding whitespace and confirm the submitted value is trimmed.
+- [ ] While a request is pending, verify duplicate submission is disabled and loading state is announced.
