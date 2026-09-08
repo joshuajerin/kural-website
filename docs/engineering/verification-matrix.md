@@ -40,3 +40,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] While a request is pending, verify duplicate submission is disabled and loading state is announced.
 ## Waitlist API validation
 - [ ] POST malformed JSON and confirm the route returns a controlled client error rather than a server crash.
+- [ ] POST an invalid email and confirm the route responds with status 400.
