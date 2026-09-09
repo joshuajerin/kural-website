@@ -45,3 +45,4 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Clerk reservation integration
 - [ ] Use a test Clerk application and verify the server sends normalized email data to Clerk.
 - [ ] Confirm the Clerk secret is read only on the server and is absent from browser bundles.
+- [ ] After a successful test request, verify the returned status is 201 and the UI enters its success state.
