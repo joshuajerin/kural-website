@@ -42,3 +42,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] POST malformed JSON and confirm the route returns a controlled client error rather than a server crash.
 - [ ] POST an invalid email and confirm the route responds with status 400.
 - [ ] POST a valid email with no Clerk secret configured and confirm the route responds with status 503.
+## Clerk reservation integration
+- [ ] Use a test Clerk application and verify the server sends normalized email data to Clerk.
