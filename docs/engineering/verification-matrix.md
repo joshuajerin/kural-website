@@ -44,3 +44,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] POST a valid email with no Clerk secret configured and confirm the route responds with status 503.
 ## Clerk reservation integration
 - [ ] Use a test Clerk application and verify the server sends normalized email data to Clerk.
+- [ ] Confirm the Clerk secret is read only on the server and is absent from browser bundles.
