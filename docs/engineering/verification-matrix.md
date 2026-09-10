@@ -49,3 +49,4 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Reservation error handling
 - [ ] Re-submit an existing test address and confirm the duplicate response maps to the already-registered message.
 - [ ] Simulate a provider error and verify the UI offers a retry-safe generic failure message.
+- [ ] Simulate network failure and confirm loading state clears so the user can try again.
