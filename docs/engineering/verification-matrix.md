@@ -48,3 +48,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] After a successful test request, verify the returned status is 201 and the UI enters its success state.
 ## Reservation error handling
 - [ ] Re-submit an existing test address and confirm the duplicate response maps to the already-registered message.
+- [ ] Simulate a provider error and verify the UI offers a retry-safe generic failure message.
