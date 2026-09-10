@@ -46,3 +46,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Use a test Clerk application and verify the server sends normalized email data to Clerk.
 - [ ] Confirm the Clerk secret is read only on the server and is absent from browser bundles.
 - [ ] After a successful test request, verify the returned status is 201 and the UI enters its success state.
+## Reservation error handling
+- [ ] Re-submit an existing test address and confirm the duplicate response maps to the already-registered message.
