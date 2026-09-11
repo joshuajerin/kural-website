@@ -52,3 +52,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Simulate network failure and confirm loading state clears so the user can try again.
 ## Public navigation and indexing
 - [ ] Check that internal navigation anchors resolve to existing section IDs.
+- [ ] Inspect `/robots.txt` and `/sitemap.xml` responses after a production build.
