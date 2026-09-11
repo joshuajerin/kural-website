@@ -53,3 +53,4 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Public navigation and indexing
 - [ ] Check that internal navigation anchors resolve to existing section IDs.
 - [ ] Inspect `/robots.txt` and `/sitemap.xml` responses after a production build.
+- [ ] Open the footer navigation with keyboard only and verify each link is reachable.
