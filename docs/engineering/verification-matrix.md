@@ -54,3 +54,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Check that internal navigation anchors resolve to existing section IDs.
 - [ ] Inspect `/robots.txt` and `/sitemap.xml` responses after a production build.
 - [ ] Open the footer navigation with keyboard only and verify each link is reachable.
+## Responsive layout
+- [ ] Check homepage layout at narrow phone, tablet, and desktop widths.
