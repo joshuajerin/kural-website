@@ -57,3 +57,4 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Responsive layout
 - [ ] Check homepage layout at narrow phone, tablet, and desktop widths.
 - [ ] Verify hero, module cards, and early-access panel do not introduce horizontal page scrolling.
+- [ ] Increase browser text zoom and confirm headings and form controls remain legible.
