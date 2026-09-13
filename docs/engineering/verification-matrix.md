@@ -60,3 +60,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Increase browser text zoom and confirm headings and form controls remain legible.
 ## Accessibility pass
 - [ ] Navigate the homepage using Tab and Shift+Tab; confirm focus remains visible.
+- [ ] Inspect heading hierarchy and named landmarks on the homepage and simulator route.
