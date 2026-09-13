@@ -61,3 +61,4 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Accessibility pass
 - [ ] Navigate the homepage using Tab and Shift+Tab; confirm focus remains visible.
 - [ ] Inspect heading hierarchy and named landmarks on the homepage and simulator route.
+- [ ] Check status and error messages in the waitlist form are announced by assistive technology.
