@@ -58,3 +58,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Check homepage layout at narrow phone, tablet, and desktop widths.
 - [ ] Verify hero, module cards, and early-access panel do not introduce horizontal page scrolling.
 - [ ] Increase browser text zoom and confirm headings and form controls remain legible.
+## Accessibility pass
+- [ ] Navigate the homepage using Tab and Shift+Tab; confirm focus remains visible.
