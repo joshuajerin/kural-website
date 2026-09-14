@@ -1,0 +1,121 @@
+{
+  "source_spine": "/Users/joshuajerin/Documents/Codex/2026-09-08/we-b/outputs/kural-spine/kural-spine.blend",
+  "rail_bottom_world_mm": [
+    13.734657287597656,
+    -22.62442398071289,
+    59.209293365478516
+  ],
+  "hole_bottom_world_mm": [
+    13.734657287597656,
+    -22.62442398071289,
+    117.20928955078125
+  ],
+  "insertion_mm": 58,
+  "base_parts": 18,
+  "spine_objects": 163,
+  "blue_matrix": [
+    [
+      -0.0005008839070796967,
+      0.0008655143901705742,
+      0.0,
+      -0.0005475982325151563
+    ],
+    [
+      -0.0008655143901705742,
+      -0.0005008839070796967,
+      0.0,
+      -0.014359105378389359
+    ],
+    [
+      0.0,
+      0.0,
+      0.0010000000474974513,
+      0.117209292948246
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "root_matrix": [
+    [
+      -0.500883936882019,
+      0.8655144572257996,
+      0.0,
+      0.013734657317399979
+    ],
+    [
+      -0.8655144572257996,
+      -0.500883936882019,
+      0.0,
+      -0.02262442372739315
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      -0.03679070621728897
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "spine_base_interferences": [
+    {
+      "spine_part": "Kural_GT2_6mm_Belt",
+      "base_part": "BLUE_2040_Plate_Above_Green",
+      "volume_mm3": 119.99988854718147
+    },
+    {
+      "spine_part": "Kural_GT2_6mm_Belt",
+      "base_part": "013_Wheel_Base_Mount_Bottom",
+      "volume_mm3": 51.61748828347742
+    },
+    {
+      "spine_part": "Kural_GT2_Front_Teeth",
+      "base_part": "BLUE_2040_Plate_Above_Green",
+      "volume_mm3": 7.158387221016407
+    },
+    {
+      "spine_part": "Kural_GT2_Rear_Teeth",
+      "base_part": "BLUE_2040_Plate_Above_Green",
+      "volume_mm3": 7.158481495476129
+    },
+    {
+      "spine_part": "Kural_GT2_Rear_Teeth",
+      "base_part": "013_Wheel_Base_Mount_Bottom",
+      "volume_mm3": 12.614147794228877
+    }
+  ],
+  "fit_status": "ASSEMBLY STUDY: belt and teeth interfere with original blue/green openings; plates intentionally unchanged. Not print-ready integration.",
+  "rail_size_mm": [
+    20,
+    40,
+    1000
+  ],
+  "blue_opening_mm": [
+    22,
+    42
+  ],
+  "belt_span_outside_envelope_mm": 44,
+  "blue_opening_nominal_rail_clearance_each_side_mm": 1,
+  "base_geometry_preserved": true,
+  "physical_mount_fasteners_and_stability": "Not validated; rail shown seated, without a newly designed structural clamp. No physical hardware motion.",
+  "controls_test": {
+    "lift_command_mm": 10,
+    "measured_lift_mm": 9.999990414939884,
+    "shoulder_command_deg": 5,
+    "measured_joint_delta_deg": 4.999999000772815,
+    "restored": true
+  },
+  "rail_center_in_blue_local_mm": [
+    0.0,
+    16.501466751098633,
+    192.0
+  ]
+}

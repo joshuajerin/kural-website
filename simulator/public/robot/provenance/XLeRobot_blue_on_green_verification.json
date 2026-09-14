@@ -1,0 +1,22 @@
+{
+  "layout": "One blue extrusion plate seated on green plate; green above wheel base frame",
+  "source_base": "/Users/joshuajerin/Downloads/XLeRobot_mobile_base_no_cart_shims.blend",
+  "blue_source": "/Users/joshuajerin/Documents/Codex/2026-09-12/se/outputs/XLeRobot_top_2040_midpoint.3mf",
+  "hole_registration": {
+    "angle_radians": 4.18776921557436,
+    "angle_degrees": 239.94150162722227,
+    "translation_xy": [
+      -0.5475981606099376,
+      -14.359105028956936
+    ],
+    "matched_holes": 103,
+    "maximum_center_error_mm": 3.0876714206557142e-06,
+    "mean_center_error_mm": 1.7244548193234049e-06
+  },
+  "green_top_world_z_mm": 86.66232299804688,
+  "blue_bottom_world_z_mm": 86.66232299804688,
+  "blue_plate_count": 1,
+  "wheel_enclosure_count": 3,
+  "old_blue_plate_removed_from_this_output": true,
+  "attached_plate_mesh_unchanged": true
+}

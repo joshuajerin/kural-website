@@ -1,0 +1,212 @@
+{
+  "parts_added": {
+    "STS3215_motors": 3,
+    "LeKiwi_4_inch_omni_wheels": 3,
+    "servo_couplers": 3,
+    "bearing_couplers": 3
+  },
+  "wheel_source": "https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/URDF/meshes/4-Omni-Directional-Wheel_Single_Body-v1.stl",
+  "wheel_spec_source": "https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/BOM.md",
+  "motor_source": "https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/URDF/meshes/ST3215_Servo_Motor-v1.stl",
+  "coupler_source": "/Users/joshuajerin/Downloads/MakerMods XLeRobot Upgrade PLA+ P2S.3mf",
+  "coupler_objects": [
+    "3D/Objects/object_246.model",
+    "3D/Objects/object_20.model"
+  ],
+  "nominal_wheel_diameter_mm": 101.6,
+  "module_shaft_center_enclosure_local_mm": [
+    0,
+    -22.55,
+    18.5
+  ],
+  "wheel_enclosure_radial_clearance_mm": 2.7,
+  "enclosure_vertical_adjustments_mm": {
+    "011_Omni_Wheel_Enclosure_1": 0.0,
+    "011_Omni_Wheel_Enclosure_2": 0.0,
+    "011_Omni_Wheel_Enclosure_3": -1.952667236328125
+  },
+  "wheel_bottoms_world_z_mm": [
+    2.8006088541587815e-06,
+    6.184380254126154e-06,
+    6.323939487629104e-06
+  ],
+  "intersection_checks": {
+    "Wheel_4in_LeKiwi_enclosure_intersection_mm3": 0.0,
+    "STS3215_Motor_enclosure_intersection_mm3": 0.0,
+    "Servo_Wheel_Coupler_enclosure_intersection_mm3": 0.0,
+    "Bearing_Wheel_Coupler_enclosure_intersection_mm3": 0.0,
+    "Wheel_4in_LeKiwi_Servo_Wheel_Coupler_intersection_mm3": 0.0,
+    "Wheel_4in_LeKiwi_Bearing_Wheel_Coupler_intersection_mm3": 0.0
+  },
+  "geometry_validation_scope": "CAD placement and interference check; fasteners, splines and passive bearing hardware not validated",
+  "assembled_interference_checks": [
+    {
+      "parts": [
+        "Wheel_4in_LeKiwi_1",
+        "011_Omni_Wheel_Enclosure_1"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "STS3215_Motor_1",
+        "012_Middle_Wheel_Base_Frame"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "STS3215_Motor_1",
+        "011_Omni_Wheel_Enclosure_1"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Servo_Wheel_Coupler_1",
+        "011_Omni_Wheel_Enclosure_1"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Bearing_Wheel_Coupler_1",
+        "011_Omni_Wheel_Enclosure_1"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Wheel_4in_LeKiwi_2",
+        "012_Middle_Wheel_Base_Frame"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Wheel_4in_LeKiwi_2",
+        "011_Omni_Wheel_Enclosure_2"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "STS3215_Motor_2",
+        "012_Middle_Wheel_Base_Frame"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "STS3215_Motor_2",
+        "011_Omni_Wheel_Enclosure_2"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Servo_Wheel_Coupler_2",
+        "012_Middle_Wheel_Base_Frame"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Servo_Wheel_Coupler_2",
+        "011_Omni_Wheel_Enclosure_2"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Bearing_Wheel_Coupler_2",
+        "012_Middle_Wheel_Base_Frame"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Bearing_Wheel_Coupler_2",
+        "011_Omni_Wheel_Enclosure_2"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Wheel_4in_LeKiwi_3",
+        "012_Middle_Wheel_Base_Frame"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Wheel_4in_LeKiwi_3",
+        "011_Omni_Wheel_Enclosure_3"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "STS3215_Motor_3",
+        "012_Middle_Wheel_Base_Frame"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "STS3215_Motor_3",
+        "011_Omni_Wheel_Enclosure_3"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Servo_Wheel_Coupler_3",
+        "012_Middle_Wheel_Base_Frame"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Servo_Wheel_Coupler_3",
+        "011_Omni_Wheel_Enclosure_3"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Bearing_Wheel_Coupler_3",
+        "012_Middle_Wheel_Base_Frame"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "Bearing_Wheel_Coupler_3",
+        "011_Omni_Wheel_Enclosure_3"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "STS3215_Motor_1",
+        "Servo_Wheel_Coupler_1"
+      ],
+      "intersection_mm3": 0.0
+    },
+    {
+      "parts": [
+        "STS3215_Motor_2",
+        "Servo_Wheel_Coupler_2"
+      ],
+      "intersection_mm3": 8.616253762738779e-05
+    },
+    {
+      "parts": [
+        "STS3215_Motor_3",
+        "Servo_Wheel_Coupler_3"
+      ],
+      "intersection_mm3": 0.00012204100130475126
+    }
+  ]
+}

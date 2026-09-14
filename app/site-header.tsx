@@ -37,6 +37,7 @@ export function SiteHeader() {
       <nav className={styles.nav} aria-label="Primary navigation">
         <Link href="#product">Product</Link>
         <Link href="#modules">Modules</Link>
+        <Link href="/sim">Simulator</Link>
         <Link className={styles.navCta} href="#early-access">
           Early access <ArrowRight aria-hidden="true" size={15} />
         </Link>

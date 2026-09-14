@@ -1,0 +1,269 @@
+<mujoco model="kural workshop">
+  <compiler angle="radian" autolimits="true" />
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="implicitfast" cone="elliptic" iterations="50" />
+  <size nconmax="300" njmax="1200" />
+  <visual>
+    <global azimuth="135" elevation="-22" />
+    <headlight ambient="0.35 0.35 0.4" diffuse="0.7 0.7 0.7" specular="0.15 0.15 0.15" />
+  </visual>
+  <default>
+    <joint damping="0.12" armature="0.003" />
+    <geom friction="0.9 0.01 0.002" solref="0.008 1" solimp="0.9 0.95 0.001" />
+    <default class="visual">
+      <geom contype="0" conaffinity="0" group="1" />
+    </default>
+    <default class="collision">
+      <geom rgba="0.15 0.65 0.9 0.16" group="3" margin="0.001" />
+    </default>
+    <default class="roller">
+      <joint type="hinge" damping="0.0005" armature="0.00002" />
+      <geom type="ellipsoid" size="0.005800 0.012000 0.005800" density="650" friction="1.15 0.001 0.0001" contype="2" conaffinity="1" rgba="0.09 0.11 0.14 1" group="2" condim="6" />
+    </default>
+    <default class="arm">
+      <joint type="hinge" damping="0.3" armature="0.01" limited="true" />
+    </default>
+  </default>
+  <asset>
+    <texture name="floor_tex" type="2d" builtin="checker" rgb1="0.18 0.19 0.2" rgb2="0.25 0.26 0.28" width="512" height="512" />
+    <material name="floor_mat" texture="floor_tex" texrepeat="20 20" reflectance="0.08" />
+    <material name="dark" rgba="0.055 0.065 0.08 1" />
+    <material name="aluminum" rgba="0.58 0.62 0.67 1" specular="0.3" shininess="0.45" />
+    <material name="blue" rgba="0.08 0.31 0.75 1" />
+    <material name="green" rgba="0.12 0.54 0.32 1" />
+    <material name="arm_mat" rgba="0.92 0.92 0.88 1" />
+    <material name="table_mat" rgba="0.42 0.27 0.15 1" />
+  </asset>
+  <worldbody>
+    <light name="key" pos="1.5 -1.2 2.6" dir="-0.4 0.3 -1" diffuse="0.9 0.88 0.82" castshadow="true" />
+    <light name="fill" pos="-1.5 1 1.8" dir="0.6 -0.4 -1" diffuse="0.35 0.42 0.52" />
+    <geom name="floor" type="plane" size="3 3 0.05" material="floor_mat" condim="4" />
+    <site name="world_origin" type="sphere" size="0.012" rgba="1 0.35 0.1 1" group="4" />
+    <body name="chassis" pos="0 0 0.0508" quat="1 0 0 0">
+      <freejoint name="base_free" />
+      <inertial pos="0 0 0.13" mass="11" diaginertia="0.18 0.18 0.12" />
+      <geom name="base_collision" class="collision" type="cylinder" pos="-0.005 -0.01 0.015" size="0.135 0.035" mass="2.5" contype="2" conaffinity="1" />
+      <geom name="base_frame_visual" class="visual" type="cylinder" pos="-0.005 -0.01 0.022" size="0.13 0.025" material="dark" />
+      <geom name="green_plate_visual" class="visual" type="box" pos="0 0 0.066" size="0.098 0.088 0.006" material="green" />
+      <geom name="blue_plate_visual" class="visual" type="box" pos="0 0 0.078" size="0.093 0.08 0.005" material="blue" />
+      <site name="base_heading" type="box" pos="0.09 0 0.11" size="0.09 0.009 0.009" rgba="1 0.34 0.08 1" group="4" />
+      <body name="wheel_1_body" pos="-0.046383598 -0.080264486 0" quat="0.707106781 0.612230776 -0.353798640 0.000000000">
+        <joint name="wheel_1" type="hinge" axis="0 0 1" damping="0.025" armature="0.004" />
+        <geom class="visual" type="cylinder" size="0.0508 0.015" material="dark" />
+        <body name="wheel_1_roller_00" pos="0.045000000 0.000000000 0" euler="0 0 0.000000000">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_01" pos="0.041574579 0.017220754 0" euler="0 0 0.392699082">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_02" pos="0.031819805 0.031819805 0" euler="0 0 0.785398163">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_03" pos="0.017220754 0.041574579 0" euler="0 0 1.178097245">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_04" pos="0.000000000 0.045000000 0" euler="0 0 1.570796327">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_05" pos="-0.017220754 0.041574579 0" euler="0 0 1.963495408">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_06" pos="-0.031819805 0.031819805 0" euler="0 0 2.356194490">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_07" pos="-0.041574579 0.017220754 0" euler="0 0 2.748893572">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_08" pos="-0.045000000 0.000000000 0" euler="0 0 3.141592654">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_09" pos="-0.041574579 -0.017220754 0" euler="0 0 3.534291735">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_10" pos="-0.031819805 -0.031819805 0" euler="0 0 3.926990817">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_11" pos="-0.017220754 -0.041574579 0" euler="0 0 4.319689899">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_12" pos="-0.000000000 -0.045000000 0" euler="0 0 4.712388980">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_13" pos="0.017220754 -0.041574579 0" euler="0 0 5.105088062">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_14" pos="0.031819805 -0.031819805 0" euler="0 0 5.497787144">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_1_roller_15" pos="0.041574579 -0.017220754 0" euler="0 0 5.890486225">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+      </body>
+      <body name="wheel_2_body" pos="0.092307852 0.000000000 0" quat="0.707106781 -0.000000000 0.707106781 0.000000000">
+        <joint name="wheel_2" type="hinge" axis="0 0 1" damping="0.025" armature="0.004" />
+        <geom class="visual" type="cylinder" size="0.0508 0.015" material="dark" />
+        <body name="wheel_2_roller_00" pos="0.045000000 0.000000000 0" euler="0 0 0.000000000">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_01" pos="0.041574579 0.017220754 0" euler="0 0 0.392699082">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_02" pos="0.031819805 0.031819805 0" euler="0 0 0.785398163">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_03" pos="0.017220754 0.041574579 0" euler="0 0 1.178097245">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_04" pos="0.000000000 0.045000000 0" euler="0 0 1.570796327">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_05" pos="-0.017220754 0.041574579 0" euler="0 0 1.963495408">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_06" pos="-0.031819805 0.031819805 0" euler="0 0 2.356194490">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_07" pos="-0.041574579 0.017220754 0" euler="0 0 2.748893572">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_08" pos="-0.045000000 0.000000000 0" euler="0 0 3.141592654">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_09" pos="-0.041574579 -0.017220754 0" euler="0 0 3.534291735">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_10" pos="-0.031819805 -0.031819805 0" euler="0 0 3.926990817">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_11" pos="-0.017220754 -0.041574579 0" euler="0 0 4.319689899">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_12" pos="-0.000000000 -0.045000000 0" euler="0 0 4.712388980">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_13" pos="0.017220754 -0.041574579 0" euler="0 0 5.105088062">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_14" pos="0.031819805 -0.031819805 0" euler="0 0 5.497787144">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_2_roller_15" pos="0.041574579 -0.017220754 0" euler="0 0 5.890486225">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+      </body>
+      <body name="wheel_3_body" pos="-0.045924254 0.080264486 0" quat="0.707106781 -0.613746729 -0.351162288 0.000000000">
+        <joint name="wheel_3" type="hinge" axis="0 0 1" damping="0.025" armature="0.004" />
+        <geom class="visual" type="cylinder" size="0.0508 0.015" material="dark" />
+        <body name="wheel_3_roller_00" pos="0.045000000 0.000000000 0" euler="0 0 0.000000000">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_01" pos="0.041574579 0.017220754 0" euler="0 0 0.392699082">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_02" pos="0.031819805 0.031819805 0" euler="0 0 0.785398163">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_03" pos="0.017220754 0.041574579 0" euler="0 0 1.178097245">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_04" pos="0.000000000 0.045000000 0" euler="0 0 1.570796327">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_05" pos="-0.017220754 0.041574579 0" euler="0 0 1.963495408">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_06" pos="-0.031819805 0.031819805 0" euler="0 0 2.356194490">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_07" pos="-0.041574579 0.017220754 0" euler="0 0 2.748893572">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_08" pos="-0.045000000 0.000000000 0" euler="0 0 3.141592654">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_09" pos="-0.041574579 -0.017220754 0" euler="0 0 3.534291735">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_10" pos="-0.031819805 -0.031819805 0" euler="0 0 3.926990817">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_11" pos="-0.017220754 -0.041574579 0" euler="0 0 4.319689899">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_12" pos="-0.000000000 -0.045000000 0" euler="0 0 4.712388980">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_13" pos="0.017220754 -0.041574579 0" euler="0 0 5.105088062">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_14" pos="0.031819805 -0.031819805 0" euler="0 0 5.497787144">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+        <body name="wheel_3_roller_15" pos="0.041574579 -0.017220754 0" euler="0 0 5.890486225">
+          <joint class="roller" axis="0 1 0" />
+          <geom class="roller" />
+        </body>
+      </body>
+      <camera name="follow" pos="-1.4 -1.4 0.85" xyaxes="0.707 -0.707 0 0.3 0.3 0.906" mode="trackcom" />
+      <camera name="arm_close" pos="-0.65 -0.75 0.75" xyaxes="0.75 -0.66 0 0.35 0.4 0.845" mode="track" />
+      </body>
+    <camera name="top" pos="0 0 3" quat="0.707107 0.707107 0 0" />
+    <camera name="workshop" pos="-1.7 -1.9 1.35" xyaxes="0.74 -0.67 0 0.3 0.33 0.895" />
+  </worldbody>
+  <contact>
+    <exclude body1="chassis" body2="wheel_1_body" />
+    <exclude body1="chassis" body2="wheel_2_body" />
+    <exclude body1="chassis" body2="wheel_3_body" />
+    </contact>
+  <actuator>
+    <velocity name="wheel_1_motor" joint="wheel_1" kv="2.5" ctrlrange="-24 24" forcerange="-5 5" />
+    <velocity name="wheel_2_motor" joint="wheel_2" kv="2.5" ctrlrange="-24 24" forcerange="-5 5" />
+    <velocity name="wheel_3_motor" joint="wheel_3" kv="2.5" ctrlrange="-24 24" forcerange="-5 5" />
+    </actuator>
+  </mujoco>

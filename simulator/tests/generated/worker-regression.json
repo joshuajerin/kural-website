@@ -1,0 +1,9 @@
+{
+  "startup": "authored 430 mm lift and arm servo targets applied before stepping",
+  "expiredPacket": "rejected across main/worker epoch clocks",
+  "forwardDisplacementM": 0.1886529660291125,
+  "heartbeatExpiry": "wheel targets decelerated to zero without renewal",
+  "gestureInterruption": "zero input preserves gesture; manual chassis rotation cancels it",
+  "liftAndStop": "upward travel and held carriage after stop",
+  "pause": "physics stationary"
+}

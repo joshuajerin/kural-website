@@ -1,0 +1,47 @@
+{
+  "modelRevision": "xlerobot-full-spine-arm-single-wheel-v9",
+  "mujocoVersion": "3.11.0",
+  "samplesPerSecond": 500,
+  "traces": {
+    "W": {
+      "heightRangeMm": 0.07938739111675724,
+      "maxTiltDegrees": 0.04347078502960906,
+      "maxVerticalSpeed": 0.005099050114314807
+    },
+    "S": {
+      "heightRangeMm": 0.07827195036972517,
+      "maxTiltDegrees": 0.030229311522582552,
+      "maxVerticalSpeed": 0.004942100206528955
+    },
+    "A": {
+      "heightRangeMm": 0.10236029930231483,
+      "maxTiltDegrees": 0.034811179692487815,
+      "maxVerticalSpeed": 0.005304463516419625
+    },
+    "D": {
+      "heightRangeMm": 0.10000233175961465,
+      "maxTiltDegrees": 0.03684048124316986,
+      "maxVerticalSpeed": 0.005303514405161262
+    },
+    "ArrowLeft": {
+      "heightRangeMm": 0.06679832985912598,
+      "maxTiltDegrees": 0.03348884897521101,
+      "maxVerticalSpeed": 0.0020382995272542376
+    },
+    "ArrowRight": {
+      "heightRangeMm": 0.052357847197696816,
+      "maxTiltDegrees": 0.03547124029344336,
+      "maxVerticalSpeed": 0.002107239776105224
+    },
+    "mixed_0.43m": {
+      "heightRangeMm": 0.10483804268132668,
+      "maxTiltDegrees": 0.04922582014897579,
+      "maxVerticalSpeed": 0.005633381059419648
+    },
+    "mixed_0.86m": {
+      "heightRangeMm": 0.13906452770835742,
+      "maxTiltDegrees": 0.11057394413480284,
+      "maxVerticalSpeed": 0.005730495190346009
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "source_file": "XLeRobot_full_spine_arm.blend",
+  "rotation_degrees": -178.38710256180994,
+  "target_wheel": "Wheel_4in_LeKiwi_2",
+  "forward_alignment_error_degrees": 3.4150944832286245e-06,
+  "base_and_plates_unchanged": true,
+  "nominal_rail_to_blue_hole_minimum_clearance_xy_mm": [
+    0.4410257339477539,
+    0.726451776250201
+  ],
+  "spine_root_world": [
+    [
+      0.4763241112232208,
+      -0.8792697787284851,
+      0.0,
+      0.013734657317399979
+    ],
+    [
+      0.8792697787284851,
+      0.4763241112232208,
+      0.0,
+      -0.0226244255900383
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      -0.04279070720076561
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "wheel_axle_center_world_m": [
+    0.09979356080293655,
+    -0.0692448541522026,
+    0.0507969856262207
+  ],
+  "forward_world": [
+    0.8792697787284851,
+    -0.4763241112232208,
+    0.0
+  ],
+  "physical_fit_limitations": "Existing belt interference and missing structural clamp remain unresolved. Direction and seating correction only.",
+  "seating_depth_below_blue_bottom_mm": 64,
+  "extra_seating_depth_for_rotated_bracket_clearance_mm": 6,
+  "reopened_alignment_error_degrees": 3.4150944832286245e-06,
+  "spine_base_interferences": [
+    {
+      "spine_part": "Kural_GT2_6mm_Belt",
+      "base_part": "BLUE_2040_Plate_Above_Green",
+      "volume_mm3": 116.94194432483755
+    },
+    {
+      "spine_part": "Kural_GT2_6mm_Belt",
+      "base_part": "013_Wheel_Base_Mount_Bottom",
+      "volume_mm3": 51.50983240395404
+    },
+    {
+      "spine_part": "Kural_GT2_Front_Teeth",
+      "base_part": "BLUE_2040_Plate_Above_Green",
+      "volume_mm3": 6.647452132302836
+    },
+    {
+      "spine_part": "Kural_GT2_Front_Teeth",
+      "base_part": "013_Wheel_Base_Mount_Bottom",
+      "volume_mm3": 12.685065166137235
+    },
+    {
+      "spine_part": "Kural_GT2_Rear_Teeth",
+      "base_part": "BLUE_2040_Plate_Above_Green",
+      "volume_mm3": 6.647363368492921
+    }
+  ],
+  "no_new_bracket_motor_or_rail_base_interferences": true
+}

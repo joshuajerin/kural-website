@@ -1,0 +1,103 @@
+{
+  "wheelRadiusM": 0.0508,
+  "rollerCount": 16,
+  "wheelPoses": [
+    {
+      "sourceIndex": 1,
+      "x": -0.045924254092477045,
+      "y": 0.08026448647896038,
+      "theta": 2.090494829964272
+    },
+    {
+      "sourceIndex": 2,
+      "x": 0.09230785198549615,
+      "y": 0.0,
+      "theta": 0.0
+    },
+    {
+      "sourceIndex": 3,
+      "x": -0.0463835978930191,
+      "y": -0.08026448647896037,
+      "theta": -2.0947956385092876
+    }
+  ],
+  "traces": {
+    "mujocoVersion": "3.9.0",
+    "fullModelCompiled": true,
+    "fullModelCounts": {
+      "bodies": 65,
+      "joints": 62,
+      "actuators": 10
+    },
+    "evaluationModel": "/Users/joshuajerin/Documents/Codex/2026-09-13/yowhile-the-3d-model-is-still/outputs/kural-sim/tests/generated/kural-wheel-trace.xml",
+    "evaluationScope": "free chassis and exact tuned wheels; arm/spine omitted to isolate wheel contact response",
+    "passed": true,
+    "modelCounts": {
+      "bodies": 53,
+      "joints": 52,
+      "actuators": 3
+    },
+    "scenarios": {
+      "forward": {
+        "command": {
+          "vx": 0.12,
+          "vy": 0.0,
+          "yawRate": 0.0
+        },
+        "wheelRadPerSec": {
+          "wheel_3_motor": 2.050320349652627,
+          "wheel_2_motor": -0.0,
+          "wheel_1_motor": -2.0452560620406506
+        },
+        "durationSeconds": 2.0,
+        "deltaPositionM": [
+          0.16943,
+          -0.001085,
+          0.000298
+        ],
+        "deltaYawRad": -0.003162,
+        "maxAbsVelocity": 14.085176
+      },
+      "left": {
+        "command": {
+          "vx": 0.0,
+          "vy": 0.12,
+          "yawRate": 0.0
+        },
+        "wheelRadPerSec": {
+          "wheel_3_motor": 1.173114497320125,
+          "wheel_2_motor": -2.3622047244094486,
+          "wheel_1_motor": 1.1819216559096841
+        },
+        "durationSeconds": 2.0,
+        "deltaPositionM": [
+          -0.022873,
+          0.162319,
+          8.8e-05
+        ],
+        "deltaYawRad": 0.209321,
+        "maxAbsVelocity": 10.616408
+      },
+      "counterclockwise": {
+        "command": {
+          "vx": 0.0,
+          "vy": 0.0,
+          "yawRate": 0.55
+        },
+        "wheelRadPerSec": {
+          "wheel_3_motor": -1.0011939585850056,
+          "wheel_2_motor": -0.9993960352760412,
+          "wheel_1_motor": -1.003673029179515
+        },
+        "durationSeconds": 2.0,
+        "deltaPositionM": [
+          0.000774,
+          4.1e-05,
+          0.000133
+        ],
+        "deltaYawRad": 1.005924,
+        "maxAbsVelocity": 0.98398
+      }
+    }
+  }
+}

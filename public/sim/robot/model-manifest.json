@@ -1,0 +1,7089 @@
+{
+  "schemaVersion": 1,
+  "assetVersion": "kural-assembly-v1",
+  "generatedAt": "2026-09-13T23:15:59.454167+00:00",
+  "generator": "Blender 5.2.1 LTS",
+  "coordinateSystems": {
+    "source": "Blender right-handed, Z up, metres",
+    "glb": "glTF right-handed, Y up, metres",
+    "mujoco": "right-handed, X forward, Y left, Z up, metres",
+    "canonicalForward": "toward Wheel_4in_LeKiwi_2"
+  },
+  "source": {
+    "path": "/Users/joshuajerin/Documents/Codex/2026-09-12/se/outputs/XLeRobot_full_spine_arm_single_wheel.blend",
+    "sha256": "3f4b47ab2cf31821a1d0bff745dab2d037f9dfcf18ebe05afb415fa8916cf269",
+    "sceneUnitSystem": "METRIC",
+    "sceneScaleLength": 1.0,
+    "physicalCalibration": "UNVERIFIED"
+  },
+  "kinematicSource": {
+    "name": "SO-101 new calibration URDF",
+    "url": "https://github.com/TheRobotStudio/SO-ARM100/blob/main/Simulation/SO101/so101_new_calib.urdf",
+    "status": "manufacturer-project-source"
+  },
+  "cameraAssets": {
+    "revision": "camera-rig-v9",
+    "manifestFile": "camera-rig.json",
+    "wrist": {
+      "visualFile": "camera-wrist-so101-v9.glb",
+      "sha256": "740c6ae7381f41f57a4343c8461dd26c4e5b87a043d444004b8e4dc61f8bd18d",
+      "mountFile": "Wrist_Cam_Mount_32x32_UVC_Module_SO101.stl",
+      "mountSha256": "b4345ccf23f1f2ed3f4885c205cac5afbed6ddd1b183617c4801751e3bafb7b4",
+      "parentBody": "wrist_roll_link",
+      "status": "32x32 UVC PCB, measured 27 mm hole pattern, 25 degree tilted plate, 3 mm spacers; optics uncalibrated"
+    },
+    "mast": {
+      "visualFile": "camera-mast-18in-v8.glb",
+      "sha256": "0eb12f81ceb066f9062588a74530d95d7b2f74462281e7cd328c792c8b8cba51",
+      "mountFile": "Camera_mast_18in_flat_holes.stl",
+      "mountSha256": "d5606574245910a81ff2871d206f13eca4109fee928d5a98495d133b4257db3e",
+      "parentBody": "lift_carriage",
+      "overallLengthM": 0.4572,
+      "pitchDownDegrees": 65
+    }
+  },
+  "visualAsset": {
+    "file": "assets/kural-assembly-v1.glb",
+    "sha256": "c7ec9086ee6dc27e9785db6c2054d2126416da5bc675372f966056429df7d56c",
+    "bytes": 57768084,
+    "objectCount": 180
+  },
+  "verification": [
+    {
+      "file": "provenance/XLeRobot_full_spine_arm_verification.json",
+      "sourcePath": "/Users/joshuajerin/Documents/Codex/2026-09-12/se/outputs/XLeRobot_full_spine_arm_verification.json",
+      "sha256": "d33f2e3be2a15abafe4abca5060979ee7083bb66f2a867cc44f3316f3e5f1dfd"
+    },
+    {
+      "file": "provenance/XLeRobot_arm_single_wheel_verification.json",
+      "sourcePath": "/Users/joshuajerin/Documents/Codex/2026-09-12/se/outputs/XLeRobot_arm_single_wheel_verification.json",
+      "sha256": "d9d9af1d8610de9256e36af8fa755bfee7e9a8bb55a317a2d151ac03a81de745"
+    },
+    {
+      "file": "provenance/XLeRobot_wheel_drives_verification.json",
+      "sourcePath": "/Users/joshuajerin/Documents/Codex/2026-09-12/se/outputs/XLeRobot_wheel_drives_verification.json",
+      "sha256": "efc2ac7d0c79837306ffbd121fe8be73891937277857194e0d99061138444ae4"
+    },
+    {
+      "file": "provenance/XLeRobot_blue_on_green_verification.json",
+      "sourcePath": "/Users/joshuajerin/Documents/Codex/2026-09-12/se/outputs/XLeRobot_blue_on_green_verification.json",
+      "sha256": "f59832d5e1260595eaa854ee986d261d17c26c5ada0d4c787a4615153059af5b"
+    }
+  ],
+  "dimensions": {
+    "wheelNominalDiameterM": 0.1016,
+    "wheelEvaluatedDiametersM": [
+      0.101593964,
+      0.101593964,
+      0.101593964
+    ],
+    "wheelWidthAuthoredM": 0.03,
+    "railSectionM": [
+      0.02,
+      0.04
+    ],
+    "railExposedHeightM": 1.0,
+    "liftTravelM": 0.86,
+    "liftAuthoredPositionM": 0.43,
+    "beltTravelPerRevolutionM": 0.04
+  },
+  "stableNodes": {
+    "root": "CTRL_Robot_Root",
+    "lift": "CTRL_Lift_Carriage",
+    "armMount": "SO101_Mount",
+    "wheels": [
+      "Wheel_4in_LeKiwi_1",
+      "Wheel_4in_LeKiwi_2",
+      "Wheel_4in_LeKiwi_3"
+    ],
+    "armJoints": [
+      "SO101_Joint_shoulder_pan",
+      "SO101_Joint_shoulder_lift",
+      "SO101_Joint_elbow_flex",
+      "SO101_Joint_wrist_flex",
+      "SO101_Joint_wrist_roll",
+      "SO101_Joint_gripper"
+    ]
+  },
+  "parameterStatus": {
+    "visualGeometry": "authored",
+    "wheelDiameter": "manufacturer-specified",
+    "liftTravel": "authored-unverified",
+    "beltConversion": "authored-unverified",
+    "massInertia": "estimated",
+    "actuatorLimits": "estimated",
+    "contactParameters": "estimated",
+    "gravityCompensation": "estimated",
+    "cameraMounting": "wrist authored-source-transforms; 18-inch spine mount fixed in simulator"
+  },
+  "knownLimitations": [
+    "Belt and teeth intersect the unchanged blue/green plate openings.",
+    "The seated spine has no validated structural clamp or mounting hardware.",
+    "Dynamics and actuator parameters are not physically calibrated."
+  ],
+  "objects": [
+    {
+      "name": "011_Omni_Wheel_Enclosure_1",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.149000004,
+        0.0876,
+        0.067000002
+      ],
+      "worldMatrix": [
+        [
+          0.001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.001,
+          -0.0,
+          0.080262139
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "011_Omni_Wheel_Enclosure_2",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.149000004,
+        0.0876,
+        0.067000002
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          -0.000866025,
+          -0.0,
+          0.080264695
+        ],
+        [
+          -0.000866025,
+          0.0005,
+          -0.0,
+          -0.057969846
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "011_Omni_Wheel_Enclosure_3",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.149000004,
+        0.0876,
+        0.067000002
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          0.000866026,
+          0.0,
+          -0.079975091
+        ],
+        [
+          0.000866026,
+          0.0005,
+          -0.0,
+          -0.058927469
+        ],
+        [
+          -0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "012_Middle_Wheel_Base_Frame",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.230940118,
+        0.200000003,
+        0.077500001
+      ],
+      "worldMatrix": [
+        [
+          0.001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.001,
+          -0.0,
+          -0.030345995
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "013_Wheel_Base_Mount_Bottom",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.230939984,
+        0.208000004,
+        0.015600001
+      ],
+      "worldMatrix": [
+        [
+          0.000500884,
+          0.000865515,
+          0.0,
+          -0.012664801
+        ],
+        [
+          0.000865515,
+          -0.000500884,
+          -0.0,
+          -0.007346732
+        ],
+        [
+          -0.0,
+          0.0,
+          -0.001,
+          0.109409258
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "BLUE_2040_Plate_Above_Green",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.185884833,
+        0.160980985,
+        0.010000001
+      ],
+      "worldMatrix": [
+        [
+          -0.000500884,
+          0.000865514,
+          0.0,
+          -0.000547598
+        ],
+        [
+          -0.000865514,
+          -0.000500884,
+          0.0,
+          -0.014359105
+        ],
+        [
+          0.0,
+          0.0,
+          0.001,
+          0.117209293
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "source_3mf": "/Users/joshuajerin/Documents/Codex/2026-09-12/se/outputs/XLeRobot_top_2040_midpoint.3mf",
+        "supported_by": "013_Wheel_Base_Mount_Bottom",
+        "matched_mounting_holes": 103,
+        "maximum_hole_center_error_mm": 3.0876714206557142e-06,
+        "nominal_contact_gap_mm": 0.0
+      }
+    },
+    {
+      "name": "Bearing_Wheel_Coupler_1",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.059991445,
+        0.014199999,
+        0.060000002
+      ],
+      "worldMatrix": [
+        [
+          0.001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.001,
+          -0.0,
+          0.080262139
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_1",
+        "geometry_source": "User MakerMods 3MF wheel coupler"
+      }
+    },
+    {
+      "name": "Bearing_Wheel_Coupler_2",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.059991445,
+        0.014199999,
+        0.060000002
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          -0.000866025,
+          -0.0,
+          0.080264695
+        ],
+        [
+          -0.000866025,
+          0.0005,
+          -0.0,
+          -0.057969846
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_2",
+        "geometry_source": "User MakerMods 3MF wheel coupler"
+      }
+    },
+    {
+      "name": "Bearing_Wheel_Coupler_3",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.059991445,
+        0.014199999,
+        0.060000002
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          0.000866026,
+          0.0,
+          -0.079975091
+        ],
+        [
+          0.000866026,
+          0.0005,
+          -0.0,
+          -0.058927469
+        ],
+        [
+          -0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_3",
+        "geometry_source": "User MakerMods 3MF wheel coupler"
+      }
+    },
+    {
+      "name": "CTRL_Lift_Carriage",
+      "type": "EMPTY",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.476324111,
+          -0.879269779,
+          4.2e-08,
+          0.013734657
+        ],
+        [
+          -0.879269779,
+          0.476324111,
+          7.7e-08,
+          -0.022624426
+        ],
+        [
+          -8.7e-08,
+          0.0,
+          -1.0,
+          0.553209305
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Arm Assembly Orientation": "Carriage Y = -180 deg"
+      }
+    },
+    {
+      "name": "CTRL_Robot_Root",
+      "type": "EMPTY",
+      "parent": null,
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.042790707
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Wheel Width mm": 30,
+        "Lift Exposed Height mm": 1000,
+        "Lift Center Channel mm": 38,
+        "Lift Height mm": 430.0,
+        "Left Wheel deg": 0.0,
+        "Right Wheel deg": 0.0,
+        "Shoulder Pan deg": 0.0,
+        "Shoulder Lift deg": -70.0,
+        "Elbow Flex deg": 60.0,
+        "Wrist Flex deg": -30.0,
+        "Wrist Roll deg": 0.0,
+        "Gripper deg": 34.0,
+        "IK FK Blend": 0.0,
+        "Mobile Base": "XLeRobot three-enclosure no-cart base",
+        "XLeRobot assets": "outputs/assets/XLeRobot",
+        "Base integration": "Lift/spine retained; legacy two-wheel visual base hidden",
+        "Spine": "Two joined 500 mm 2040 silver extrusions; GT2 6 mm belt; bottom 48 mm NEMA17",
+        "Spine Travel mm": 860.0000000000001,
+        "Belt travel mm per rev": 40.0,
+        "Physical calibration": "UNVERIFIED",
+        "Mount Face": "20 mm side: negative Y; x spans -10 to +10 mm",
+        "Base assembly": "XLeRobot inverted green upper plate + exactly one blue 2040 plate; three STS3215 wheel drives",
+        "Rail insertion below blue bottom mm": 64.0,
+        "Mount face": "20 mm face; forward centerline aimed directly at Wheel_4in_LeKiwi_2 axle center",
+        "Assembly fit status": "ASSEMBLY STUDY: belt and teeth interfere with original blue/green openings; plates intentionally unchanged. Not print-ready integration.",
+        "Structural attachment": "Rail seated for layout only; base clamp and mounting hardware not yet designed"
+      }
+    },
+    {
+      "name": "CTRL_SO101_IK_Elbow_Pole",
+      "type": "EMPTY",
+      "parent": "SO101_Mount",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          3e-09,
+          0.476324141,
+          0.879269779,
+          0.23304607
+        ],
+        [
+          9.8e-08,
+          0.879269779,
+          -0.476324141,
+          0.006418608
+        ],
+        [
+          -1.0,
+          8.7e-08,
+          -4.4e-08,
+          0.628209352
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "CTRL_SO101_IK_Target",
+      "type": "EMPTY",
+      "parent": "SO101_Mount",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          3e-09,
+          0.476324141,
+          0.879269779,
+          0.175520301
+        ],
+        [
+          9.8e-08,
+          0.879269779,
+          -0.476324141,
+          -0.110268094
+        ],
+        [
+          -1.0,
+          8.7e-08,
+          -4.4e-08,
+          0.753209293
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "IK Pan Rad": 3.1415927410125732,
+        "IK Elbow Rad": -1.0746128559112549,
+        "IK Shoulder Rad": -0.24103836715221405
+      }
+    },
+    {
+      "name": "Kural_2040_Segment_1_500mm",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.02,
+        0.039999999,
+        0.5
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.303209275
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "confirmed envelope; nominal cross section",
+        "Length mm": 500,
+        "Section mm": "20 X \u00d7 40 Y"
+      }
+    },
+    {
+      "name": "Kural_2040_Segment_2_500mm",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.02,
+        0.039999999,
+        0.5
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.803209305
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "confirmed envelope; nominal cross section",
+        "Length mm": 500,
+        "Section mm": "20 X \u00d7 40 Y"
+      }
+    },
+    {
+      "name": "Kural_Belt_Clamp_M3",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.004330127,
+        0.005,
+        0.006
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.052275769
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.048052415
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.535209298
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Belt_Clamp_M3.001",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.004330127,
+        0.005,
+        0.006
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.056086361
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.041018255
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.535209298
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Belt_Clamp_M3.002",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.004330127,
+        0.005,
+        0.006
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.052275769
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.048052415
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.571209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Belt_Clamp_M3.003",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.004330127,
+        0.005,
+        0.006
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.056086361
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.041018255
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.571209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Bottom_20mm_Face_Mount",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.02,
+        0.004,
+        0.07
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.033078592
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.033103555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.071209297
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Bottom_TSlot_M5",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.007447819,
+        0.0086,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.036595672
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.035008851
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.065209299
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Bottom_TSlot_M5.001",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.007447819,
+        0.0086,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.036595672
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.035008851
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.088209286
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Carriage_Hardware",
+      "type": "EMPTY",
+      "parent": "CTRL_Lift_Carriage",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.553209305
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "Kural_Eccentric_Spacer",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.007794228,
+        0.009,
+        0.026000001
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.048759963
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.018852429
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Eccentric_Spacer.001",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.007794228,
+        0.009,
+        0.026000001
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.048759963
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.018852429
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Flange",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.016000001,
+        0.0015
+      ],
+      "worldMatrix": [
+        [
+          -0.879269779,
+          -7.09e-07,
+          0.476324081,
+          0.011591199
+        ],
+        [
+          0.476324081,
+          3.84e-07,
+          0.879269779,
+          -0.026581138
+        ],
+        [
+          -8.07e-07,
+          1.0,
+          -0.0,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Flange.001",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.016000001,
+        0.0015
+      ],
+      "worldMatrix": [
+        [
+          -0.879269779,
+          -7.09e-07,
+          0.476324081,
+          0.015878115
+        ],
+        [
+          0.476324081,
+          3.84e-07,
+          0.879269779,
+          -0.018667713
+        ],
+        [
+          -8.07e-07,
+          1.0,
+          -0.0,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Hub",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.01,
+        0.01,
+        0.005
+      ],
+      "worldMatrix": [
+        [
+          -0.879269779,
+          -7.09e-07,
+          0.476324081,
+          0.010400388
+        ],
+        [
+          0.476324081,
+          3.84e-07,
+          0.879269779,
+          -0.028779315
+        ],
+        [
+          -8.07e-07,
+          1.0,
+          -0.0,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -7.09e-07,
+          0.879269779,
+          0.013734653
+        ],
+        [
+          0.879269779,
+          3.84e-07,
+          -0.476324111,
+          -0.022624424
+        ],
+        [
+          0.0,
+          1.0,
+          8.07e-07,
+          0.039225489
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.001",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.271708637,
+          0.836235523,
+          0.01536931
+        ],
+        [
+          0.879269779,
+          -0.147191882,
+          -0.453011274,
+          -0.023509961
+        ],
+        [
+          0.0,
+          0.951056778,
+          -0.309016228,
+          0.038931035
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.002",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.516821206,
+          0.7113446,
+          0.016843956
+        ],
+        [
+          0.879269779,
+          -0.279975981,
+          -0.385354549,
+          -0.024308816
+        ],
+        [
+          0.0,
+          0.809017479,
+          -0.587784588,
+          0.038076501
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.003",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.711343765,
+          0.516822398,
+          0.018014243
+        ],
+        [
+          0.879269779,
+          -0.385354072,
+          -0.279976577,
+          -0.024942791
+        ],
+        [
+          0.0,
+          0.5877859,
+          -0.809016526,
+          0.036745526
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.004",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.836235046,
+          0.271709979,
+          0.018765612
+        ],
+        [
+          0.879269779,
+          -0.453011036,
+          -0.147192612,
+          -0.025349829
+        ],
+        [
+          0.0,
+          0.309017748,
+          -0.951056302,
+          0.0350684
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.005",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.879269779,
+          6.71e-07,
+          0.019024517
+        ],
+        [
+          0.879269779,
+          -0.476324111,
+          -3.63e-07,
+          -0.025490087
+        ],
+        [
+          0.0,
+          7.63e-07,
+          -1.0,
+          0.033209294
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.006",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.836235464,
+          -0.271708637,
+          0.018765615
+        ],
+        [
+          0.879269779,
+          -0.453011245,
+          0.147191897,
+          -0.025349829
+        ],
+        [
+          0.0,
+          -0.309016258,
+          -0.951056719,
+          0.031350188
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.007",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.7113446,
+          -0.516821146,
+          0.018014247
+        ],
+        [
+          0.879269779,
+          -0.385354549,
+          0.279975951,
+          -0.024942795
+        ],
+        [
+          0.0,
+          -0.587784529,
+          -0.809017479,
+          0.029673062
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.008",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.516822338,
+          -0.711343825,
+          0.016843963
+        ],
+        [
+          0.879269779,
+          -0.279976547,
+          0.385354102,
+          -0.024308819
+        ],
+        [
+          0.0,
+          -0.809016585,
+          -0.58778584,
+          0.028342087
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.009",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.271710008,
+          -0.836234987,
+          0.015369317
+        ],
+        [
+          0.879269779,
+          -0.147192642,
+          0.453011006,
+          -0.023509964
+        ],
+        [
+          0.0,
+          -0.951056242,
+          -0.309017807,
+          0.027487546
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.010",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          6.32e-07,
+          -0.879269779,
+          0.013734662
+        ],
+        [
+          0.879269779,
+          -3.43e-07,
+          0.476324111,
+          -0.022624427
+        ],
+        [
+          0.0,
+          -1.0,
+          -7.19e-07,
+          0.027193092
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.011",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.271708608,
+          -0.836235523,
+          0.012100005
+        ],
+        [
+          0.879269779,
+          0.147191867,
+          0.453011274,
+          -0.021738891
+        ],
+        [
+          0.0,
+          -0.951056778,
+          0.309016198,
+          0.027487546
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.012",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.516821325,
+          -0.71134454,
+          0.010625359
+        ],
+        [
+          0.879269779,
+          0.27997604,
+          0.385354519,
+          -0.020940036
+        ],
+        [
+          0.0,
+          -0.80901742,
+          0.587784708,
+          0.028342079
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.013",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.711343884,
+          -0.516822219,
+          0.009455073
+        ],
+        [
+          0.879269779,
+          0.385354131,
+          0.279976487,
+          -0.02030606
+        ],
+        [
+          0.0,
+          -0.587785721,
+          0.809016645,
+          0.029673055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.014",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.836234987,
+          -0.271710068,
+          0.008703702
+        ],
+        [
+          0.879269779,
+          0.453011006,
+          0.147192657,
+          -0.019899022
+        ],
+        [
+          0.0,
+          -0.309017867,
+          0.951056242,
+          0.031350181
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.015",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          -6.99e-07,
+          0.008444797
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          3.79e-07,
+          -0.019758765
+        ],
+        [
+          0.0,
+          -7.95e-07,
+          1.0,
+          0.033209287
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.016",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.836235464,
+          0.271708727,
+          0.0087037
+        ],
+        [
+          0.879269779,
+          0.453011245,
+          -0.147191927,
+          -0.019899022
+        ],
+        [
+          0.0,
+          0.309016347,
+          0.951056719,
+          0.035068393
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.017",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.711344719,
+          0.516821027,
+          0.009455067
+        ],
+        [
+          0.879269779,
+          0.385354608,
+          -0.279975891,
+          -0.020306056
+        ],
+        [
+          0.0,
+          0.58778441,
+          0.809017599,
+          0.036745518
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.018",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.516822457,
+          0.711343706,
+          0.010625351
+        ],
+        [
+          0.879269779,
+          0.279976606,
+          -0.385354042,
+          -0.020940032
+        ],
+        [
+          0.0,
+          0.809016466,
+          0.587785959,
+          0.038076494
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Tooth.019",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.271709949,
+          0.836235046,
+          0.012099997
+        ],
+        [
+          0.879269779,
+          0.147192597,
+          -0.453011036,
+          -0.021738887
+        ],
+        [
+          0.0,
+          0.951056302,
+          0.309017718,
+          0.038931035
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_20T_Drive_Toothed_Core",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.011332395,
+        0.011332395,
+        0.007
+      ],
+      "worldMatrix": [
+        [
+          -0.879269779,
+          -7.09e-07,
+          0.476324081,
+          0.013734657
+        ],
+        [
+          0.476324081,
+          3.84e-07,
+          0.879269779,
+          -0.022624426
+        ],
+        [
+          -8.07e-07,
+          1.0,
+          -0.0,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_6mm_Belt",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.006,
+        0.044,
+        1.051732421
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.042790707
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Routing": "Front -Y plate face; rear +Y return; both full 1000mm length; end bends estimated",
+        "Front span Y mm": -21.5,
+        "Rear span Y mm": 21.5,
+        "Extra guide rollers": false
+      }
+    },
+    {
+      "name": "Kural_GT2_Carriage_Clamp",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.012,
+        0.004,
+        0.012
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.034397498
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.033818044
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.535209298
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_Carriage_Clamp.001",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.012,
+        0.004,
+        0.012
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.034397498
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.033818044
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.571209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_Clamp_Standoff",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.012,
+        0.016000001,
+        0.01
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.043190196
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.038581282
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.535209298
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_Clamp_Standoff.001",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.012,
+        0.016000001,
+        0.01
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.043190196
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.038581282
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.571209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_GT2_Front_Teeth",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.006,
+        0.000600001,
+        1.001000047
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.040790707
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "Kural_GT2_Rear_Teeth",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.006,
+        0.000600001,
+        1.001000047
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.044790708
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "Kural_Gantry_Bolt",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.007621023,
+        0.0088,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.045533855
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.062597051
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Gantry_Bolt.001",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.007621023,
+        0.0088,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.045533855
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.062597051
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Gantry_Bolt.002",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.007621023,
+        0.0088,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.064586818
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.027426263
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Gantry_Bolt.003",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.007621023,
+        0.0088,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.064586818
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.027426263
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Gantry_Plate",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.088,
+        0.003,
+        0.088
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.051982891
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.043344524
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.553209305
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Midpoint_Join_Line",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.020020001,
+        0.04002,
+        0.00025
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.553209305
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Motor_Mount_Side",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.003,
+        0.046,
+        0.046999998
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.00944774
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.030537853
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Motor_Shaft_Spin",
+      "type": "EMPTY",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -7.09e-07,
+          0.879269779,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          3.84e-07,
+          -0.476324111,
+          -0.022624426
+        ],
+        [
+          0.0,
+          1.0,
+          8.07e-07,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "Kural_NEMA17_48mm_Body",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.048,
+        0.041999999,
+        0.041999999
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          -0.00341301
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.054278135
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_NEMA17_5mm_Shaft",
+      "type": "MESH",
+      "parent": "Kural_Motor_Shaft_Spin",
+      "dimensionsM": [
+        0.005,
+        0.005,
+        0.026000001
+      ],
+      "worldMatrix": [
+        [
+          -0.879269779,
+          -7.09e-07,
+          0.476324081,
+          0.013734657
+        ],
+        [
+          0.476324081,
+          3.84e-07,
+          0.879269779,
+          -0.022624426
+        ],
+        [
+          -8.07e-07,
+          1.0,
+          -0.0,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_NEMA17_End_Cap",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.003,
+        0.041999999,
+        0.041999999
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          -0.014368465
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.074501343
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_NEMA17_End_Cap.001",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.003,
+        0.041999999,
+        0.041999999
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.007542444
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.034054935
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_NEMA17_M3_Screw",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.004330127,
+        0.005,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          -2.1e-08,
+          -0.879269779,
+          0.476324111,
+          0.022600098
+        ],
+        [
+          -3.8e-08,
+          0.476324111,
+          0.879269779,
+          -0.038800146
+        ],
+        [
+          -1.0,
+          0.0,
+          -4.4e-08,
+          0.017709292
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_NEMA17_M3_Screw.001",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.004330127,
+        0.005,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          -2.1e-08,
+          -0.879269779,
+          0.476324111,
+          0.022600098
+        ],
+        [
+          -3.8e-08,
+          0.476324111,
+          0.879269779,
+          -0.038800146
+        ],
+        [
+          -1.0,
+          0.0,
+          -4.4e-08,
+          0.048709292
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_NEMA17_M3_Screw.002",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.004330127,
+        0.005,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          -2.1e-08,
+          -0.879269779,
+          0.476324111,
+          -0.004657265
+        ],
+        [
+          -3.8e-08,
+          0.476324111,
+          0.879269779,
+          -0.0240341
+        ],
+        [
+          -1.0,
+          0.0,
+          -4.4e-08,
+          0.017709292
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_NEMA17_M3_Screw.003",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.004330127,
+        0.005,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          -2.1e-08,
+          -0.879269779,
+          0.476324111,
+          -0.004657265
+        ],
+        [
+          -3.8e-08,
+          0.476324111,
+          0.879269779,
+          -0.0240341
+        ],
+        [
+          -1.0,
+          0.0,
+          -4.4e-08,
+          0.048709292
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_NEMA17_Pilot",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.022,
+        0.022,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          -2.1e-08,
+          -0.879269779,
+          0.476324111,
+          0.008971416
+        ],
+        [
+          -3.8e-08,
+          0.476324111,
+          0.879269779,
+          -0.031417124
+        ],
+        [
+          -1.0,
+          0.0,
+          -4.4e-08,
+          0.03320929
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Tension_Adjust_Knob",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.017999999,
+        0.017999999,
+        0.008
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.120209336
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Tension_Adjust_Screw",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.005,
+        0.005,
+        0.022
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.106209397
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Tensioner_Side",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.003,
+        0.028999999,
+        0.041000001
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.009924064
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.029658584
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.0782094
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Tensioner_Side.001",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.003,
+        0.028999999,
+        0.041000001
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.017545251
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.015590267
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.0782094
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Tensioner_Top",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.018999999,
+        0.028999999,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.022624426
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.099209309
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_20mm_Face_Mount",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.02,
+        0.004,
+        0.045000002
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          0.0,
+          0.033078592
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          0.0,
+          -0.033103555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.038209319
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Flange",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.016000001,
+        0.0015
+      ],
+      "worldMatrix": [
+        [
+          -0.879269779,
+          -7.09e-07,
+          0.476324081,
+          0.011591199
+        ],
+        [
+          0.476324081,
+          3.84e-07,
+          0.879269779,
+          -0.026581138
+        ],
+        [
+          -8.07e-07,
+          1.0,
+          -0.0,
+          1.071209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Flange.001",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.016000001,
+        0.0015
+      ],
+      "worldMatrix": [
+        [
+          -0.879269779,
+          -7.09e-07,
+          0.476324081,
+          0.015878115
+        ],
+        [
+          0.476324081,
+          3.84e-07,
+          0.879269779,
+          -0.018667713
+        ],
+        [
+          -8.07e-07,
+          1.0,
+          -0.0,
+          1.071209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Hub",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.01,
+        0.01,
+        0.005
+      ],
+      "worldMatrix": [
+        [
+          -0.879269779,
+          -7.09e-07,
+          0.476324081,
+          0.010400388
+        ],
+        [
+          0.476324081,
+          3.84e-07,
+          0.879269779,
+          -0.028779315
+        ],
+        [
+          -8.07e-07,
+          1.0,
+          -0.0,
+          1.071209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Spin",
+      "type": "EMPTY",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -7.09e-07,
+          0.879269779,
+          0.013734657
+        ],
+        [
+          0.879269779,
+          3.84e-07,
+          -0.476324111,
+          -0.022624426
+        ],
+        [
+          0.0,
+          1.0,
+          8.07e-07,
+          1.071209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -7.09e-07,
+          0.879269779,
+          0.013734653
+        ],
+        [
+          0.879269779,
+          3.84e-07,
+          -0.476324111,
+          -0.022624424
+        ],
+        [
+          0.0,
+          1.0,
+          8.07e-07,
+          1.077225566
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.001",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.271708637,
+          0.836235523,
+          0.01536931
+        ],
+        [
+          0.879269779,
+          -0.147191882,
+          -0.453011274,
+          -0.023509961
+        ],
+        [
+          0.0,
+          0.951056778,
+          -0.309016228,
+          1.076931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.002",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.516821206,
+          0.7113446,
+          0.016843956
+        ],
+        [
+          0.879269779,
+          -0.279975981,
+          -0.385354549,
+          -0.024308816
+        ],
+        [
+          0.0,
+          0.809017479,
+          -0.587784588,
+          1.076076508
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.003",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.711343765,
+          0.516822398,
+          0.018014243
+        ],
+        [
+          0.879269779,
+          -0.385354072,
+          -0.279976577,
+          -0.024942791
+        ],
+        [
+          0.0,
+          0.5877859,
+          -0.809016526,
+          1.074745536
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.004",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.836235046,
+          0.271709979,
+          0.018765612
+        ],
+        [
+          0.879269779,
+          -0.453011036,
+          -0.147192612,
+          -0.025349829
+        ],
+        [
+          0.0,
+          0.309017748,
+          -0.951056302,
+          1.07306838
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.005",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.879269779,
+          6.71e-07,
+          0.019024517
+        ],
+        [
+          0.879269779,
+          -0.476324111,
+          -3.63e-07,
+          -0.025490087
+        ],
+        [
+          0.0,
+          7.63e-07,
+          -1.0,
+          1.071209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.006",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.836235464,
+          -0.271708637,
+          0.018765615
+        ],
+        [
+          0.879269779,
+          -0.453011245,
+          0.147191897,
+          -0.025349829
+        ],
+        [
+          0.0,
+          -0.309016258,
+          -0.951056719,
+          1.069350243
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.007",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.7113446,
+          -0.516821146,
+          0.018014247
+        ],
+        [
+          0.879269779,
+          -0.385354549,
+          0.279975951,
+          -0.024942795
+        ],
+        [
+          0.0,
+          -0.587784529,
+          -0.809017479,
+          1.067673087
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.008",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.516822338,
+          -0.711343825,
+          0.016843963
+        ],
+        [
+          0.879269779,
+          -0.279976547,
+          0.385354102,
+          -0.024308819
+        ],
+        [
+          0.0,
+          -0.809016585,
+          -0.58778584,
+          1.066342115
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.009",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          0.271710008,
+          -0.836234987,
+          0.015369317
+        ],
+        [
+          0.879269779,
+          -0.147192642,
+          0.453011006,
+          -0.023509964
+        ],
+        [
+          0.0,
+          -0.951056242,
+          -0.309017807,
+          1.065487623
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.010",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          6.32e-07,
+          -0.879269779,
+          0.013734662
+        ],
+        [
+          0.879269779,
+          -3.43e-07,
+          0.476324111,
+          -0.022624427
+        ],
+        [
+          0.0,
+          -1.0,
+          -7.19e-07,
+          1.065193057
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.011",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.271708608,
+          -0.836235523,
+          0.012100005
+        ],
+        [
+          0.879269779,
+          0.147191867,
+          0.453011274,
+          -0.021738891
+        ],
+        [
+          0.0,
+          -0.951056778,
+          0.309016198,
+          1.065487623
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.012",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.516821325,
+          -0.71134454,
+          0.010625359
+        ],
+        [
+          0.879269779,
+          0.27997604,
+          0.385354519,
+          -0.020940036
+        ],
+        [
+          0.0,
+          -0.80901742,
+          0.587784708,
+          1.066342115
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.013",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.711343884,
+          -0.516822219,
+          0.009455073
+        ],
+        [
+          0.879269779,
+          0.385354131,
+          0.279976487,
+          -0.02030606
+        ],
+        [
+          0.0,
+          -0.587785721,
+          0.809016645,
+          1.067673087
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.014",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.836234987,
+          -0.271710068,
+          0.008703702
+        ],
+        [
+          0.879269779,
+          0.453011006,
+          0.147192657,
+          -0.019899022
+        ],
+        [
+          0.0,
+          -0.309017867,
+          0.951056242,
+          1.069350243
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.015",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.879269779,
+          -6.99e-07,
+          0.008444797
+        ],
+        [
+          0.879269779,
+          0.476324111,
+          3.79e-07,
+          -0.019758765
+        ],
+        [
+          0.0,
+          -7.95e-07,
+          1.0,
+          1.071209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.016",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.836235464,
+          0.271708727,
+          0.0087037
+        ],
+        [
+          0.879269779,
+          0.453011245,
+          -0.147191927,
+          -0.019899022
+        ],
+        [
+          0.0,
+          0.309016347,
+          0.951056719,
+          1.07306838
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.017",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.711344719,
+          0.516821027,
+          0.009455067
+        ],
+        [
+          0.879269779,
+          0.385354608,
+          -0.279975891,
+          -0.020306056
+        ],
+        [
+          0.0,
+          0.58778441,
+          0.809017599,
+          1.074745536
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.018",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.516822457,
+          0.711343706,
+          0.010625351
+        ],
+        [
+          0.879269779,
+          0.279976606,
+          -0.385354042,
+          -0.020940032
+        ],
+        [
+          0.0,
+          0.809016466,
+          0.587785959,
+          1.076076508
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Tooth.019",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.006,
+        0.0008,
+        0.0011
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          -0.271709949,
+          0.836235046,
+          0.012099997
+        ],
+        [
+          0.879269779,
+          0.147192597,
+          -0.453011036,
+          -0.021738887
+        ],
+        [
+          0.0,
+          0.951056302,
+          0.309017718,
+          1.076931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_Idler_Toothed_Core",
+      "type": "MESH",
+      "parent": "Kural_Top_Idler_Spin",
+      "dimensionsM": [
+        0.011332395,
+        0.011332395,
+        0.007
+      ],
+      "worldMatrix": [
+        [
+          -0.879269779,
+          -7.09e-07,
+          0.476324081,
+          0.013734657
+        ],
+        [
+          0.476324081,
+          3.84e-07,
+          0.879269779,
+          -0.022624426
+        ],
+        [
+          -8.07e-07,
+          1.0,
+          -0.0,
+          1.071209311
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_TSlot_M5",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.007447819,
+        0.0086,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.036595672
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.035008851
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          1.027209401
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Top_TSlot_M5.001",
+      "type": "MESH",
+      "parent": "CTRL_Robot_Root",
+      "dimensionsM": [
+        0.007447819,
+        0.0086,
+        0.003
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.036595672
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.035008851
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          1.046209335
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_VWheel_0_0",
+      "type": "MESH",
+      "parent": "Kural_VWheel_0_0_Spin",
+      "dimensionsM": [
+        0.024,
+        0.01,
+        0.024
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.879269779,
+          0.468713492,
+          0.013000873
+        ],
+        [
+          0.156550258,
+          0.476324111,
+          0.865220964,
+          -0.04497306
+        ],
+        [
+          -0.9840222,
+          0.0,
+          0.178045765,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "Kural_VWheel_0_0_Spin",
+      "type": "EMPTY",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.879269779,
+          0.468713492,
+          0.013000873
+        ],
+        [
+          0.156550258,
+          0.476324111,
+          0.865220964,
+          -0.04497306
+        ],
+        [
+          -0.9840222,
+          0.0,
+          0.178045765,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Track": "Nearest opening of the 40mm side, centered Y=-10mm"
+      }
+    },
+    {
+      "name": "Kural_VWheel_0_1",
+      "type": "MESH",
+      "parent": "Kural_VWheel_0_1_Spin",
+      "dimensionsM": [
+        0.024,
+        0.01,
+        0.024
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.879269779,
+          0.468713492,
+          0.013000873
+        ],
+        [
+          0.156550258,
+          0.476324111,
+          0.865220964,
+          -0.04497306
+        ],
+        [
+          -0.9840222,
+          0.0,
+          0.178045765,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "Kural_VWheel_0_1_Spin",
+      "type": "EMPTY",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.879269779,
+          0.468713492,
+          0.013000873
+        ],
+        [
+          0.156550258,
+          0.476324111,
+          0.865220964,
+          -0.04497306
+        ],
+        [
+          -0.9840222,
+          0.0,
+          0.178045765,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Track": "Nearest opening of the 40mm side, centered Y=-10mm"
+      }
+    },
+    {
+      "name": "Kural_VWheel_1_0",
+      "type": "MESH",
+      "parent": "Kural_VWheel_1_0_Spin",
+      "dimensionsM": [
+        0.024,
+        0.01,
+        0.024
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.879269779,
+          -0.468713492,
+          0.032053836
+        ],
+        [
+          0.156550258,
+          0.476324111,
+          -0.865220964,
+          -0.009802272
+        ],
+        [
+          0.9840222,
+          0.0,
+          0.178045765,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "Kural_VWheel_1_0_Spin",
+      "type": "EMPTY",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.879269779,
+          -0.468713492,
+          0.032053836
+        ],
+        [
+          0.156550258,
+          0.476324111,
+          -0.865220964,
+          -0.009802272
+        ],
+        [
+          0.9840222,
+          0.0,
+          0.178045765,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Track": "Nearest opening of the 40mm side, centered Y=-10mm"
+      }
+    },
+    {
+      "name": "Kural_VWheel_1_1",
+      "type": "MESH",
+      "parent": "Kural_VWheel_1_1_Spin",
+      "dimensionsM": [
+        0.024,
+        0.01,
+        0.024
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.879269779,
+          -0.468713492,
+          0.032053836
+        ],
+        [
+          0.156550258,
+          0.476324111,
+          -0.865220964,
+          -0.009802272
+        ],
+        [
+          0.9840222,
+          0.0,
+          0.178045765,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "Kural_VWheel_1_1_Spin",
+      "type": "EMPTY",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.879269779,
+          -0.468713492,
+          0.032053836
+        ],
+        [
+          0.156550258,
+          0.476324111,
+          -0.865220964,
+          -0.009802272
+        ],
+        [
+          0.9840222,
+          0.0,
+          0.178045765,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Track": "Nearest opening of the 40mm side, centered Y=-10mm"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Axle",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.005,
+        0.005,
+        0.045000002
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.026629554
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.052356087
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Axle.001",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.005,
+        0.005,
+        0.045000002
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.026629554
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.052356087
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Axle.002",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.005,
+        0.005,
+        0.045000002
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.045682516
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.017185295
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Axle.003",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.005,
+        0.005,
+        0.045000002
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.045682516
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.017185295
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Bearing",
+      "type": "MESH",
+      "parent": "Kural_VWheel_0_0_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.016000001,
+        0.002
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          0.468713522,
+          0.879269779,
+          0.017397221
+        ],
+        [
+          0.156550258,
+          0.865220964,
+          -0.476324141,
+          -0.04735468
+        ],
+        [
+          -0.9840222,
+          0.178045765,
+          -8e-09,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Bearing.001",
+      "type": "MESH",
+      "parent": "Kural_VWheel_0_0_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.016000001,
+        0.002
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          0.468713522,
+          0.879269779,
+          0.008604525
+        ],
+        [
+          0.156550258,
+          0.865220964,
+          -0.476324141,
+          -0.042591441
+        ],
+        [
+          -0.9840222,
+          0.178045765,
+          -8e-09,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Bearing.002",
+      "type": "MESH",
+      "parent": "Kural_VWheel_0_1_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.016000001,
+        0.002
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          0.468713522,
+          0.879269779,
+          0.017397221
+        ],
+        [
+          0.156550258,
+          0.865220964,
+          -0.476324141,
+          -0.04735468
+        ],
+        [
+          -0.9840222,
+          0.178045765,
+          -8e-09,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Bearing.003",
+      "type": "MESH",
+      "parent": "Kural_VWheel_0_1_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.016000001,
+        0.002
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          0.468713522,
+          0.879269779,
+          0.008604525
+        ],
+        [
+          0.156550258,
+          0.865220964,
+          -0.476324141,
+          -0.042591441
+        ],
+        [
+          -0.9840222,
+          0.178045765,
+          -8e-09,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Bearing.004",
+      "type": "MESH",
+      "parent": "Kural_VWheel_1_0_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.015999999,
+        0.002
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.468713462,
+          0.879269779,
+          0.036450185
+        ],
+        [
+          0.156550258,
+          -0.865220964,
+          -0.476324081,
+          -0.012183892
+        ],
+        [
+          0.9840222,
+          0.178045765,
+          -8e-09,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Bearing.005",
+      "type": "MESH",
+      "parent": "Kural_VWheel_1_0_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.015999999,
+        0.002
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.468713462,
+          0.879269779,
+          0.027657486
+        ],
+        [
+          0.156550258,
+          -0.865220964,
+          -0.476324081,
+          -0.007420651
+        ],
+        [
+          0.9840222,
+          0.178045765,
+          -8e-09,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Bearing.006",
+      "type": "MESH",
+      "parent": "Kural_VWheel_1_1_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.015999999,
+        0.002
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.468713462,
+          0.879269779,
+          0.036450185
+        ],
+        [
+          0.156550258,
+          -0.865220964,
+          -0.476324081,
+          -0.012183892
+        ],
+        [
+          0.9840222,
+          0.178045765,
+          -8e-09,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Bearing.007",
+      "type": "MESH",
+      "parent": "Kural_VWheel_1_1_Spin",
+      "dimensionsM": [
+        0.016000001,
+        0.015999999,
+        0.002
+      ],
+      "worldMatrix": [
+        [
+          0.084807493,
+          -0.468713462,
+          0.879269779,
+          0.027657486
+        ],
+        [
+          0.156550258,
+          -0.865220964,
+          -0.476324081,
+          -0.007420651
+        ],
+        [
+          0.9840222,
+          0.178045765,
+          -8e-09,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Spacer",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.007794228,
+        0.009,
+        0.026000001
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.029706998
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.054023221
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.5212093
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "Kural_Wheel_Spacer.001",
+      "type": "MESH",
+      "parent": "Kural_Carriage_Hardware",
+      "dimensionsM": [
+        0.007794228,
+        0.009,
+        0.026000001
+      ],
+      "worldMatrix": [
+        [
+          0.476324111,
+          3.8e-08,
+          0.879269779,
+          0.029706998
+        ],
+        [
+          0.879269779,
+          -2.1e-08,
+          -0.476324111,
+          -0.054023221
+        ],
+        [
+          0.0,
+          1.0,
+          -4.4e-08,
+          0.58520931
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Dimension status": "photo estimate unless in dimensions.json confirmed/nominal"
+      }
+    },
+    {
+      "name": "SO101_Forearm_Cable_Red",
+      "type": "CURVE",
+      "parent": "SO101_Link_lower_arm_link",
+      "dimensionsM": [
+        0.110422879,
+        0.025115285,
+        0.007094681
+      ],
+      "worldMatrix": [
+        [
+          -0.152686238,
+          0.865909874,
+          0.476326287,
+          0.207622543
+        ],
+        [
+          0.08270774,
+          -0.469090849,
+          0.879268348,
+          -0.148447156
+        ],
+        [
+          0.984807611,
+          0.173648089,
+          6.244e-06,
+          0.580179513
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_JointFrame_elbow_flex",
+      "type": "EMPTY",
+      "parent": "SO101_Link_upper_arm_link",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.826243103,
+          0.300724745,
+          0.476326346,
+          0.207622558
+        ],
+        [
+          0.447598487,
+          -0.162918389,
+          0.879268467,
+          -0.148447156
+        ],
+        [
+          0.342020154,
+          0.939692557,
+          6.241e-06,
+          0.580179632
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_JointFrame_gripper",
+      "type": "EMPTY",
+      "parent": "SO101_Link_gripper_link",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.64957732,
+          -0.565192938,
+          -0.508533239,
+          0.311784506
+        ],
+        [
+          -0.40724203,
+          0.306168377,
+          -0.860473454,
+          -0.164050013
+        ],
+        [
+          0.642030478,
+          0.766040266,
+          -0.031290244,
+          0.397058785
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_JointFrame_gripper_frame_joint",
+      "type": "EMPTY",
+      "parent": "SO101_Link_gripper_link",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.649575889,
+          0.508535266,
+          0.565192759,
+          0.326095253
+        ],
+        [
+          0.407241285,
+          0.860472322,
+          -0.30617252,
+          -0.191850469
+        ],
+        [
+          -0.642032385,
+          0.031287473,
+          -0.766038775,
+          0.321178496
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_JointFrame_shoulder_lift",
+      "type": "EMPTY",
+      "parent": "SO101_Link_shoulder_link",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.879268527,
+          -6.118e-06,
+          0.476326346,
+          0.150635481
+        ],
+        [
+          0.476326346,
+          -3.785e-06,
+          0.879268527,
+          -0.117574848
+        ],
+        [
+          -3.576e-06,
+          1.0,
+          6.243e-06,
+          0.483974755
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_JointFrame_shoulder_pan",
+      "type": "EMPTY",
+      "parent": "SO101_Link_base_link",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -1.211e-06,
+          0.476326376,
+          -0.879268587,
+          0.111685298
+        ],
+        [
+          -2.327e-06,
+          0.879268587,
+          0.476326376,
+          -0.075686939
+        ],
+        [
+          1.0,
+          2.623e-06,
+          4.4e-08,
+          0.514374018
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_JointFrame_wrist_flex",
+      "type": "EMPTY",
+      "parent": "SO101_Link_lower_arm_link",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.865909338,
+          -0.152689368,
+          0.476326287,
+          0.23272264
+        ],
+        [
+          0.469090551,
+          0.082709439,
+          0.879268348,
+          -0.162043706
+        ],
+        [
+          -0.173651651,
+          0.984806955,
+          6.244e-06,
+          0.448231936
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_JointFrame_wrist_roll",
+      "type": "EMPTY",
+      "parent": "SO101_Link_wrist_link",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.64957732,
+          0.508535206,
+          -0.56519109,
+          0.275877088
+        ],
+        [
+          -0.40724209,
+          0.860472202,
+          0.306171507,
+          -0.164836168
+        ],
+        [
+          0.642030418,
+          0.031287491,
+          0.766040385,
+          0.401426882
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Joint_elbow_flex",
+      "type": "EMPTY",
+      "parent": "SO101_JointFrame_elbow_flex",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.152686238,
+          0.865909874,
+          0.476326287,
+          0.207622543
+        ],
+        [
+          0.08270774,
+          -0.469090849,
+          0.879268348,
+          -0.148447156
+        ],
+        [
+          0.984807611,
+          0.173648089,
+          6.244e-06,
+          0.580179513
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Joint_gripper",
+      "type": "EMPTY",
+      "parent": "SO101_JointFrame_gripper",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.222472087,
+          -0.831805229,
+          -0.508533239,
+          0.311784506
+        ],
+        [
+          -0.166411728,
+          0.481551915,
+          -0.860473454,
+          -0.164050013
+        ],
+        [
+          0.960631728,
+          0.276057243,
+          -0.031290229,
+          0.397058845
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Joint_gripper_frame_joint",
+      "type": "EMPTY",
+      "parent": "SO101_JointFrame_gripper_frame_joint",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.649575889,
+          0.508535266,
+          0.565192759,
+          0.326095253
+        ],
+        [
+          0.407241285,
+          0.860472322,
+          -0.30617252,
+          -0.191850469
+        ],
+        [
+          -0.642032385,
+          0.031287473,
+          -0.766038775,
+          0.321178496
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Joint_shoulder_lift",
+      "type": "EMPTY",
+      "parent": "SO101_JointFrame_shoulder_lift",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.300721765,
+          -0.826244175,
+          0.476326346,
+          0.150635481
+        ],
+        [
+          0.162916765,
+          0.447599083,
+          0.879268467,
+          -0.117574848
+        ],
+        [
+          -0.939693809,
+          0.342016757,
+          6.241e-06,
+          0.483974755
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Joint_shoulder_pan",
+      "type": "EMPTY",
+      "parent": "SO101_JointFrame_shoulder_pan",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -1.211e-06,
+          0.476326346,
+          -0.879268527,
+          0.111685298
+        ],
+        [
+          -2.327e-06,
+          0.879268527,
+          0.476326346,
+          -0.075686939
+        ],
+        [
+          1.0,
+          2.623e-06,
+          4.4e-08,
+          0.514374018
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Joint_wrist_flex",
+      "type": "EMPTY",
+      "parent": "SO101_JointFrame_wrist_flex",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.673554838,
+          -0.565187514,
+          0.476326257,
+          0.23272264
+        ],
+        [
+          0.364889681,
+          0.306173712,
+          0.879268289,
+          -0.162043706
+        ],
+        [
+          -0.642790198,
+          0.766042113,
+          6.282e-06,
+          0.448231936
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Joint_wrist_roll",
+      "type": "EMPTY",
+      "parent": "SO101_JointFrame_wrist_roll",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.64957732,
+          0.508535266,
+          -0.56519109,
+          0.275877118
+        ],
+        [
+          -0.40724206,
+          0.860472322,
+          0.306171477,
+          -0.164836183
+        ],
+        [
+          0.642030418,
+          0.031287473,
+          0.766040385,
+          0.401426911
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Link_base_link",
+      "type": "EMPTY",
+      "parent": "SO101_Mount",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          3e-09,
+          0.476324141,
+          0.879269779,
+          0.056818876
+        ],
+        [
+          9.8e-08,
+          0.879269779,
+          -0.476324141,
+          -0.045964308
+        ],
+        [
+          -1.0,
+          8.7e-08,
+          -4.4e-08,
+          0.553209305
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Link_gripper_frame_link",
+      "type": "EMPTY",
+      "parent": "SO101_Joint_gripper_frame_joint",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.649575889,
+          0.508535266,
+          0.565192759,
+          0.326095253
+        ],
+        [
+          0.407241285,
+          0.860472322,
+          -0.30617252,
+          -0.191850469
+        ],
+        [
+          -0.642032385,
+          0.031287473,
+          -0.766038775,
+          0.321178496
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Link_gripper_link",
+      "type": "EMPTY",
+      "parent": "SO101_Joint_wrist_roll",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.64957732,
+          0.508535266,
+          -0.56519109,
+          0.275877118
+        ],
+        [
+          -0.40724206,
+          0.860472322,
+          0.306171477,
+          -0.164836183
+        ],
+        [
+          0.642030418,
+          0.031287473,
+          0.766040385,
+          0.401426911
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Link_lower_arm_link",
+      "type": "EMPTY",
+      "parent": "SO101_Joint_elbow_flex",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.152686238,
+          0.865909874,
+          0.476326287,
+          0.207622543
+        ],
+        [
+          0.08270774,
+          -0.469090849,
+          0.879268348,
+          -0.148447156
+        ],
+        [
+          0.984807611,
+          0.173648089,
+          6.244e-06,
+          0.580179513
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Link_moving_jaw_so101_v1_link",
+      "type": "EMPTY",
+      "parent": "SO101_Joint_gripper",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          0.222472087,
+          -0.831805229,
+          -0.508533239,
+          0.311784506
+        ],
+        [
+          -0.166411728,
+          0.481551915,
+          -0.860473454,
+          -0.164050013
+        ],
+        [
+          0.960631728,
+          0.276057243,
+          -0.031290229,
+          0.397058845
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Link_shoulder_link",
+      "type": "EMPTY",
+      "parent": "SO101_Joint_shoulder_pan",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -1.211e-06,
+          0.476326346,
+          -0.879268527,
+          0.111685298
+        ],
+        [
+          -2.327e-06,
+          0.879268527,
+          0.476326346,
+          -0.075686939
+        ],
+        [
+          1.0,
+          2.623e-06,
+          4.4e-08,
+          0.514374018
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Link_upper_arm_link",
+      "type": "EMPTY",
+      "parent": "SO101_Joint_shoulder_lift",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.300721765,
+          -0.826244175,
+          0.476326346,
+          0.150635481
+        ],
+        [
+          0.162916765,
+          0.447599083,
+          0.879268467,
+          -0.117574848
+        ],
+        [
+          -0.939693809,
+          0.342016757,
+          6.241e-06,
+          0.483974755
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Link_wrist_link",
+      "type": "EMPTY",
+      "parent": "SO101_Joint_wrist_flex",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          -0.673554838,
+          -0.565187514,
+          0.476326257,
+          0.23272264
+        ],
+        [
+          0.364889681,
+          0.306173712,
+          0.879268289,
+          -0.162043706
+        ],
+        [
+          -0.642790198,
+          0.766042113,
+          6.282e-06,
+          0.448231936
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_Mount",
+      "type": "EMPTY",
+      "parent": "CTRL_Lift_Carriage",
+      "dimensionsM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worldMatrix": [
+        [
+          3e-09,
+          0.476324141,
+          0.879269779,
+          0.056818876
+        ],
+        [
+          9.8e-08,
+          0.879269779,
+          -0.476324141,
+          -0.045964308
+        ],
+        [
+          -1.0,
+          8.7e-08,
+          -4.4e-08,
+          0.553209305
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_UpperArm_Cable_Black",
+      "type": "CURVE",
+      "parent": "SO101_Link_upper_arm_link",
+      "dimensionsM": [
+        0.098171659,
+        0.005197893,
+        0.009082925
+      ],
+      "worldMatrix": [
+        [
+          -0.300721765,
+          -0.826244175,
+          0.476326346,
+          0.150635481
+        ],
+        [
+          0.162916765,
+          0.447599083,
+          0.879268467,
+          -0.117574848
+        ],
+        [
+          -0.939693809,
+          0.342016757,
+          6.241e-06,
+          0.483974755
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_UpperArm_Cable_Red",
+      "type": "CURVE",
+      "parent": "SO101_Link_upper_arm_link",
+      "dimensionsM": [
+        0.098171659,
+        0.00519789,
+        0.009082926
+      ],
+      "worldMatrix": [
+        [
+          -0.300721765,
+          -0.826244175,
+          0.476326346,
+          0.150635481
+        ],
+        [
+          0.162916765,
+          0.447599083,
+          0.879268467,
+          -0.117574848
+        ],
+        [
+          -0.939693809,
+          0.342016757,
+          6.241e-06,
+          0.483974755
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_base_link_base_motor_holder_so101_v1_01",
+      "type": "MESH",
+      "parent": "SO101_Link_base_link",
+      "dimensionsM": [
+        0.047647431,
+        0.031399999,
+        0.080200002
+      ],
+      "worldMatrix": [
+        [
+          0.476324141,
+          0.879269779,
+          -1.455e-06,
+          0.054661263
+        ],
+        [
+          0.879269779,
+          -0.476324141,
+          5.005e-06,
+          -0.044908565
+        ],
+        [
+          3.707e-06,
+          -3.664e-06,
+          -1.0,
+          0.559574008
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_base_link_base_so101_v2_02",
+      "type": "MESH",
+      "parent": "SO101_Link_base_link",
+      "dimensionsM": [
+        0.110924996,
+        0.071999997,
+        0.087000005
+      ],
+      "worldMatrix": [
+        [
+          0.476324141,
+          0.879269779,
+          -1.455e-06,
+          0.054708626
+        ],
+        [
+          0.879269779,
+          -0.476324141,
+          5.005e-06,
+          -0.044821136
+        ],
+        [
+          3.707e-06,
+          -3.664e-06,
+          -1.0,
+          0.559574008
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_base_link_sts3215_03a_v1_03",
+      "type": "MESH",
+      "parent": "SO101_Link_base_link",
+      "dimensionsM": [
+        0.045400001,
+        0.024800001,
+        0.0396
+      ],
+      "worldMatrix": [
+        [
+          3e-09,
+          0.476324141,
+          0.879269779,
+          0.095242955
+        ],
+        [
+          9.8e-08,
+          0.879269779,
+          -0.476324141,
+          -0.066779681
+        ],
+        [
+          -1.0,
+          8.7e-08,
+          -4.4e-08,
+          0.526874006
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_base_link_waveshare_mounting_plate_so101_v2_04",
+      "type": "MESH",
+      "parent": "SO101_Link_base_link",
+      "dimensionsM": [
+        0.050999999,
+        0.041999999,
+        0.0076
+      ],
+      "worldMatrix": [
+        [
+          0.476324141,
+          0.879269779,
+          -1.455e-06,
+          0.098401263
+        ],
+        [
+          0.879269779,
+          -0.476324141,
+          5.005e-06,
+          -0.068717435
+        ],
+        [
+          3.707e-06,
+          -3.664e-06,
+          -1.0,
+          0.584191978
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "Camera Mount Role": "Original SO-101 base plate; no camera attached",
+        "Source STL": "assets/SO101/assets/waveshare_mounting_plate_so101_v2.stl"
+      }
+    },
+    {
+      "name": "SO101_gripper_link_sts3215_03a_v1_01",
+      "type": "MESH",
+      "parent": "SO101_Link_gripper_link",
+      "dimensionsM": [
+        0.045399997,
+        0.024799997,
+        0.039599989
+      ],
+      "worldMatrix": [
+        [
+          0.64957732,
+          0.565189242,
+          0.508537292,
+          0.29415518
+        ],
+        [
+          -0.40724206,
+          -0.306174606,
+          0.860471189,
+          -0.175050318
+        ],
+        [
+          0.642030418,
+          -0.766040504,
+          0.031284701,
+          0.388448328
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_gripper_link_wrist_roll_follower_so101_v1_02",
+      "type": "MESH",
+      "parent": "SO101_Link_gripper_link",
+      "dimensionsM": [
+        0.065199994,
+        0.051999994,
+        0.105425283
+      ],
+      "worldMatrix": [
+        [
+          0.64957732,
+          -0.508533835,
+          0.565192401,
+          0.275229365
+        ],
+        [
+          -0.40724206,
+          -0.860473096,
+          -0.306169301,
+          -0.164733186
+        ],
+        [
+          0.642030418,
+          -0.031289414,
+          -0.766040325,
+          0.402147591
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_lower_arm_link_motor_holder_so101_wrist_v1_02",
+      "type": "MESH",
+      "parent": "SO101_Link_lower_arm_link",
+      "dimensionsM": [
+        0.027999993,
+        0.036899995,
+        0.056390949
+      ],
+      "worldMatrix": [
+        [
+          -0.152686238,
+          -0.865911067,
+          -0.476324081,
+          0.198388994
+        ],
+        [
+          0.08270774,
+          0.469088614,
+          -0.87926954,
+          -0.122973017
+        ],
+        [
+          0.984807611,
+          -0.173648089,
+          -5.804e-06,
+          0.510758221
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_lower_arm_link_sts3215_03a_v1_03",
+      "type": "MESH",
+      "parent": "SO101_Link_lower_arm_link",
+      "dimensionsM": [
+        0.045399994,
+        0.024799997,
+        0.039599989
+      ],
+      "worldMatrix": [
+        [
+          0.152684048,
+          0.86590904,
+          -0.476328492,
+          0.239721373
+        ],
+        [
+          -0.082706548,
+          -0.469093293,
+          -0.879267156,
+          -0.144567549
+        ],
+        [
+          -0.984808028,
+          0.173645586,
+          -6.684e-06,
+          0.460542142
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_lower_arm_link_under_arm_so101_v1_01",
+      "type": "MESH",
+      "parent": "SO101_Link_lower_arm_link",
+      "dimensionsM": [
+        0.130699784,
+        0.023999996,
+        0.064399987
+      ],
+      "worldMatrix": [
+        [
+          -0.152686238,
+          -0.865908682,
+          -0.476328492,
+          0.198484242
+        ],
+        [
+          0.08270774,
+          0.469093084,
+          -0.879267156,
+          -0.122797154
+        ],
+        [
+          0.984807611,
+          -0.173648089,
+          -6.684e-06,
+          0.510758221
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_moving_jaw_so101_v1_link_moving_jaw_so101_v1_01",
+      "type": "MESH",
+      "parent": "SO101_Link_moving_jaw_so101_v1_link",
+      "dimensionsM": [
+        0.022297977,
+        0.091994658,
+        0.047999993
+      ],
+      "worldMatrix": [
+        [
+          0.222472087,
+          -0.831805229,
+          -0.508533239,
+          0.302173227
+        ],
+        [
+          -0.166411728,
+          0.481551915,
+          -0.860473454,
+          -0.180312961
+        ],
+        [
+          0.960631728,
+          0.276057243,
+          -0.031290229,
+          0.396467447
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_shoulder_link_motor_holder_so101_base_v1_02",
+      "type": "MESH",
+      "parent": "SO101_Link_shoulder_link",
+      "dimensionsM": [
+        0.027999997,
+        0.038097054,
+        0.05508044
+      ],
+      "worldMatrix": [
+        [
+          -0.879268527,
+          2.669e-06,
+          -0.476326346,
+          0.097664393
+        ],
+        [
+          0.476326346,
+          -2.58e-06,
+          -0.879268527,
+          -0.068293355
+        ],
+        [
+          -3.576e-06,
+          -1.0,
+          9.97e-07,
+          0.446774811
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_shoulder_link_rotation_pitch_so101_v1_03",
+      "type": "MESH",
+      "parent": "SO101_Link_shoulder_link",
+      "dimensionsM": [
+        0.059799999,
+        0.084199987,
+        0.045999996
+      ],
+      "worldMatrix": [
+        [
+          -1.211e-06,
+          0.879266798,
+          0.476329535,
+          0.070897818
+        ],
+        [
+          -2.327e-06,
+          -0.476329535,
+          0.879266798,
+          -0.053565867
+        ],
+        [
+          1.0,
+          -4.4e-08,
+          2.623e-06,
+          0.52657479
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_shoulder_link_sts3215_03a_v1_01",
+      "type": "MESH",
+      "parent": "SO101_Link_shoulder_link",
+      "dimensionsM": [
+        0.045399997,
+        0.024800001,
+        0.039599996
+      ],
+      "worldMatrix": [
+        [
+          0.879268527,
+          2.48e-07,
+          -0.476326346,
+          0.148551971
+        ],
+        [
+          -0.476326346,
+          -7.234e-06,
+          -0.879268527,
+          -0.09517841
+        ],
+        [
+          -3.664e-06,
+          1.0,
+          -6.243e-06,
+          0.483974814
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_upper_arm_link_sts3215_03a_v1_01",
+      "type": "MESH",
+      "parent": "SO101_Link_upper_arm_link",
+      "dimensionsM": [
+        0.045399997,
+        0.024799999,
+        0.039599996
+      ],
+      "worldMatrix": [
+        [
+          0.826245248,
+          0.300717562,
+          -0.476327121,
+          0.206201822
+        ],
+        [
+          -0.447599679,
+          -0.162917376,
+          -0.87926805,
+          -0.126409858
+        ],
+        [
+          -0.342013359,
+          0.93969506,
+          -8.623e-06,
+          0.584454954
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_upper_arm_link_upper_arm_so101_v1_02",
+      "type": "MESH",
+      "parent": "SO101_Link_upper_arm_link",
+      "dimensionsM": [
+        0.142169967,
+        0.024499996,
+        0.067299992
+      ],
+      "worldMatrix": [
+        [
+          -0.300721765,
+          0.826245368,
+          -0.47632426,
+          0.168962166
+        ],
+        [
+          0.162916765,
+          -0.447596848,
+          -0.8792696,
+          -0.106804416
+        ],
+        [
+          -0.939693809,
+          -0.342016757,
+          -7.108e-06,
+          0.549239039
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_wrist_link_sts3215_03a_no_horn_v1_01",
+      "type": "MESH",
+      "parent": "SO101_Link_wrist_link",
+      "dimensionsM": [
+        0.045399986,
+        0.024799999,
+        0.039599996
+      ],
+      "worldMatrix": [
+        [
+          -0.476323813,
+          -0.67355454,
+          0.565189958,
+          0.271262169
+        ],
+        [
+          -0.8792696,
+          0.36488539,
+          -0.306175023,
+          -0.148119867
+        ],
+        [
+          -3.955e-06,
+          -0.642793,
+          -0.766039789,
+          0.415751934
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "SO101_wrist_link_wrist_roll_pitch_so101_v2_02",
+      "type": "MESH",
+      "parent": "SO101_Link_wrist_link",
+      "dimensionsM": [
+        0.062299982,
+        0.035659749,
+        0.07782606
+      ],
+      "worldMatrix": [
+        [
+          0.476328701,
+          -0.673551083,
+          -0.565189958,
+          0.257169396
+        ],
+        [
+          0.879266977,
+          0.364891768,
+          0.306175023,
+          -0.154701814
+        ],
+        [
+          8.609e-06,
+          -0.642793,
+          0.766039789,
+          0.426782876
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {}
+    },
+    {
+      "name": "STS3215_Motor_1",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.024723409,
+        0.037800003,
+        0.045223415
+      ],
+      "worldMatrix": [
+        [
+          0.001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.001,
+          -0.0,
+          0.080262139
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_1",
+        "geometry_source": "LeKiwi official CAD",
+        "motor_model": "Feetech STS3215"
+      }
+    },
+    {
+      "name": "STS3215_Motor_2",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.024723409,
+        0.037800003,
+        0.045223415
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          -0.000866025,
+          -0.0,
+          0.080264695
+        ],
+        [
+          -0.000866025,
+          0.0005,
+          -0.0,
+          -0.057969846
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_2",
+        "geometry_source": "LeKiwi official CAD",
+        "motor_model": "Feetech STS3215"
+      }
+    },
+    {
+      "name": "STS3215_Motor_3",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.024723409,
+        0.037800003,
+        0.045223415
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          0.000866026,
+          0.0,
+          -0.079975091
+        ],
+        [
+          0.000866026,
+          0.0005,
+          -0.0,
+          -0.058927469
+        ],
+        [
+          -0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_3",
+        "geometry_source": "LeKiwi official CAD",
+        "motor_model": "Feetech STS3215"
+      }
+    },
+    {
+      "name": "Servo_Wheel_Coupler_1",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.059997316,
+        0.0142,
+        0.057995874
+      ],
+      "worldMatrix": [
+        [
+          0.001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.001,
+          -0.0,
+          0.080262139
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_1",
+        "geometry_source": "User MakerMods 3MF wheel coupler"
+      }
+    },
+    {
+      "name": "Servo_Wheel_Coupler_2",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.059997316,
+        0.0142,
+        0.057995874
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          -0.000866025,
+          -0.0,
+          0.080264695
+        ],
+        [
+          -0.000866025,
+          0.0005,
+          -0.0,
+          -0.057969846
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_2",
+        "geometry_source": "User MakerMods 3MF wheel coupler"
+      }
+    },
+    {
+      "name": "Servo_Wheel_Coupler_3",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.059997316,
+        0.0142,
+        0.057995874
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          0.000866026,
+          0.0,
+          -0.079975091
+        ],
+        [
+          0.000866026,
+          0.0005,
+          -0.0,
+          -0.058927469
+        ],
+        [
+          -0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_3",
+        "geometry_source": "User MakerMods 3MF wheel coupler"
+      }
+    },
+    {
+      "name": "Wheel_4in_LeKiwi_1",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.101593964,
+        0.038828362,
+        0.101593956
+      ],
+      "worldMatrix": [
+        [
+          0.001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.001,
+          -0.0,
+          0.080262139
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_1",
+        "geometry_source": "LeKiwi official CAD",
+        "nominal_diameter_mm": 101.6
+      }
+    },
+    {
+      "name": "Wheel_4in_LeKiwi_2",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.101593964,
+        0.038828362,
+        0.101593956
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          -0.000866025,
+          -0.0,
+          0.080264695
+        ],
+        [
+          -0.000866025,
+          0.0005,
+          -0.0,
+          -0.057969846
+        ],
+        [
+          0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_2",
+        "geometry_source": "LeKiwi official CAD",
+        "nominal_diameter_mm": 101.6
+      }
+    },
+    {
+      "name": "Wheel_4in_LeKiwi_3",
+      "type": "MESH",
+      "parent": null,
+      "dimensionsM": [
+        0.101593964,
+        0.038828362,
+        0.101593956
+      ],
+      "worldMatrix": [
+        [
+          -0.0005,
+          0.000866026,
+          0.0,
+          -0.079975091
+        ],
+        [
+          0.000866026,
+          0.0005,
+          -0.0,
+          -0.058927469
+        ],
+        [
+          -0.0,
+          0.0,
+          -0.001,
+          0.069296986
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "customProperties": {
+        "enclosure": "011_Omni_Wheel_Enclosure_3",
+        "geometry_source": "LeKiwi official CAD",
+        "nominal_diameter_mm": 101.6
+      }
+    }
+  ]
+}

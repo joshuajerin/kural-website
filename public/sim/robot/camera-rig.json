@@ -1,0 +1,174 @@
+{
+  "revision": "camera-rig-v9",
+  "opticalConvention": "Blender/Three camera: -Z forward, +Y image up",
+  "mast": {
+    "parentBody": "lift_carriage",
+    "asset": "camera-mast-18in-v8.glb",
+    "opticalBody": "spine_camera_18in_optical",
+    "position": [
+      -1.044831350327513e-07,
+      -0.10310578346252441,
+      -0.42887669801712036
+    ],
+    "quaternion": [
+      0.21643951535224915,
+      -0.976296067237854,
+      -3.632798950548022e-08,
+      1.2884790123735002e-07
+    ],
+    "sourceWorldMatrix": [
+      [
+        -0.4763242304325104,
+        0.796889066696167,
+        -0.37159523367881775,
+        0.10439248383045197
+      ],
+      [
+        -0.8792697191238403,
+        -0.431696355342865,
+        0.20130334794521332,
+        -0.07173613458871841
+      ],
+      [
+        1.4280496429819323e-07,
+        0.4226180911064148,
+        0.9063078761100769,
+        0.9820860028266907
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "parentSourceWorldMatrix": [
+      [
+        -0.4763241112232208,
+        -0.8792697787284851,
+        4.164157729746876e-08,
+        0.013734657317399979
+      ],
+      [
+        -0.8792697787284851,
+        0.4763241112232208,
+        7.686820424623875e-08,
+        -0.0226244255900383
+      ],
+      [
+        -8.742277657347586e-08,
+        0.0,
+        -1.0,
+        0.5532093048095703
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "lengthM": 0.4572,
+    "pitchDownDegrees": 65,
+    "verticalFovDegrees": 90,
+    "sourceMeshCount": 150
+  },
+  "wrist": {
+    "parentBody": "wrist_roll_link",
+    "asset": "camera-wrist-so101-v9.glb",
+    "opticalBody": "wrist_camera_optical",
+    "position": [
+      0.0025000348687171936,
+      -0.0664154663681984,
+      -0.008004538714885712
+    ],
+    "quaternion": [
+      0.690345287322998,
+      0.15304677188396454,
+      0.15304672718048096,
+      -0.6903454065322876
+    ],
+    "sourceWorldMatrix": [
+      [
+        -0.22202764451503754,
+        0.6495773196220398,
+        -0.7271538972854614,
+        0.2482505589723587
+      ],
+      [
+        -0.9092461466789246,
+        -0.4072421193122864,
+        -0.08616793155670166,
+        -0.225453719496727
+      ],
+      [
+        -0.3521004617214203,
+        0.6420304179191589,
+        0.68104487657547,
+        0.39482221007347107
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "parentSourceWorldMatrix": [
+      [
+        0.6495773196220398,
+        0.5085352659225464,
+        -0.5651910901069641,
+        0.27587711811065674
+      ],
+      [
+        -0.4072420597076416,
+        0.8604723215103149,
+        0.3061714768409729,
+        -0.16483618319034576
+      ],
+      [
+        0.6420304179191589,
+        0.03128747269511223,
+        0.7660403847694397,
+        0.40142691135406494
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "replacesMesh": "SO101_gripper_link_wrist_roll_follower_so101_v1_02",
+    "verticalFovDegrees": 72,
+    "sensorGeometry": "32x32 UVC PCB, measured 27 mm hole pattern, 25 degree tilted plate, 3 mm spacers; optics uncalibrated",
+    "plateTiltDegrees": 25,
+    "pcbHolePitchM": 0.027,
+    "spacerLengthM": 0.003,
+    "plateCenterUVWm": [
+      0.0025,
+      0.06377925,
+      -0.037261
+    ],
+    "pcbCenterUVWm": [
+      0.0025,
+      0.06377925,
+      -0.041061
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/joshuajerin/Desktop/jarvis/kural/camera_mount_18in_fixed/Camera_mast_18in_flat_holes.stl",
+      "sha256": "d5606574245910a81ff2871d206f13eca4109fee928d5a98495d133b4257db3e"
+    },
+    {
+      "path": "/Users/joshuajerin/Downloads/Wrist_Cam_Mount_32x32_UVC_Module_SO101.stl",
+      "sha256": "b4345ccf23f1f2ed3f4885c205cac5afbed6ddd1b183617c4801751e3bafb7b4"
+    },
+    {
+      "path": "/Users/joshuajerin/Desktop/jarvis/kural/camera_mount_18in_fixed/Kural_camera_mount_18in_fixed.blend",
+      "sha256": "a7b496479972f898d50bcd48c03f6c0d939d624513598ee99620b34729b90318"
+    }
+  ]
+}
