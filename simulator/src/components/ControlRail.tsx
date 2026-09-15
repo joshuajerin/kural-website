@@ -74,7 +74,7 @@ export function ControlRail(props: ControlRailProps) {
 
       <section className="panel leader-panel" aria-label="SO-101 leader input">
         <div className="panel-heading"><div><span className="eyebrow">Live input</span><h2>Leader arm</h2></div><span className="source-chip">{props.leaderEnabled ? 'LIVE' : 'PAUSED'}</span></div>
-        <p className="panel-note">Read-only local SO-101 input. It starts relative to the current simulated pose.</p>
+        <p className="panel-note">Read-only local SO-101 input. Teleop stows the simulation, then maps relative motion.</p>
         <div className="button-grid">
           <button type="button" className={props.leaderEnabled ? 'is-active' : ''} onClick={props.onToggleLeader}>{props.leaderEnabled ? <Pause size={16} /> : <Play size={16} />}{props.leaderEnabled ? 'Pause leader' : 'Enable leader'}</button>
           <button type="button" disabled={!props.leaderEnabled} onClick={props.onRecenterLeader}><Crosshair size={16} />Recenter</button>

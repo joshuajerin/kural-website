@@ -1,5 +1,5 @@
 import { JOINT_NAMES, type GestureId, type JointName, type RobotControlConfig } from '../types'
-import { DEFAULT_NEUTRAL_JOINTS } from './config'
+import { DEFAULT_NEUTRAL_JOINTS, STOW_JOINTS } from './config'
 
 export interface GestureKeyframe {
   durationMs: number
@@ -62,7 +62,7 @@ export const GESTURES: Record<GestureId, GestureDefinition> = {
     id: 'stow',
     label: 'Stow',
     keyframes: [
-      { durationMs: 1300, targets: { shoulder_pan: 0, shoulder_lift: -0.7, elbow_flex: 1.3, wrist_flex: -0.6, wrist_roll: 0, gripper: 0.35 } },
+      { durationMs: 1500, targets: { ...STOW_JOINTS } },
     ],
   },
 }

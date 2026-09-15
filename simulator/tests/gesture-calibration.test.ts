@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import loadMujoco, { type MainModule, type MjData, type MjModel } from '@mujoco/mujoco'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { DEFAULT_CONTROL_CONFIG as config, DEFAULT_NEUTRAL_JOINTS as home, GESTURES } from '../src/control'
+import { DEFAULT_CONTROL_CONFIG as config, DEFAULT_NEUTRAL_JOINTS as home, GESTURES, STOW_JOINTS } from '../src/control'
 import { gestureSegmentDuration } from '../src/control/gestures'
 import { JOINT_NAMES, type JointName } from '../src/types'
 
@@ -99,8 +99,14 @@ describe('forward gesture paths in the mounted SO101 frame', () => {
       report[id + 'Dynamics'] = { worstPenetrationM: worstPenetration, finalForward: direction(d) }
     } finally { d.delete() }
   })
-  it('preserves home and stow as the explicitly allowed downward poses', () => {
+  it('uses the requested global SO-101 neutral pose for home and stow', () => {
     expect(GESTURES.home.keyframes[0].targets).toEqual(home)
-    expect(GESTURES.stow.keyframes[0].targets).toMatchObject({ shoulder_lift: -.7, elbow_flex: 1.3, wrist_flex: -.6 })
+    expect(GESTURES.stow.keyframes[0].targets).toEqual(STOW_JOINTS)
+    expect(STOW_JOINTS.shoulder_pan * 180 / Math.PI).toBeCloseTo(0, 6)
+    expect(STOW_JOINTS.shoulder_lift * 180 / Math.PI).toBeCloseTo(-99.4, 6)
+    expect(STOW_JOINTS.elbow_flex * 180 / Math.PI).toBeCloseTo(79.1, 6)
+    expect(STOW_JOINTS.wrist_flex * 180 / Math.PI).toBeCloseTo(65.1, 6)
+    expect(STOW_JOINTS.wrist_roll * 180 / Math.PI).toBeCloseTo(90.3, 6)
+    expect(STOW_JOINTS.gripper * 180 / Math.PI).toBeCloseTo(-10, 6)
   })
 })

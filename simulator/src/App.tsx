@@ -3,6 +3,7 @@ import { Box, Camera, CircleAlert, Crosshair, Gauge } from 'lucide-react'
 import {
   CONTINUOUS_KEY_BINDINGS,
   DEFAULT_CONTROL_CONFIG,
+  STOW_JOINTS,
   DISCRETE_KEY_BINDINGS,
   keyboardIntentFromActions,
   selectJoint,
@@ -15,9 +16,14 @@ import { simulatorAsset } from './robot/paths'
 import {
   DEFAULT_LEADER_BRIDGE_URL,
   LEADER_POLL_INTERVAL_MS,
+  LEADER_STABLE_SAMPLE_COUNT,
+  MAX_LEADER_SAMPLE_DELTA_TICKS,
   beginLeaderMapping,
+  largestLeaderSampleDelta,
+  limitLeaderTargetStep,
   parseLeaderSample,
   targetsFromLeaderSample,
+  type LeaderJointTicks,
 } from './teleop/leader'
 import type { CameraMode } from './physics/protocol'
 import { useSimulation } from './physics/useSimulation'
@@ -58,9 +64,13 @@ export function App() {
   const [assetChecked, setAssetChecked] = useState(false)
   const [notice, setNotice] = useState<string | null>(null)
   const [leaderEnabled, setLeaderEnabled] = useState(false)
+  const [leaderReady, setLeaderReady] = useState(false)
   const [leaderDetail, setLeaderDetail] = useState('Leader arm is paused')
   const leaderMappingRef = useRef<ReturnType<typeof beginLeaderMapping> | null>(null)
   const lastLeaderSequenceRef = useRef(-1)
+  const lastLeaderJointsRef = useRef<LeaderJointTicks | null>(null)
+  const leaderStableSamplesRef = useRef(0)
+  const leaderTargetsRef = useRef<Record<JointName, number> | null>(null)
   const paused = simulation.status === 'paused'
 
   useEffect(() => { latestSnapshotRef.current = simulation.snapshot }, [simulation.snapshot])
@@ -107,7 +117,11 @@ export function App() {
   const disableLeader = useCallback(() => {
     leaderMappingRef.current = null
     lastLeaderSequenceRef.current = -1
+    lastLeaderJointsRef.current = null
+    leaderStableSamplesRef.current = 0
+    leaderTargetsRef.current = null
     setLeaderEnabled(false)
+    setLeaderReady(false)
     setLeaderDetail('Leader arm is paused')
   }, [])
 
@@ -147,7 +161,7 @@ export function App() {
   }, [sendContinuous, simulation.status])
 
   useEffect(() => {
-    if (!leaderEnabled || simulation.status !== 'ready') return
+    if (!leaderEnabled || !leaderReady || simulation.status !== 'ready') return
     let disposed = false
     let inFlight = false
     const controller = new AbortController()
@@ -167,13 +181,36 @@ export function App() {
         if (sample.sequence <= lastLeaderSequenceRef.current) return
         lastLeaderSequenceRef.current = sample.sequence
         if (!leaderMappingRef.current) {
+          const previous = lastLeaderJointsRef.current
+          const stable = previous !== null && largestLeaderSampleDelta(previous, sample.joints) <= 8
+          leaderStableSamplesRef.current = stable ? leaderStableSamplesRef.current + 1 : 1
+          lastLeaderJointsRef.current = { ...sample.joints }
+          if (leaderStableSamplesRef.current < LEADER_STABLE_SAMPLE_COUNT) {
+            if (!disposed) setLeaderDetail(`Hold leader still to arm · ${leaderStableSamplesRef.current}/${LEADER_STABLE_SAMPLE_COUNT}`)
+            return
+          }
           leaderMappingRef.current = beginLeaderMapping(sample.joints, latestSnapshotRef.current?.robot ?? null)
-          if (!disposed) setLeaderDetail('Live · relative mapping armed')
+          leaderTargetsRef.current = { ...leaderMappingRef.current.target }
+          if (!disposed) setLeaderDetail('Live · guarded relative mapping armed')
           return
         }
+        const previous = lastLeaderJointsRef.current
+        if (previous !== null && largestLeaderSampleDelta(previous, sample.joints) > MAX_LEADER_SAMPLE_DELTA_TICKS) {
+          leaderMappingRef.current = null
+          lastLeaderJointsRef.current = null
+          leaderStableSamplesRef.current = 0
+          leaderTargetsRef.current = null
+          simulation.send({ kind: 'stop' })
+          if (!disposed) setLeaderDetail('Leader sample jump rejected · hold leader still to re-arm')
+          return
+        }
+        lastLeaderJointsRef.current = { ...sample.joints }
+        const requestedTargets = targetsFromLeaderSample(leaderMappingRef.current, sample.joints)
+        const targets = limitLeaderTargetStep(leaderTargetsRef.current ?? leaderMappingRef.current.target, requestedTargets)
+        leaderTargetsRef.current = targets
         simulation.send({
           kind: 'setJointTargets',
-          targets: targetsFromLeaderSample(leaderMappingRef.current, sample.joints),
+          targets,
         })
         if (!disposed) setLeaderDetail('Live · six joints streaming')
       } catch (error) {
@@ -191,7 +228,20 @@ export function App() {
       controller.abort()
       window.clearInterval(interval)
     }
-  }, [leaderEnabled, simulation.send, simulation.status])
+  }, [leaderEnabled, leaderReady, simulation.send, simulation.status])
+
+  useEffect(() => {
+    if (!leaderEnabled || leaderReady) return
+    const robot = simulation.snapshot?.robot
+    if (!robot || robot.paused || robot.fault) return
+    const settled = Object.entries(STOW_JOINTS).every(([joint, target]) =>
+      Math.abs((robot.joints[joint as JointName].value ?? Number.POSITIVE_INFINITY) - target) < 0.035,
+    )
+    if (settled) {
+      setLeaderReady(true)
+      setLeaderDetail('Simulation stowed · hold the leader at neutral stow')
+    }
+  }, [leaderEnabled, leaderReady, simulation.snapshot, STOW_JOINTS])
 
   useEffect(() => {
     const active = () => shellRef.current?.contains(document.activeElement) === true
@@ -279,14 +329,23 @@ export function App() {
     }
     leaderMappingRef.current = null
     lastLeaderSequenceRef.current = -1
-    setLeaderDetail('Connecting to the local read-only bridge')
+    lastLeaderJointsRef.current = null
+    leaderStableSamplesRef.current = 0
+    leaderTargetsRef.current = null
+    setLeaderReady(false)
+    simulation.send({ kind: 'stop' })
+    simulation.send({ kind: 'playGesture', gesture: 'stow' })
+    setLeaderDetail('Stowing simulation arm before teleop')
     setLeaderEnabled(true)
   }
 
   const recenterLeader = () => {
     leaderMappingRef.current = null
     lastLeaderSequenceRef.current = -1
-    setLeaderDetail('Move the leader to the desired reference pose')
+    lastLeaderJointsRef.current = null
+    leaderStableSamplesRef.current = 0
+    leaderTargetsRef.current = null
+    setLeaderDetail('Hold the leader still to capture a new reference pose')
   }
 
   const reset = () => {

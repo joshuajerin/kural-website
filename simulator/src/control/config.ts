@@ -11,23 +11,28 @@ const jointRanges: Record<JointName, readonly [number, number, number]> = {
   gripper: [-0.174533, 1.74533, 2.0],
 }
 
-export const DEFAULT_NEUTRAL_JOINTS: Record<JointName, number> = {
+/**
+ * Global SO-101 neutral/stow pose measured in the simulator joint panel.
+ * These values are intentionally explicit: this is the pose the leader and
+ * simulated arm must share before teleoperation begins.
+ */
+export const STOW_JOINTS: Record<JointName, number> = {
   shoulder_pan: 0,
-  // Downward resting pose; home and stow are deliberately exempt from the
-  // forward-facing gesture requirement.
-  shoulder_lift: -0.65,
-  elbow_flex: 1.3,
-  wrist_flex: -0.65,
-  wrist_roll: 0,
-  gripper: 0.5934119927988374,
+  shoulder_lift: -99.4 * Math.PI / 180,
+  elbow_flex: 79.1 * Math.PI / 180,
+  wrist_flex: 65.1 * Math.PI / 180,
+  wrist_roll: 90.3 * Math.PI / 180,
+  gripper: -10 * Math.PI / 180,
 }
+
+export const DEFAULT_NEUTRAL_JOINTS: Record<JointName, number> = { ...STOW_JOINTS }
 
 /**
  * Uncalibrated control defaults. Geometry and actuator values remain explicit so
  * they can be replaced by measured values without changing controller logic.
  */
 export const DEFAULT_CONTROL_CONFIG: RobotControlConfig = {
-  revision: 'kural-control-v9',
+  revision: 'kural-control-v10',
   modelRevision: 'xlerobot-full-spine-arm-single-wheel-v9',
   commandTimeoutMs: 250,
   maxLinearVelocity: 0.2,

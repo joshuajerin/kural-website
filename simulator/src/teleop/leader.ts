@@ -3,6 +3,12 @@ import type { JointName, RobotState } from '../types'
 
 export const DEFAULT_LEADER_BRIDGE_URL = 'http://127.0.0.1:8767'
 export const LEADER_POLL_INTERVAL_MS = 50
+/** Four quiet reads prevent a transient startup encoder value from arming teleop. */
+export const LEADER_STABLE_SAMPLE_COUNT = 4
+/** A manually held arm cannot legitimately move this far between 50 ms reads. */
+export const MAX_LEADER_SAMPLE_DELTA_TICKS = 96
+/** Limit the follower request to 3.4 degrees per received leader sample. */
+export const MAX_LEADER_TARGET_STEP_RADIANS = 0.06
 const TICKS_PER_REVOLUTION = 4096
 const RADIANS_PER_TICK = (2 * Math.PI) / TICKS_PER_REVOLUTION
 
@@ -44,8 +50,14 @@ export function parseLeaderSample(value: unknown): LeaderSample | null {
   }
 }
 
-function wrapTicks(delta: number): number {
+export function wrapLeaderTicks(delta: number): number {
   return ((delta + TICKS_PER_REVOLUTION / 2) % TICKS_PER_REVOLUTION + TICKS_PER_REVOLUTION) % TICKS_PER_REVOLUTION - TICKS_PER_REVOLUTION / 2
+}
+
+export function largestLeaderSampleDelta(previous: LeaderJointTicks, current: LeaderJointTicks): number {
+  return Math.max(...Object.keys(DEFAULT_CONTROL_CONFIG.joints).map((joint) =>
+    Math.abs(wrapLeaderTicks(current[joint as JointName] - previous[joint as JointName])),
+  ))
 }
 
 export function beginLeaderMapping(source: LeaderJointTicks, robot: RobotState | null): LeaderMapping {
@@ -66,8 +78,26 @@ export function targetsFromLeaderSample(mapping: LeaderMapping, sample: LeaderJo
   return Object.fromEntries(
     Object.entries(DEFAULT_CONTROL_CONFIG.joints).map(([joint, limit]) => {
       const name = joint as JointName
-      const deltaRadians = wrapTicks(sample[name] - mapping.source[name]) * RADIANS_PER_TICK
+      const deltaRadians = wrapLeaderTicks(sample[name] - mapping.source[name]) * RADIANS_PER_TICK
       return [name, Math.min(limit.max, Math.max(limit.min, mapping.target[name] + deltaRadians))]
+    }),
+  ) as Record<JointName, number>
+}
+
+/**
+ * Servos receive a bounded target change even if an input sample is valid but
+ * arrives unusually late. It keeps a bad browser or serial sample from making
+ * the follower snap to a distant pose.
+ */
+export function limitLeaderTargetStep(
+  previous: Record<JointName, number>,
+  requested: Record<JointName, number>,
+): Record<JointName, number> {
+  return Object.fromEntries(
+    Object.entries(DEFAULT_CONTROL_CONFIG.joints).map(([joint, limit]) => {
+      const name = joint as JointName
+      const delta = Math.max(-MAX_LEADER_TARGET_STEP_RADIANS, Math.min(MAX_LEADER_TARGET_STEP_RADIANS, requested[name] - previous[name]))
+      return [name, Math.min(limit.max, Math.max(limit.min, previous[name] + delta))]
     }),
   ) as Record<JointName, number>
 }
