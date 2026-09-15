@@ -12,6 +12,13 @@ import { ControlLegend } from './components/ControlLegend'
 import { ControlRail } from './components/ControlRail'
 import { RobotScene } from './components/RobotScene'
 import { simulatorAsset } from './robot/paths'
+import {
+  DEFAULT_LEADER_BRIDGE_URL,
+  LEADER_POLL_INTERVAL_MS,
+  beginLeaderMapping,
+  parseLeaderSample,
+  targetsFromLeaderSample,
+} from './teleop/leader'
 import type { CameraMode } from './physics/protocol'
 import { useSimulation } from './physics/useSimulation'
 import { type GestureId, type JointName } from './types'
@@ -50,6 +57,10 @@ export function App() {
   const [visualAssetUrl, setVisualAssetUrl] = useState<string | null>(null)
   const [assetChecked, setAssetChecked] = useState(false)
   const [notice, setNotice] = useState<string | null>(null)
+  const [leaderEnabled, setLeaderEnabled] = useState(false)
+  const [leaderDetail, setLeaderDetail] = useState('Leader arm is paused')
+  const leaderMappingRef = useRef<ReturnType<typeof beginLeaderMapping> | null>(null)
+  const lastLeaderSequenceRef = useRef(-1)
   const paused = simulation.status === 'paused'
 
   useEffect(() => { latestSnapshotRef.current = simulation.snapshot }, [simulation.snapshot])
@@ -93,11 +104,19 @@ export function App() {
     setSelectedJoint(joint)
   }, [])
 
+  const disableLeader = useCallback(() => {
+    leaderMappingRef.current = null
+    lastLeaderSequenceRef.current = -1
+    setLeaderEnabled(false)
+    setLeaderDetail('Leader arm is paused')
+  }, [])
+
   const clearControls = useCallback(() => {
     pressedCodesRef.current.clear()
     actionsRef.current.clear()
+    disableLeader()
     simulation.send({ kind: 'stop' })
-  }, [simulation.send])
+  }, [disableLeader, simulation.send])
 
   const sendContinuous = useCallback(() => {
     const intent = keyboardIntentFromActions(
@@ -128,6 +147,53 @@ export function App() {
   }, [sendContinuous, simulation.status])
 
   useEffect(() => {
+    if (!leaderEnabled || simulation.status !== 'ready') return
+    let disposed = false
+    let inFlight = false
+    const controller = new AbortController()
+    const pollLeader = async () => {
+      if (disposed || inFlight) return
+      inFlight = true
+      try {
+        const response = await fetch(`${DEFAULT_LEADER_BRIDGE_URL}/v1/leader/state`, {
+          cache: 'no-store',
+          signal: controller.signal,
+        })
+        const sample = parseLeaderSample(await response.json())
+        if (!response.ok || !sample?.connected || !sample.joints) {
+          if (!disposed) setLeaderDetail(sample?.error ?? 'Leader bridge is unavailable')
+          return
+        }
+        if (sample.sequence <= lastLeaderSequenceRef.current) return
+        lastLeaderSequenceRef.current = sample.sequence
+        if (!leaderMappingRef.current) {
+          leaderMappingRef.current = beginLeaderMapping(sample.joints, latestSnapshotRef.current?.robot ?? null)
+          if (!disposed) setLeaderDetail('Live · relative mapping armed')
+          return
+        }
+        simulation.send({
+          kind: 'setJointTargets',
+          targets: targetsFromLeaderSample(leaderMappingRef.current, sample.joints),
+        })
+        if (!disposed) setLeaderDetail('Live · six joints streaming')
+      } catch (error) {
+        if (!disposed && !(error instanceof DOMException && error.name === 'AbortError')) {
+          setLeaderDetail(error instanceof Error ? error.message : 'Leader bridge is unavailable')
+        }
+      } finally {
+        inFlight = false
+      }
+    }
+    void pollLeader()
+    const interval = window.setInterval(() => void pollLeader(), LEADER_POLL_INTERVAL_MS)
+    return () => {
+      disposed = true
+      controller.abort()
+      window.clearInterval(interval)
+    }
+  }, [leaderEnabled, simulation.send, simulation.status])
+
+  useEffect(() => {
     const active = () => shellRef.current?.contains(document.activeElement) === true
     const onKeyDown = (event: KeyboardEvent) => {
       if (!active() || isEditableTarget(event.target) || simulation.status !== 'ready') return
@@ -137,6 +203,7 @@ export function App() {
       if (event.code.startsWith('Arrow') || event.code === 'Space') event.preventDefault()
 
       if (continuous) {
+        disableLeader()
         pressedCodesRef.current.add(event.code)
         actionsRef.current.add(continuous)
         sendContinuous()
@@ -192,7 +259,7 @@ export function App() {
       window.removeEventListener('blur', onWindowBlur)
       document.removeEventListener('visibilitychange', onVisibility)
     }
-  }, [clearControls, cycleCamera, sendContinuous, setCurrentJoint, simulation.pause, simulation.send, simulation.status])
+  }, [clearControls, cycleCamera, disableLeader, sendContinuous, setCurrentJoint, simulation.pause, simulation.send, simulation.status])
 
   useEffect(() => {
     if (!notice) return
@@ -203,6 +270,23 @@ export function App() {
   const playGesture = (gesture: GestureId) => {
     clearControls()
     simulation.send({ kind: 'playGesture', gesture })
+  }
+
+  const toggleLeader = () => {
+    if (leaderEnabled) {
+      disableLeader()
+      return
+    }
+    leaderMappingRef.current = null
+    lastLeaderSequenceRef.current = -1
+    setLeaderDetail('Connecting to the local read-only bridge')
+    setLeaderEnabled(true)
+  }
+
+  const recenterLeader = () => {
+    leaderMappingRef.current = null
+    lastLeaderSequenceRef.current = -1
+    setLeaderDetail('Move the leader to the desired reference pose')
   }
 
   const reset = () => {
@@ -299,8 +383,13 @@ export function App() {
           collisionDebug={collisionDebug}
           snapshot={simulation.snapshot}
           visualAssetUrl={visualAssetUrl}
+          leaderEnabled={leaderEnabled}
+          leaderDetail={leaderDetail}
           onSelectJoint={setCurrentJoint}
-          onJointTarget={(joint, value) => simulation.send({ kind: 'setJointTargets', targets: { [joint]: value } })}
+          onJointTarget={(joint, value) => {
+            disableLeader()
+            simulation.send({ kind: 'setJointTargets', targets: { [joint]: value } })
+          }}
           onGesture={playGesture}
           onStop={clearControls}
           onPause={togglePause}
@@ -308,6 +397,8 @@ export function App() {
           onRecord={toggleRecording}
           onReplay={openReplay}
           onCollisionDebug={() => setCollisionDebug((value) => !value)}
+          onToggleLeader={toggleLeader}
+          onRecenterLeader={recenterLeader}
         />
       </main>
 

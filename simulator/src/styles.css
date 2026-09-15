@@ -89,6 +89,7 @@ button:active { transform: translateY(1px); }
 .stop-button kbd { margin-left: auto; border-color: rgba(40, 10, 5, .3); background: rgba(50, 8, 3, .14); color: #32100a; }
 .button-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 7px; }
 .button-grid button { height: 34px; display: flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid var(--line); background: var(--panel-2); color: #aab2af; font-size: 9px; cursor: pointer; }
+.button-grid button:disabled { cursor: not-allowed; opacity: .48; }
 .button-grid button:hover, .debug-toggle:hover { border-color: #4b5754; color: var(--text); }.button-grid button.is-recording { color: #ff8879; border-color: rgba(240,94,76,.5); }.button-grid button.is-active { color: var(--acid); }
 .joint-selector { display: grid; gap: 3px; }
 .joint-selector button { min-height: 29px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; border: 1px solid transparent; background: transparent; color: #77817f; cursor: pointer; }
@@ -97,6 +98,7 @@ button:active { transform: translateY(1px); }
 .joint-adjust { display: grid; grid-template-columns: 30px 1fr 30px; align-items: center; gap: 6px; margin-top: 10px; }
 .joint-adjust button { width: 30px; height: 28px; display: grid; place-items: center; border: 1px solid var(--line); background: #181e1f; cursor: pointer; }.joint-adjust input { width: 100%; accent-color: var(--acid); }
 .panel-note { margin: 10px 0 0; color: #65706d; font: 400 8px/1.5 DM Mono, monospace; }.panel-note kbd { margin-right: 3px; }
+.leader-status { min-height: 12px; color: #8eaaa5; }
 .gesture-list { display: grid; gap: 4px; }
 .gesture-list button { height: 33px; display: grid; grid-template-columns: 25px 1fr auto; align-items: center; gap: 8px; padding: 0 8px; border: 1px solid transparent; background: #171c1d; color: #9aa3a0; cursor: pointer; text-align: left; }
 .gesture-list button:hover { border-color: #46504e; color: #e1e5df; }.gesture-list button span { font-size: 9px; }.gesture-list button svg { color: #505a58; }.gesture-list kbd { min-width: 18px; height: 18px; padding: 0; }

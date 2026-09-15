@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, Hand, Pause, Play, RotateCcw, Square, Video, WifiOff } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Crosshair, Hand, Pause, Play, RotateCcw, Square, Video, WifiOff } from 'lucide-react'
 import { DEFAULT_CONTROL_CONFIG, GESTURES } from '../control'
 import { GESTURE_IDS, JOINT_NAMES, type GestureId, type JointName, type RobotState } from '../types'
 import { CameraFeeds } from './CameraFeeds'
@@ -13,6 +13,8 @@ interface ControlRailProps {
   collisionDebug: boolean
   snapshot: SimulationSnapshot | null
   visualAssetUrl: string | null
+  leaderEnabled: boolean
+  leaderDetail: string
   onSelectJoint: (joint: JointName) => void
   onJointTarget: (joint: JointName, value: number) => void
   onGesture: (gesture: GestureId) => void
@@ -22,6 +24,8 @@ interface ControlRailProps {
   onRecord: () => void
   onReplay: () => void
   onCollisionDebug: () => void
+  onToggleLeader: () => void
+  onRecenterLeader: () => void
 }
 
 const prettyJoint = (joint: JointName) => joint.replace('_', ' ')
@@ -66,6 +70,16 @@ export function ControlRail(props: ControlRailProps) {
           <button type="button" aria-label={`Increase ${prettyJoint(selectedJoint)}`} onClick={() => props.onJointTarget(selectedJoint, (robot?.joints[selectedJoint].value ?? DEFAULT_CONTROL_CONFIG.neutralJoints[selectedJoint]) + 0.05)}><ChevronRight size={18} /></button>
         </div>
         <p className="panel-note"><kbd>J</kbd><kbd>L</kbd> jog selected · <kbd>[</kbd><kbd>]</kbd> select</p>
+      </section>
+
+      <section className="panel leader-panel" aria-label="SO-101 leader input">
+        <div className="panel-heading"><div><span className="eyebrow">Live input</span><h2>Leader arm</h2></div><span className="source-chip">{props.leaderEnabled ? 'LIVE' : 'PAUSED'}</span></div>
+        <p className="panel-note">Read-only local SO-101 input. It starts relative to the current simulated pose.</p>
+        <div className="button-grid">
+          <button type="button" className={props.leaderEnabled ? 'is-active' : ''} onClick={props.onToggleLeader}>{props.leaderEnabled ? <Pause size={16} /> : <Play size={16} />}{props.leaderEnabled ? 'Pause leader' : 'Enable leader'}</button>
+          <button type="button" disabled={!props.leaderEnabled} onClick={props.onRecenterLeader}><Crosshair size={16} />Recenter</button>
+        </div>
+        <p className="panel-note leader-status" role="status">{props.leaderDetail}</p>
       </section>
 
       <section className="panel gesture-panel">

@@ -44,6 +44,18 @@ Held movement commands expire in the physics worker when their heartbeat is miss
 
 Recordings contain the model/config revisions, initial robot state, semantic commands, generated actuator targets, and sampled simulation state. Replay rejects mismatched revisions, restores the recorded robot pose, and sends the commands through the same worker actuators with a fresh session identity.
 
+## SO-101 leader teleoperation
+
+The leader bridge reads an attached standard SO-101 leader at 1 Mbps and streams the six encoder positions into the browser simulator. It sends no torque, configuration, or position writes to physical hardware. Enable **Leader arm** in the side panel to start a relative mapping from the simulated arm's current pose; use **Recenter** to choose a new reference pose without moving the simulation.
+
+On this Mac, launch the bridge with the installed LeRobot environment:
+
+```bash
+/Users/joshuajerin/anaconda3/envs/lerobot/bin/python teleop/leader_bridge.py
+```
+
+It listens only on `127.0.0.1:8767`, so a local browser session can connect while the public simulator remains static. Press `Space`, pause/reset the simulator, change a joint manually, or use a gesture to pause leader input.
+
 ## Verification
 
 ```bash
