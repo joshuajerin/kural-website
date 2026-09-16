@@ -64,3 +64,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Check status and error messages in the waitlist form are announced by assistive technology.
 ## Simulator embedding
 - [ ] Open `/sim` and verify the iframe has the accessible title “Kural robot simulator”.
+- [ ] Confirm the embedded Vite application loads from `/sim/index.html` in a production build.
