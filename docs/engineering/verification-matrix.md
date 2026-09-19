@@ -69,3 +69,4 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Simulator input mapping
 - [ ] Click the simulator viewport before testing keyboard controls, as required by the simulator guide.
 - [ ] Exercise forward/backward, strafe, and rotation inputs and observe the corresponding base motion.
+- [ ] Change the selected arm joint and verify jog controls affect the selection rather than another joint.
