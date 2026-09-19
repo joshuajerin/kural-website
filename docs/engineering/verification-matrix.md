@@ -66,3 +66,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Open `/sim` and verify the iframe has the accessible title “Kural robot simulator”.
 - [ ] Confirm the embedded Vite application loads from `/sim/index.html` in a production build.
 - [ ] At mobile width, verify the simulator frame remains usable without obscuring browser navigation.
+## Simulator input mapping
+- [ ] Click the simulator viewport before testing keyboard controls, as required by the simulator guide.
