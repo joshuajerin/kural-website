@@ -68,3 +68,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] At mobile width, verify the simulator frame remains usable without obscuring browser navigation.
 ## Simulator input mapping
 - [ ] Click the simulator viewport before testing keyboard controls, as required by the simulator guide.
+- [ ] Exercise forward/backward, strafe, and rotation inputs and observe the corresponding base motion.
