@@ -70,3 +70,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Click the simulator viewport before testing keyboard controls, as required by the simulator guide.
 - [ ] Exercise forward/backward, strafe, and rotation inputs and observe the corresponding base motion.
 - [ ] Change the selected arm joint and verify jog controls affect the selection rather than another joint.
+## Simulator stop behavior
+- [ ] Hold a movement command and release it; verify the robot stops receiving the held command.
