@@ -72,3 +72,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Change the selected arm joint and verify jog controls affect the selection rather than another joint.
 ## Simulator stop behavior
 - [ ] Hold a movement command and release it; verify the robot stops receiving the held command.
+- [ ] While movement is held, hide the tab or move focus away and verify command state is cleared.
