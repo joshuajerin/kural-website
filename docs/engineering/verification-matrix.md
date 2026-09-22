@@ -76,3 +76,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Pause or reset the simulation and verify active gestures and held inputs do not continue.
 ## Simulator recording and leader mode
 - [ ] Record a short semantic command sequence and verify the recording includes model/config revision data.
+- [ ] Attempt replay with a mismatched revision and verify the simulator rejects it explicitly.
