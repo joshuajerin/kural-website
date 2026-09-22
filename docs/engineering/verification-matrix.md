@@ -74,3 +74,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Hold a movement command and release it; verify the robot stops receiving the held command.
 - [ ] While movement is held, hide the tab or move focus away and verify command state is cleared.
 - [ ] Pause or reset the simulation and verify active gestures and held inputs do not continue.
+## Simulator recording and leader mode
+- [ ] Record a short semantic command sequence and verify the recording includes model/config revision data.
