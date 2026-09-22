@@ -77,3 +77,4 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Simulator recording and leader mode
 - [ ] Record a short semantic command sequence and verify the recording includes model/config revision data.
 - [ ] Attempt replay with a mismatched revision and verify the simulator rejects it explicitly.
+- [ ] Enable leader mode only with a local test bridge and verify stop/pause actions disable leader input.
