@@ -78,3 +78,5 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Record a short semantic command sequence and verify the recording includes model/config revision data.
 - [ ] Attempt replay with a mismatched revision and verify the simulator rejects it explicitly.
 - [ ] Enable leader mode only with a local test bridge and verify stop/pause actions disable leader input.
+## Local development guide
+- [ ] From a clean checkout, run `npm ci` and verify the lockfile-based install completes.
