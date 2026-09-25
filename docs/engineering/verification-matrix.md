@@ -80,3 +80,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Enable leader mode only with a local test bridge and verify stop/pause actions disable leader input.
 ## Local development guide
 - [ ] From a clean checkout, run `npm ci` and verify the lockfile-based install completes.
+- [ ] Without local Clerk secrets, confirm the homepage still renders for design review.
