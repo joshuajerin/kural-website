@@ -81,3 +81,5 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Local development guide
 - [ ] From a clean checkout, run `npm ci` and verify the lockfile-based install completes.
 - [ ] Without local Clerk secrets, confirm the homepage still renders for design review.
+## Website structure guide
+- [ ] When changing the `/sim` route, verify the route shell stays separate from simulator implementation.
