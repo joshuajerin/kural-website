@@ -83,3 +83,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Without local Clerk secrets, confirm the homepage still renders for design review.
 ## Website structure guide
 - [ ] When changing the `/sim` route, verify the route shell stays separate from simulator implementation.
+- [ ] When changing reservation behavior, trace the browser form through the API route to Clerk.
