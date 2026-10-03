@@ -86,3 +86,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] When changing reservation behavior, trace the browser form through the API route to Clerk.
 ## Waitlist flow guide
 - [ ] Check the 409 duplicate response displays a non-error “already on the list” message.
+- [ ] Confirm an unsuccessful reservation never displays the success state.
