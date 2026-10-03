@@ -84,3 +84,5 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Website structure guide
 - [ ] When changing the `/sim` route, verify the route shell stays separate from simulator implementation.
 - [ ] When changing reservation behavior, trace the browser form through the API route to Clerk.
+## Waitlist flow guide
+- [ ] Check the 409 duplicate response displays a non-error “already on the list” message.
