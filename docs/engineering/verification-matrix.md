@@ -89,3 +89,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Confirm an unsuccessful reservation never displays the success state.
 ## Deployment checklist
 - [ ] Before production, verify Preview and Production Clerk credentials are set in Vercel, not committed.
+- [ ] After deployment, smoke-test the canonical domain and `www` redirect using live DNS/project state.
