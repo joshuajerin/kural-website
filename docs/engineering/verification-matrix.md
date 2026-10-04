@@ -87,3 +87,5 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Waitlist flow guide
 - [ ] Check the 409 duplicate response displays a non-error “already on the list” message.
 - [ ] Confirm an unsuccessful reservation never displays the success state.
+## Deployment checklist
+- [ ] Before production, verify Preview and Production Clerk credentials are set in Vercel, not committed.
