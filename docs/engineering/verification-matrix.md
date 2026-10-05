@@ -92,3 +92,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] After deployment, smoke-test the canonical domain and `www` redirect using live DNS/project state.
 ## Simulator validation guide
 - [ ] Run simulator unit tests and physics-direction tests from `simulator/` after control changes.
+- [ ] Run `npm run build` in the simulator package to check TypeScript and Vite output.
