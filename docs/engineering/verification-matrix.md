@@ -93,3 +93,5 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Simulator validation guide
 - [ ] Run simulator unit tests and physics-direction tests from `simulator/` after control changes.
 - [ ] Run `npm run build` in the simulator package to check TypeScript and Vite output.
+## Simulator command path guide
+- [ ] For a new control, verify the UI emits a semantic command rather than a direct actuator write.
