@@ -95,3 +95,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Run `npm run build` in the simulator package to check TypeScript and Vite output.
 ## Simulator command path guide
 - [ ] For a new control, verify the UI emits a semantic command rather than a direct actuator write.
+- [ ] Confirm the command uses the shared controller/worker path and existing joint limits.
