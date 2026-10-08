@@ -96,3 +96,5 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Simulator command path guide
 - [ ] For a new control, verify the UI emits a semantic command rather than a direct actuator write.
 - [ ] Confirm the command uses the shared controller/worker path and existing joint limits.
+## Stop behavior guide
+- [ ] Exercise command heartbeat timeout and verify a stale held command is cleared.
