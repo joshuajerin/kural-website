@@ -101,3 +101,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Exercise worker failure and verify the UI does not continue sending movement commands.
 ## Simulator recording guide
 - [ ] Check that replay restores the initial pose before replaying semantic commands.
+- [ ] Confirm replay uses a fresh session identity and the normal worker actuator path.
