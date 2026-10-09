@@ -99,3 +99,5 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Stop behavior guide
 - [ ] Exercise command heartbeat timeout and verify a stale held command is cleared.
 - [ ] Exercise worker failure and verify the UI does not continue sending movement commands.
+## Simulator recording guide
+- [ ] Check that replay restores the initial pose before replaying semantic commands.
