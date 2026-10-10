@@ -102,3 +102,5 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Simulator recording guide
 - [ ] Check that replay restores the initial pose before replaying semantic commands.
 - [ ] Confirm replay uses a fresh session identity and the normal worker actuator path.
+## Asset provenance guide
+- [ ] When exporting a robot asset, compare its digest to the recorded model manifest.
