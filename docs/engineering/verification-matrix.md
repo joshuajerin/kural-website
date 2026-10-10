@@ -104,3 +104,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Confirm replay uses a fresh session identity and the normal worker actuator path.
 ## Asset provenance guide
 - [ ] When exporting a robot asset, compare its digest to the recorded model manifest.
+- [ ] Confirm website presentation derivatives are not described as validated hardware or authoritative CAD.
