@@ -107,3 +107,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Confirm website presentation derivatives are not described as validated hardware or authoritative CAD.
 ## Release smoke-test guide
 - [ ] Run root lint/build and the simulator tests/build relevant to the changed area.
+- [ ] Inspect the final diff for local secrets, generated bundles, and unsupported hardware-performance claims.
