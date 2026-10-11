@@ -105,3 +105,5 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Asset provenance guide
 - [ ] When exporting a robot asset, compare its digest to the recorded model manifest.
 - [ ] Confirm website presentation derivatives are not described as validated hardware or authoritative CAD.
+## Release smoke-test guide
+- [ ] Run root lint/build and the simulator tests/build relevant to the changed area.
