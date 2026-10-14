@@ -1,6 +1,5 @@
 :root {
-  --font-geist-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-geist-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-brand: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -10,16 +9,16 @@
 }
 
 html {
+  font-family: var(--font-brand);
   scroll-behavior: smooth;
-  scroll-padding-top: 72px;
-  background: #11120f;
+  background: #fff;
 }
 
 body {
   min-height: 100%;
   color: #151612;
-  background: #f4f5f0;
-  font-family: var(--font-geist-sans);
+  background: #fff;
+  font-family: inherit;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -30,24 +29,22 @@ a {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
 }
 
 ::selection {
-  color: #11120f;
-  background: #f3ff67;
+  color: #243021;
+  background: #e4e9df;
 }
 
 :focus-visible {
-  outline: 2px solid #e13d27;
+  outline: 2px solid #596d4f;
   outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-}
-
-@media (max-width: 640px) {
-  html { scroll-padding-top: 62px; }
 }

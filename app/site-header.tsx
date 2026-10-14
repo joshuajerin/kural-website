@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
@@ -11,9 +10,7 @@ export function SiteHeader() {
 
   useEffect(() => {
     const updateHeader = () => {
-      const hero = document.getElementById("top");
-      const headerHeight = headerRef.current?.offsetHeight ?? 72;
-      setHasPassedHero(Boolean(hero && window.scrollY >= hero.offsetHeight - headerHeight));
+      setHasPassedHero(window.scrollY > 4);
     };
 
     updateHeader();
@@ -32,16 +29,9 @@ export function SiteHeader() {
       ref={headerRef}
     >
       <Link className={styles.wordmark} href="#top" aria-label="Kural home">
-        KURAL
+        <span className={styles.wordmarkText}><span className={styles.wordmarkK}>k</span>ural</span>
       </Link>
-      <nav className={styles.nav} aria-label="Primary navigation">
-        <Link href="#product">Product</Link>
-        <Link href="#modules">Modules</Link>
-        <Link href="/sim">Simulator</Link>
-        <Link className={styles.navCta} href="#early-access">
-          Early access <ArrowRight aria-hidden="true" size={15} />
-        </Link>
-      </nav>
+      <Link className={styles.navCta} href="#early-access">Pre-order</Link>
     </header>
   );
 }
