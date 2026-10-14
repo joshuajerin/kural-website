@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Bundled static simulator is a generated Vite build; simulator source has its own toolchain.
+    "public/sim/**",
+    "simulator/**",
   ]),
 ]);
 
