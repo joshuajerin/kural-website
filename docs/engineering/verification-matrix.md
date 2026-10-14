@@ -110,3 +110,4 @@ Manual checks for the current implementation. This checklist describes checks to
 - [ ] Inspect the final diff for local secrets, generated bundles, and unsupported hardware-performance claims.
 ## Current-day accessibility and release review
 - [ ] Check the home and simulator routes at desktop and mobile widths after any UI change.
+- [ ] Run keyboard-only navigation through the hero CTA, module content, and early-access form.
