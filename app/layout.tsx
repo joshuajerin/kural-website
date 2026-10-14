@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   title,
   description,
   applicationName: "Kural",
+  icons: {
+    icon: { url: "/icon?brand=white-k-v2", type: "image/png", sizes: "64x64" },
+    shortcut: "/icon?brand=white-k-v2",
+  },
   alternates: { canonical: "/" },
   openGraph: {
     title,
