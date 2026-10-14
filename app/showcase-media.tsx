@@ -1,126 +1,105 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import styles from "./showcase-media.module.css";
 
 const demos = [
-  { stem: "light", label: "Reading light", webm: true },
-  { stem: "fruit", label: "Fruit sorting", webm: true },
-  { stem: "pancake", label: "Pancake flip", webm: true },
-  { stem: "base", label: "Mobile base", webm: true },
+  { stem: "visual-intelligence", label: "Visual intelligence", webm: false },
   { stem: "autonomous-navigation", label: "Autonomous navigation", webm: false },
 ] as const;
 
 export function ShowcaseMedia({ variant }: { variant: "hero" | "feature" }) {
-  const [selected, setSelected] = useState(0);
-  const [playingStem, setPlayingStem] = useState<string | null>(null);
+  const [selected, setSelected] = useState(1);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const playbackIntent = useRef<"auto" | "play" | "pause">("auto");
   const videoId = useId();
-  const demo = variant === "hero" ? demos[3] : demos[selected];
-  const isPlaying = playingStem === demo.stem;
+  const demo = demos[selected];
+  const videoSource =
+    variant === "hero"
+      ? "/media/kural-camera-orbit-preview.mp4"
+      : `/media/${demo.stem}.mp4`;
+  const videoPoster =
+    variant === "hero"
+      ? "/media/kural-camera-orbit-poster.png"
+      : undefined;
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let inView = false;
     let disposed = false;
 
     const syncPlayback = () => {
       const shouldPlay =
+        variant === "feature" &&
         !disposed &&
-        inView &&
-        !document.hidden &&
-        playbackIntent.current !== "pause" &&
-        (playbackIntent.current === "play" || !motionPreference.matches);
+        !document.hidden;
 
       if (shouldPlay) {
-        // A blocked autoplay leaves the poster and explicit Play control intact.
-        void video.play().catch(() => {});
+        video.muted = true;
+        if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA && video.paused) {
+          void video.play().then(
+            () => delete video.dataset.playback,
+            () => { video.dataset.playback = "blocked"; },
+          );
+        }
       } else {
         video.pause();
       }
     };
 
-    const observer =
-      typeof IntersectionObserver !== "undefined"
-        ? new IntersectionObserver(
-            ([entry]) => {
-              inView = entry.isIntersecting;
-              syncPlayback();
-            },
-            { threshold: 0 },
-          )
-        : null;
-
-    if (observer) {
-      observer.observe(video);
-    } else {
-      inView = true;
-      syncPlayback();
-    }
-
-    motionPreference.addEventListener("change", syncPlayback);
     document.addEventListener("visibilitychange", syncPlayback);
+    video.addEventListener("canplay", syncPlayback);
+    syncPlayback();
 
     return () => {
       disposed = true;
-      observer?.disconnect();
-      motionPreference.removeEventListener("change", syncPlayback);
       document.removeEventListener("visibilitychange", syncPlayback);
+      video.removeEventListener("canplay", syncPlayback);
       video.pause();
     };
-  }, [demo.stem]);
-
-  function togglePlayback() {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.paused) {
-      playbackIntent.current = "play";
-      void video.play().catch(() => {});
-    } else {
-      playbackIntent.current = "pause";
-      video.pause();
-    }
-  }
+  }, [variant, videoSource]);
 
   function selectDemo(direction: number) {
     setSelected((current) => (current + direction + demos.length) % demos.length);
   }
 
   return (
-    <div className={`${styles.media} ${styles[variant]}`} data-demo={demo.stem}>
+    <div
+      className={`${styles.media} ${styles[variant]}`}
+      data-demo={variant === "hero" ? "orbit-reveal" : demo.stem}
+    >
       <video
-        key={demo.stem}
+        key={videoSource}
         id={videoId}
         ref={videoRef}
         className={styles.video}
+        autoPlay={variant === "feature"}
         muted
         playsInline
-        loop
-        preload="metadata"
-        poster={`/media/${demo.stem}-poster.jpg`}
-        aria-label={`Kural prototype demo: ${demo.label}`}
-        onPlay={() => setPlayingStem(demo.stem)}
-        onPause={() => setPlayingStem(null)}
-        onError={() => setPlayingStem(null)}
+        loop={variant === "feature"}
+        preload={variant === "feature" ? "auto" : "metadata"}
+        poster={videoPoster}
+        aria-label={
+          variant === "hero"
+            ? "A full orbit reveal of Kural with its reading light module"
+            : `Kural demo: ${demo.label}`
+        }
       >
-        {demo.webm !== false && <source src={`/media/${demo.stem}.webm`} type="video/webm" />}
-        <source src={`/media/${demo.stem}.mp4`} type="video/mp4" />
-        Your browser does not support this Kural prototype demo video.
+        {variant === "feature" && demo.webm && (
+          <source src={`/media/${demo.stem}.webm`} type="video/webm" />
+        )}
+        <source src={videoSource} type="video/mp4" />
+        Your browser does not support this Kural demo video.
       </video>
 
       {variant === "feature" && (
-        <div className={styles.selector} role="group" aria-label="Prototype demos">
+        <div className={styles.selector} role="group" aria-label="Kural demos">
           <button
             className={styles.arrow}
             type="button"
             onClick={() => selectDemo(-1)}
-            aria-label="Previous Kural prototype demo"
+            aria-label="Previous Kural demo"
             aria-controls={videoId}
           >
             <ChevronLeft size={16} aria-hidden="true" />
@@ -132,7 +111,7 @@ export function ShowcaseMedia({ variant }: { variant: "hero" | "feature" }) {
             className={styles.arrow}
             type="button"
             onClick={() => selectDemo(1)}
-            aria-label="Next Kural prototype demo"
+            aria-label="Next Kural demo"
             aria-controls={videoId}
           >
             <ChevronRight size={16} aria-hidden="true" />
@@ -140,20 +119,6 @@ export function ShowcaseMedia({ variant }: { variant: "hero" | "feature" }) {
         </div>
       )}
 
-      <button
-        className={styles.playback}
-        type="button"
-        onClick={togglePlayback}
-        aria-label={`${isPlaying ? "Pause" : "Play"} Kural prototype demo: ${demo.label}`}
-        aria-controls={videoId}
-      >
-        {isPlaying ? (
-          <Pause size={13} aria-hidden="true" />
-        ) : (
-          <Play size={13} aria-hidden="true" />
-        )}
-        <span>{isPlaying ? "Pause" : "Play"}</span>
-      </button>
     </div>
   );
 }

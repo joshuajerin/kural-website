@@ -17,16 +17,16 @@
 
 .hero .video {
   width: 72%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: left center;
 }
 
-.feature[data-demo="autonomous-navigation"] .video {
-  object-fit: contain;
+.feature .video {
+  object-fit: cover;
+  transform: scale(1.08);
 }
 
-.selector,
-.playback {
+.selector {
   position: absolute;
   z-index: 3;
   display: flex;
@@ -70,32 +70,11 @@
   cursor: pointer;
 }
 
-.playback {
-  right: 24px;
-  gap: 6px;
-  min-height: 44px;
-  padding: 0 12px;
-  font-size: 11px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.hero .playback {
-  top: 24px;
-}
-
-.feature .playback {
-  right: 28px;
-  bottom: 28px;
-}
-
-.arrow:hover,
-.playback:hover {
+.arrow:hover {
   background: rgb(255 255 255 / 95%);
 }
 
-.arrow:focus-visible,
-.playback:focus-visible {
+.arrow:focus-visible {
   outline: 2px solid #282827;
   outline-offset: 4px;
 }
@@ -104,24 +83,8 @@
   .hero .video {
     width: 100%;
     height: 58%;
-    object-fit: cover;
-    object-position: 40% center;
-  }
-  /* Extend the section without zooming Kural out of the phone crop. */
-  .feature .video {
-    height: 640px;
-    mask-image: linear-gradient(#000 75%, transparent 100%);
-  }
-  .feature[data-demo="light"] .video { object-position: 28% center; }
-
-  .hero .playback {
-    top: 18px;
-    right: 18px;
-  }
-
-  .feature .playback {
-    right: 18px;
-    bottom: 18px;
+    object-fit: contain;
+    object-position: center top;
   }
 }
 
@@ -130,5 +93,5 @@
 }
 
 @media (min-width: 641px) and (max-width: 1023px) {
-  .hero .video { object-position: 43% center; }
+  .hero .video { object-position: left center; }
 }

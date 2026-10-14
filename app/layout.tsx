@@ -2,7 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const title = "Kural — Modular mobile manipulation";
+const title = "Kural - Your Personal Robot Agent";
 const description =
   "Meet Kural, a modular mobile manipulator built to move, see, reach, and adapt across everyday spaces.";
 
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Kural — modular mobile manipulation",
+        alt: "Kural - Your Personal Robot Agent",
       },
     ],
   },

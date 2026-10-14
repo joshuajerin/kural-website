@@ -3,22 +3,25 @@ import styles from "./tool-gallery.module.css";
 
 const tools = [
   {
+    name: "Lamp",
+    image: "/media/modules/lamp-arm.png",
+    alt: "Kural arm with its curved trapezoid lamp and translucent diffuser attached to the wrist.",
+    copy: "Light, right where you need it.",
+    comingSoon: false,
+  },
+  {
     name: "Gripper",
-    image: "/media/fruit-poster.jpg",
-    alt: "Kural prototype visualization with a wrist gripper holding fruit above a table.",
-    copy: "A wrist tool for handling small objects.",
+    image: "/media/modules/gripper-r1-arm.png",
+    alt: "Kural arm with its custom white parallel palm gripper attached to the wrist.",
+    copy: "A helping hand for everyday objects.",
+    comingSoon: true,
   },
   {
-    name: "Spatula",
-    image: "/media/pancake-poster.jpg",
-    alt: "Kural prototype visualization with a spatula beside a pancake and cooking surface.",
-    copy: "A different tool for a different kind of task.",
-  },
-  {
-    name: "Reading light",
-    image: "/media/light-poster.jpg",
-    alt: "Kural prototype visualization with a reading light beside a seated person.",
-    copy: "Bring illumination into the workspace.",
+    name: "Pump",
+    image: "/media/modules/pump-arm.png",
+    alt: "Kural arm with its motor-driven suction pump and white suction cup attached to the wrist.",
+    copy: "A new way to pick up and move things.",
+    comingSoon: true,
   },
 ] as const;
 
@@ -28,6 +31,7 @@ export function ToolGallery() {
       {tools.map((tool) => (
         <figure className={styles.card} key={tool.name}>
           <div className={styles.media}>
+            {tool.comingSoon && <span className={styles.banner}>Coming soon</span>}
             <Image
               src={tool.image}
               alt={tool.alt}

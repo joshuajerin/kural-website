@@ -19,12 +19,28 @@
 .media {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 5 / 4;
   background: #f3f3f1;
 }
 
 .image {
   object-fit: contain;
+}
+
+.banner {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  right: 16px;
+  padding: 9px 13px;
+  border: 1px solid #d9dfd4;
+  border-radius: 999px;
+  background: #f9fbf5ed;
+  color: #48523e;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
 .caption {
