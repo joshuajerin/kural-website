@@ -1,4 +1,4 @@
-import { Check, Move3d, Navigation, ScanLine } from "lucide-react";
+import { Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { LiveHero } from "./live-hero";
@@ -59,68 +59,6 @@ export default function Home() {
           <p>A modular mobile manipulator</p>
           <Link className={styles.heroCta} href="#early-access">Join waitlist</Link>
           <span className={styles.heroNote}>Early access · No charge today</span>
-        </div>
-      </section>
-
-      <section className={styles.productIntro} id="product" aria-labelledby="product-title">
-        <div className={styles.sectionLabel}>
-          <span>01</span>
-          <p>The product</p>
-        </div>
-        <div className={styles.introContent}>
-          <p className={styles.eyebrow}>Built for the space between demos and daily life.</p>
-          <h2 id="product-title">One machine.<br />Many kinds of work.</h2>
-          <p className={styles.lead}>
-            Kural combines a mobile base, vertical lift, six-axis SO-101 arm,
-            onboard vision, and interchangeable wrist tools. It moves to the
-            task, reaches the right height, sees the workspace, and acts with
-            the tool the moment requires.
-          </p>
-        </div>
-        <div className={styles.specRail} aria-label="Core system specifications">
-          <div><strong>06</strong><span>Arm motions</span></div>
-          <div><strong>01</strong><span>Vertical lift</span></div>
-          <div><strong>02</strong><span>Driven wheels</span></div>
-          <div><strong>03</strong><span>End effectors</span></div>
-        </div>
-      </section>
-
-      <section className={styles.reasoning} aria-labelledby="why-title">
-        <div className={styles.reasoningIntro}>
-          <div className={`${styles.sectionLabel} ${styles.sectionLabelDark}`}>
-            <span>02</span>
-            <p>Why Kural</p>
-          </div>
-          <div>
-            <p className={styles.eyebrowDark}>Robots should adapt to the room, not the other way around.</p>
-            <h2 id="why-title">Useful hardware<br />should stay useful.</h2>
-          </div>
-          <p>
-            Most machines are built around one fixed motion in one fixed place.
-            Kural is designed as a system: mobile enough to move between work
-            zones, tall enough to meet different surfaces, and modular enough
-            to change what happens at the wrist.
-          </p>
-        </div>
-        <div className={styles.process} aria-label="How Kural works">
-          <article>
-            <span>01</span>
-            <Navigation aria-hidden="true" size={28} strokeWidth={1.6} />
-            <h3>Move into position</h3>
-            <p>The differential-drive base approaches the task while the lift sets working height.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <ScanLine aria-hidden="true" size={28} strokeWidth={1.6} />
-            <h3>See and align</h3>
-            <p>Top and wrist viewpoints help frame objects, surfaces, and the next action.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <Move3d aria-hidden="true" size={28} strokeWidth={1.6} />
-            <h3>Reach and adapt</h3>
-            <p>Six arm motions and a changeable wrist module turn perception into useful work.</p>
-          </article>
         </div>
       </section>
 
@@ -203,7 +141,6 @@ export default function Home() {
       <footer className={styles.footer}>
         <Link className={styles.footerWordmark} href="#top" aria-label="Kural home">kural</Link>
         <nav aria-label="Footer navigation">
-          <Link href="#product">Product</Link>
           <Link href="#demonstrations">Demonstrations</Link>
           <Link href="#modules">Modules</Link>
           <Link href="https://github.com/joshuajerin/kural-skills">Skills</Link>
