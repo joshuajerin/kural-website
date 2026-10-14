@@ -111,3 +111,4 @@ Manual checks for the current implementation. This checklist describes checks to
 ## Current-day accessibility and release review
 - [ ] Check the home and simulator routes at desktop and mobile widths after any UI change.
 - [ ] Run keyboard-only navigation through the hero CTA, module content, and early-access form.
+- [ ] Confirm the final working tree contains only intended source and documentation changes.
