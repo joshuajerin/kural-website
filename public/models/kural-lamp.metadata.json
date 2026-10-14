@@ -1,0 +1,335 @@
+{
+  "artifact": "robot-lamp.glb",
+  "content": "Articulated visual Kural robot with custom four-support curved trapezoid wrist lamp, white mount/cover, translucent diffuser, and no visible bulb geometry.",
+  "source_authority": "/Users/joshuajerin/Desktop/jarvis/kural/kural_description/assets/source/kural-assembly-v1.glb",
+  "custom_module_source": "/Users/joshuajerin/Documents/Codex/2026-10-01/do-u/outputs/lamp_front_back_supports.blend",
+  "diffuser_source": "/Users/joshuajerin/Documents/Codex/2026-10-01/do-u/outputs/medium_lampshade_translucent_insert.stl",
+  "units": {
+    "length": "metres",
+    "angle": "radians"
+  },
+  "source_coordinate_frame": "Kural/Blender right-handed Z-up before glTF Y-up conversion",
+  "gltf_coordinate_frame": "glTF right-handed Y-up",
+  "robot_mesh_bounds_source_frame_m": {
+    "min": [
+      -0.16051535308361053,
+      -0.2073161005973816,
+      -2.4363677741945367e-09
+    ],
+    "max": [
+      0.23899535834789276,
+      0.14468614757061005,
+      1.1242094039916992
+    ],
+    "size": [
+      0.3995107114315033,
+      0.35200226306915283,
+      1.1242094039916992
+    ]
+  },
+  "lamp": {
+    "parent_node": "SO101_Joint_wrist_roll",
+    "diffuser_bbox_center_wrist_local_m": [
+      0.0,
+      0.0,
+      -0.2069999873638153
+    ],
+    "diffuser_bbox_center_wrist_local_three_m": [
+      0.0,
+      -0.2069999873638153,
+      -0.0
+    ],
+    "light_anchor_node": "KuralLampLightAnchor",
+    "light_anchor_wrist_local_m": [
+      0.0,
+      0.0,
+      -0.2069999873638153
+    ],
+    "light_anchor_wrist_local_three_m": [
+      0.0,
+      -0.2069999873638153,
+      -0.0
+    ],
+    "forward_axis_wrist_local": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "forward_axis_three_local": [
+      0.0,
+      -1.0,
+      0.0
+    ],
+    "visual_bulb_geometry_included": false,
+    "diffuser_material": "Frosted translucent diffuser (KHR_materials_transmission when supported by viewer)",
+    "mount_and_cover_color": "white"
+  },
+  "joints": [
+    {
+      "node": "SO101_Joint_shoulder_pan",
+      "source_joint": "shoulder_pan",
+      "parent_node": "SO101_JointFrame_shoulder_pan",
+      "local_rotation_axis_source_urdf": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "local_rotation_axis_three": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "neutral_base_quaternion_blender_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "neutral_base_quaternion_three_xyzw": [
+        0.0,
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "current_angle_offset_rad": -0.071,
+      "current_angle_offset_deg": -4.068000345428844,
+      "current_rotation_rad": -0.071,
+      "current_rotation_deg": -4.068000345428844,
+      "source_limits": {
+        "effort": 12.0,
+        "velocity": 1.5,
+        "lower": -1.91986,
+        "upper": 1.91986
+      },
+      "legal_angle_offset_range_rad": [
+        -1.91986,
+        1.91986
+      ],
+      "legal_angle_offset_range_deg": [
+        -109.99987525598623,
+        109.99987525598623
+      ],
+      "source_limit_units": {
+        "lower": "rad",
+        "upper": "rad",
+        "effort": "source effort units",
+        "velocity": "rad/s"
+      },
+      "current_within_source_position_limits": true,
+      "source_limit_provenance": "Generated URDF software defaults; not hardware-calibrated"
+    },
+    {
+      "node": "SO101_Joint_shoulder_lift",
+      "source_joint": "shoulder_lift",
+      "parent_node": "SO101_JointFrame_shoulder_lift",
+      "local_rotation_axis_source_urdf": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "local_rotation_axis_three": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "neutral_base_quaternion_blender_wxyz": [
+        0.8191520571708679,
+        0.0,
+        0.0,
+        -0.5735764503479004
+      ],
+      "neutral_base_quaternion_three_xyzw": [
+        0.0,
+        -0.5735764503479004,
+        -0.0,
+        0.8191520571708679
+      ],
+      "current_angle_offset_rad": -1.369,
+      "current_angle_offset_deg": -78.4379221534097,
+      "current_rotation_rad": -1.369,
+      "current_rotation_deg": -78.4379221534097,
+      "source_limits": {
+        "effort": 15.0,
+        "velocity": 1.5,
+        "lower": -1.74533,
+        "upper": 1.74533
+      },
+      "legal_angle_offset_range_rad": [
+        -1.74533,
+        1.74533
+      ],
+      "legal_angle_offset_range_deg": [
+        -100.00004285756798,
+        100.00004285756798
+      ],
+      "source_limit_units": {
+        "lower": "rad",
+        "upper": "rad",
+        "effort": "source effort units",
+        "velocity": "rad/s"
+      },
+      "current_within_source_position_limits": true,
+      "source_limit_provenance": "Generated URDF software defaults; not hardware-calibrated"
+    },
+    {
+      "node": "SO101_Joint_elbow_flex",
+      "source_joint": "elbow_flex",
+      "parent_node": "SO101_JointFrame_elbow_flex",
+      "local_rotation_axis_source_urdf": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "local_rotation_axis_three": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "neutral_base_quaternion_blender_wxyz": [
+        0.8660253882408142,
+        0.0,
+        0.0,
+        0.5
+      ],
+      "neutral_base_quaternion_three_xyzw": [
+        0.0,
+        0.5,
+        -0.0,
+        0.8660253882408142
+      ],
+      "current_angle_offset_rad": -0.703,
+      "current_angle_offset_deg": -40.27893299769687,
+      "current_rotation_rad": -0.703,
+      "current_rotation_deg": -40.27893299769687,
+      "source_limits": {
+        "effort": 12.0,
+        "velocity": 1.8,
+        "lower": -1.69,
+        "upper": 1.69
+      },
+      "legal_angle_offset_range_rad": [
+        -1.69,
+        1.69
+      ],
+      "legal_angle_offset_range_deg": [
+        -96.82986737710912,
+        96.82986737710912
+      ],
+      "source_limit_units": {
+        "lower": "rad",
+        "upper": "rad",
+        "effort": "source effort units",
+        "velocity": "rad/s"
+      },
+      "current_within_source_position_limits": true,
+      "source_limit_provenance": "Generated URDF software defaults; not hardware-calibrated"
+    },
+    {
+      "node": "SO101_Joint_wrist_flex",
+      "source_joint": "wrist_flex",
+      "parent_node": "SO101_JointFrame_wrist_flex",
+      "local_rotation_axis_source_urdf": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "local_rotation_axis_three": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "neutral_base_quaternion_blender_wxyz": [
+        0.965925931930542,
+        0.0,
+        0.0,
+        -0.258819043636322
+      ],
+      "neutral_base_quaternion_three_xyzw": [
+        0.0,
+        -0.258819043636322,
+        -0.0,
+        0.965925931930542
+      ],
+      "current_angle_offset_rad": -0.459,
+      "current_angle_offset_deg": -26.298762796504786,
+      "current_rotation_rad": -0.459,
+      "current_rotation_deg": -26.298762796504786,
+      "source_limits": {
+        "effort": 8.0,
+        "velocity": 2.0,
+        "lower": -1.65806,
+        "upper": 1.65806
+      },
+      "legal_angle_offset_range_rad": [
+        -1.65806,
+        1.65806
+      ],
+      "legal_angle_offset_range_deg": [
+        -94.99984017946129,
+        94.99984017946129
+      ],
+      "source_limit_units": {
+        "lower": "rad",
+        "upper": "rad",
+        "effort": "source effort units",
+        "velocity": "rad/s"
+      },
+      "current_within_source_position_limits": true,
+      "source_limit_provenance": "Generated URDF software defaults; not hardware-calibrated"
+    },
+    {
+      "node": "SO101_Joint_wrist_roll",
+      "source_joint": "wrist_roll",
+      "parent_node": "SO101_JointFrame_wrist_roll",
+      "local_rotation_axis_source_urdf": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "local_rotation_axis_three": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "neutral_base_quaternion_blender_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "neutral_base_quaternion_three_xyzw": [
+        0.0,
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "current_angle_offset_rad": -0.633,
+      "current_angle_offset_deg": -36.26822843178111,
+      "current_rotation_rad": -0.633,
+      "current_rotation_deg": -36.26822843178111,
+      "source_limits": {
+        "effort": 6.0,
+        "velocity": 2.5,
+        "lower": -2.74385,
+        "upper": 2.84121
+      },
+      "legal_angle_offset_range_rad": [
+        -2.74385,
+        2.84121
+      ],
+      "legal_angle_offset_range_deg": [
+        -157.21102461697095,
+        162.78934171036462
+      ],
+      "source_limit_units": {
+        "lower": "rad",
+        "upper": "rad",
+        "effort": "source effort units",
+        "velocity": "rad/s"
+      },
+      "current_within_source_position_limits": true,
+      "source_limit_provenance": "Generated URDF software defaults; not hardware-calibrated"
+    }
+  ],
+  "validation_scope": "Blender export and re-import hierarchy/mesh inspection; no physical fit or robot motion validation."
+}

@@ -1,0 +1,97 @@
+.media {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero .video {
+  width: 72%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.feature .video {
+  object-fit: cover;
+  transform: scale(1.08);
+}
+
+.selector {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  color: #252523;
+  border: 1px solid rgb(255 255 255 / 60%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 78%);
+  box-shadow: 0 2px 14px rgb(0 0 0 / 5%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  pointer-events: auto;
+}
+
+.selector {
+  top: 60px;
+  left: 50%;
+  gap: 4px;
+  padding: 2px;
+  transform: translateX(-50%);
+}
+
+.label {
+  min-width: 112px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.arrow {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  color: inherit;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  background: rgb(255 255 255 / 95%);
+}
+
+.arrow:focus-visible {
+  outline: 2px solid #282827;
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .hero .video {
+    width: 100%;
+    height: 58%;
+    object-fit: contain;
+    object-position: center top;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero .video { height: 52%; }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .hero .video { object-position: left center; }
+}
