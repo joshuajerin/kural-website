@@ -5,10 +5,11 @@ import { useEffect, useId, useRef, useState } from "react";
 import styles from "./showcase-media.module.css";
 
 const demos = [
-  { stem: "light", label: "Reading light" },
-  { stem: "fruit", label: "Fruit sorting" },
-  { stem: "pancake", label: "Pancake flip" },
-  { stem: "base", label: "Mobile base" },
+  { stem: "light", label: "Reading light", webm: true },
+  { stem: "fruit", label: "Fruit sorting", webm: true },
+  { stem: "pancake", label: "Pancake flip", webm: true },
+  { stem: "base", label: "Mobile base", webm: true },
+  { stem: "autonomous-navigation", label: "Autonomous navigation", webm: false },
 ] as const;
 
 export function ShowcaseMedia({ variant }: { variant: "hero" | "feature" }) {
@@ -108,7 +109,7 @@ export function ShowcaseMedia({ variant }: { variant: "hero" | "feature" }) {
         onPause={() => setPlayingStem(null)}
         onError={() => setPlayingStem(null)}
       >
-        <source src={`/media/${demo.stem}.webm`} type="video/webm" />
+        {demo.webm !== false && <source src={`/media/${demo.stem}.webm`} type="video/webm" />}
         <source src={`/media/${demo.stem}.mp4`} type="video/mp4" />
         Your browser does not support this Kural prototype demo video.
       </video>

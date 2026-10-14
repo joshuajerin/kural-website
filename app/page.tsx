@@ -58,7 +58,7 @@ export default function Home() {
             <p className={styles.showcaseKicker}>Kural in motion</p>
             <h2 id="showcase-title">Different tools.<br />New possibilities.</h2>
             <p>
-              A reading light. A spatula. A gripper.<br />
+              A reading light. A spatula. A gripper. Autonomous navigation.<br />
               Explore the possibilities of a modular robot.
             </p>
             <Link href="#modules" className={styles.showcaseLink}>Meet the modules <span aria-hidden="true">↗</span></Link>

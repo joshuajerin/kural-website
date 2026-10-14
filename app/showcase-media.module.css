@@ -21,6 +21,10 @@
   object-position: left center;
 }
 
+.feature[data-demo="autonomous-navigation"] .video {
+  object-fit: contain;
+}
+
 .selector,
 .playback {
   position: absolute;
