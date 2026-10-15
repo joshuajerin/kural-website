@@ -22,7 +22,7 @@ export function LiveHero({
     return () => { stopped = true; dispose?.(); };
   }, []);
   return (
-    <section id={id} ref={root} className={`${className} ${styles.stage}`} data-scene="loading" data-loader-scene aria-labelledby={headingId}>
+    <section id={id} ref={root} className={`${className} ${styles.stage}`} data-scene="loading" aria-labelledby={headingId}>
       <canvas ref={canvas} className={styles.canvas} aria-label="Interactive Kural robot. Move your pointer to aim its lamp." role="img" />
       <canvas ref={light} className={`${styles.canvas} ${styles.light}`} aria-hidden="true" />
       {children}

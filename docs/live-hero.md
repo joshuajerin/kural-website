@@ -58,18 +58,3 @@ and original CTA remain in the document.
 Rendering pauses offscreen and when the document is hidden. Reduced motion shows
 a still pose. WebGL failure retains the HTML copy and links. Resize and unmount
 release/rebuild the appropriate textures and GPU resources.
-
-## Page loader
-
-The loading animation stays visible until the hero has loaded its model, metadata,
-and fonts and drawn its first robot/light frame. `data-loader-scene` identifies
-the scene gate; `data-scene="ready"` is set from the render loop. An unavailable
-scene releases the loader to the existing fallback. Even an offscreen hero renders
-one initial frame so opening a lower-section URL cannot trap the page in loading.
-
-The six-second loading clip loops while waiting. It must visibly play for at
-least 1.8 seconds before a ready scene is revealed. The full overlay then fades
-to transparent over 900 ms (180 ms for reduced motion), and unmounts on animation
-completion. Scrolling stays locked until the fade completes. If video playback
-fails, its poster is retained for the minimum display time before revealing the
-settled scene. There is no model-load timeout that reveals an unfinished model.
