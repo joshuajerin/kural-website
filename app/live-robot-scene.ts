@@ -284,7 +284,8 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
   }
 
   function tick(now: number) {
-    if (disposed || !active || document.hidden) { frame = 0; return; }
+    const needsFirstFrame = loaded && root.dataset.scene === "loading";
+    if (disposed || (!active && !needsFirstFrame) || document.hidden) { frame = 0; return; }
     const dt = last ? Math.min((now - last) / 1000, .05) : 1 / 60;
     last = now; elapsed += dt;
     if (loaded) {
@@ -338,12 +339,14 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
         lightField.draw(mobile || reduced.matches ? 0 : elapsed, power * .8, 0);
         lastLightDraw = now;
       }
+      // Release the page loader only after the model and lighting have rendered.
+      if (root.dataset.scene === "loading") root.dataset.scene = "ready";
     }
     frame = reduced.matches && loaded ? 0 : requestAnimationFrame(tick);
   }
   function sync() {
     cancelAnimationFrame(frame); last = 0;
-    if (active && !document.hidden && !disposed) frame = requestAnimationFrame(tick);
+    if ((active || (loaded && root.dataset.scene === "loading")) && !document.hidden && !disposed) frame = requestAnimationFrame(tick);
   }
   const intersection = new IntersectionObserver(([entry]) => { active = entry.isIntersecting; sync(); }, { threshold: .02 });
   intersection.observe(root);
@@ -351,7 +354,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
   reduced.addEventListener("change", sync);
   const onLost = (event: Event) => { event.preventDefault(); root.dataset.scene = "unavailable"; cancelAnimationFrame(frame); };
   canvas.addEventListener("webglcontextlost", onLost);
-  const onRestored = () => { if (!disposed) { root.dataset.scene = loaded ? "ready" : "loading"; sync(); } };
+  const onRestored = () => { if (!disposed) { root.dataset.scene = "loading"; sync(); } };
   canvas.addEventListener("webglcontextrestored", onRestored);
   const onLightLost = (event: Event) => {
     event.preventDefault();
@@ -368,7 +371,8 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
   void Promise.all([
     loader.loadAsync(MODEL),
     fetch(META, { signal: abort.signal }).then(response => { if (!response.ok) throw new Error("Missing robot metadata"); return response.json(); }),
-  ]).then(([gltf, metadata]: [Awaited<ReturnType<typeof loader.loadAsync>>, { joints: JointSpec[] }]) => {
+  ]).then(async ([gltf, metadata]: [Awaited<ReturnType<typeof loader.loadAsync>>, { joints: JointSpec[] }]) => {
+    await document.fonts.ready;
     if (disposed) { disposeObject(gltf.scene); return; }
     robot = gltf.scene;
     robot.traverse(object => {
@@ -408,7 +412,6 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     solveTarget();
     for (const joint of joints) { joint.angle = joint.target; applyJoint(joint, joint.angle); }
     loaded = true; elapsed = 0;
-    root.dataset.scene = "ready";
     sync();
   }).catch(error => {
     if (!disposed) { root.dataset.scene = "unavailable"; console.error("Kural live scene:", error); }
