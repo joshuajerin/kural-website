@@ -1,3 +1,4 @@
+import type { HeroLoadStatus } from "./hero-loading";
 import * as THREE from "three";
 import { createHeroLightField } from "./hero-light-field";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
@@ -61,16 +62,15 @@ function makeBeam() {
   return mesh;
 }
 
-export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, lightCanvas: HTMLCanvasElement | null) {
+export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, lightCanvas: HTMLCanvasElement | null, onStatus: (status: HeroLoadStatus) => void) {
   let disposed = false, frame = 0, active = true, loaded = false;
   let renderer: THREE.WebGLRenderer;
   try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: "high-performance" }); }
-  catch { root.dataset.scene = "unavailable"; return () => {}; }
+  catch { root.dataset.scene = "unavailable"; onStatus("error"); return () => {}; }
   const lightField = lightCanvas ? createHeroLightField(lightCanvas) : null;
   let lastLightDraw = 0;
   let lightFailed = false;
   renderer.setClearColor(0x000000, 1);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -120,6 +120,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
   let mobile = false, entered = false, last = 0, elapsed = 0, lastReport = 0;
   let diffuser: THREE.MeshStandardMaterial | undefined;
   let targetDirty = true;
+  let sceneNeedsRender = true;
   let lastSolveTime = -1;
   const localTip = new THREE.Vector3();
 
@@ -180,18 +181,24 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
 
   function resize() {
     const rect = root.getBoundingClientRect();
+    sceneNeedsRender = true;
     const previousMobile = mobile;
-    mobile = rect.width < 640;
-    textPlane.constant = mobile ? 1.35 : .25;
+    mobile = window.matchMedia("(max-width: 820px)").matches;
+    textPlane.constant = .25;
+    // Preserve crisp geometry on phone screens within the same pixel budget.
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2,
+      Math.sqrt(2100000 / Math.max(1, rect.width * rect.height))));
     renderer.setSize(rect.width, rect.height, false);
     camera.aspect = rect.width / rect.height;
     camera.fov = mobile ? 38 : 34;
     camera.position.set(0, mobile ? .68 : .73, mobile ? 3.05 : 2.85);
     camera.lookAt(0, mobile ? .68 : .73, 0);
     camera.updateProjectionMatrix();
-    rig.position.set(mobile ? -.08 : -.72, mobile ? .65 : .06, 0);
-    rig.scale.setScalar(mobile ? .70 : 1.14);
-    rig.rotation.y = -.28;
+    rig.position.set(mobile ? -.08 : -.72, mobile ? .65 : .06, mobile ? .2 : 0);
+    rig.scale.setScalar(mobile ? .82 : 1.14);
+    // Turn the portrait presentation toward the receiving plane so the fixed
+    // downward lamp can physically reach the headline within its joint limits.
+    rig.rotation.y = mobile ? 1.6 : -.28;
     drawTitle();
     if (loaded && previousMobile !== mobile) {
       entered = false;
@@ -220,9 +227,6 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     if (Math.hypot(localTip.x, localTip.z) < .24) return Infinity;
     const posture = joints.reduce((sum, joint) => sum + Math.pow(joint.target - joint.home, 2), 0);
     const pointing = 1 - direction.dot(toward.copy(desired).sub(position).normalize());
-    // The mobile lamp faces down; its fixed typography lighting is composed
-    // separately below so aiming the model cannot black out the headline.
-    if (mobile) return 1 + direction.y + posture * .0001;
     projectedOrigin.copy(position).project(camera);
     projectedEnd.copy(position).addScaledVector(direction, .25).project(camera);
     projectedTarget.copy(desired).project(camera);
@@ -234,26 +238,36 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     const screenError = lengths > .00001 ? 1 - (dx * tx + dy * ty) / lengths : 2;
     // What the visitor sees is the lamp's projected ray. Prefer that ray pointing
     // at the cursor, with depth alignment and open posture as secondary costs.
-    return screenError + pointing * .08 + posture * .005;
+    // Portrait uses the same physical target, held at the headline rather than
+    // controlled by touch. Prefer real 3D alignment so the ray reaches the text.
+    return mobile ? pointing + posture * .001 : screenError + pointing * .08 + posture * .005;
   }
   function solveTarget() {
     for (const joint of joints) { joint.target = joint.home; applyJoint(joint, joint.home); }
     // Search the two aiming axes first. A single local descent could get stuck
     // facing upward when the cursor crossed from the right side to the left.
     const pan = joints[0], wrist = joints[joints.length - 1];
-    let best = aimCost(), bestPan = pan.home, bestWrist = wrist.home;
-    for (let p = 0; p <= 6; p++) {
-      pan.target = THREE.MathUtils.lerp(pan.min, pan.max, p / 6);
-      applyJoint(pan, pan.target);
-      for (let w = 0; w <= 8; w++) {
-        wrist.target = THREE.MathUtils.lerp(wrist.min, wrist.max, w / 8);
-        applyJoint(wrist, wrist.target);
-        const cost = aimCost();
-        if (cost < best) { best = cost; bestPan = pan.target; bestWrist = wrist.target; }
+    let best = aimCost(), bestAngles = joints.map(joint => joint.home);
+    const shoulder = joints[1], elbow = joints[2];
+    // A fixed portrait target can require a different open elbow posture. Seed
+    // that bounded space once, rather than getting trapped facing behind it.
+    const shoulderSeeds = mobile ? [shoulder.min, shoulder.home, shoulder.max] : [shoulder.home];
+    const elbowSeeds = mobile ? [elbow.min, elbow.home, elbow.max] : [elbow.home];
+    for (const shoulderAngle of shoulderSeeds) for (const elbowAngle of elbowSeeds) {
+      shoulder.target = shoulderAngle; elbow.target = elbowAngle;
+      applyJoint(shoulder, shoulderAngle); applyJoint(elbow, elbowAngle);
+      for (let p = 0; p <= 6; p++) {
+        pan.target = THREE.MathUtils.lerp(pan.min, pan.max, p / 6);
+        applyJoint(pan, pan.target);
+        for (let w = 0; w <= 8; w++) {
+          wrist.target = THREE.MathUtils.lerp(wrist.min, wrist.max, w / 8);
+          applyJoint(wrist, wrist.target);
+          const cost = aimCost();
+          if (cost < best) { best = cost; bestAngles = joints.map(joint => joint.target); }
+        }
       }
     }
-    pan.target = bestPan; wrist.target = bestWrist;
-    applyJoint(pan, bestPan); applyJoint(wrist, bestWrist);
+    joints.forEach((joint, index) => { joint.target = bestAngles[index]; applyJoint(joint, joint.target); });
     for (const step of [.18, .09, .045, .02, .01]) {
       for (let i = joints.length - 1; i >= 0; i--) {
         const joint = joints[i], previous = joint.target;
@@ -284,11 +298,27 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
   }
 
   function tick(now: number) {
-    if (disposed || !active || document.hidden) { frame = 0; return; }
+    try { drawFrame(now); }
+    catch (error) {
+      if (!disposed) {
+        root.dataset.scene = "unavailable";
+        onStatus("error");
+        console.error("Kural first frame:", error);
+      }
+    }
+  }
+
+  function drawFrame(now: number) {
+    const firstFrame = loaded && root.dataset.scene === "loading";
+    if (disposed || (!active && !firstFrame) || document.hidden) { frame = 0; return; }
     const dt = last ? Math.min((now - last) / 1000, .05) : 1 / 60;
     last = now; elapsed += dt;
     if (loaded) {
-      if (!reduced.matches) solve(dt);
+      if ((mobile || reduced.matches) && targetDirty) {
+        solveTarget();
+        for (const joint of joints) { joint.angle = joint.target; applyJoint(joint, joint.angle); }
+        sceneNeedsRender = true;
+      } else if (!mobile && !reduced.matches) solve(dt);
       lampPose();
       if (process.env.NODE_ENV === "development" && now - lastReport > 500) {
         root.dataset.aimError = THREE.MathUtils.radToDeg(direction.angleTo(aim.clone().sub(position))).toFixed(1);
@@ -296,62 +326,64 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
       }
       lamp.position.copy(position).addScaledVector(direction, .014);
       lamp.target.position.copy(position).addScaledVector(direction, 3);
-      const power = mobile || reduced.matches ? 1 : THREE.MathUtils.smoothstep(elapsed, .15, 1.6);
+      // The loader owns the reveal. Its ready frame must already be fully lit.
+      const power = 1;
       lamp.intensity = 8 * power;
       if (diffuser) diffuser.emissiveIntensity = 2.5 * power;
       beam.position.copy(lamp.position);
       beam.quaternion.setFromUnitVectors(up, direction);
       beam.material.uniforms.source.value.copy(lamp.position);
       beam.material.uniforms.direction.value.copy(direction);
-      beam.material.uniforms.time.value = mobile || reduced.matches ? 0 : elapsed;
+      beam.material.uniforms.time.value = reduced.matches ? 0 : elapsed;
       beam.material.uniforms.power.value = power;
-      renderer.clear();
-      camera.layers.set(1);
-      lamp.shadow.autoUpdate = true;
-      renderer.render(scene, camera);
-      // Retain the physical robot shadow map while lighting the typography with
-      // only the lamp. Studio fill lights must never wash out its response.
-      lamp.shadow.autoUpdate = false;
-      camera.layers.set(0);
-      renderer.render(scene, camera);
+      // A stationary mobile robot needs one full-quality geometry/shadow pass.
+      // Keep the shared air/typography transport moving without redrawing it.
+      if (!mobile || !lightField || lightFailed || sceneNeedsRender) {
+        renderer.clear();
+        camera.layers.set(1);
+        lamp.shadow.autoUpdate = true;
+        renderer.render(scene, camera);
+        // Retain the robot shadow map while lighting type with only the lamp.
+        lamp.shadow.autoUpdate = false;
+        camera.layers.set(0);
+        renderer.render(scene, camera);
+        sceneNeedsRender = false;
+      }
       if (lightField && !lightFailed && (now - lastLightDraw >= 1000 / 30 || reduced.matches)) {
         const rect = root.getBoundingClientRect();
         const projected = lamp.position.clone().project(camera);
         const next = lamp.position.clone().addScaledVector(direction, .4).project(camera);
         const aspect = rect.width / rect.height;
         const heightAtText = 2 * (camera.position.z + textPlane.constant) * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-        if (mobile) {
-          // Keep the supplied mobile composition: centered illuminated letters
-          // and downward shadows, independent of the static model's wrist aim.
-          const heading = homeTarget.clone().project(camera);
-          const centerX = (heading.x + 1) * .5 * aspect;
-          const centerY = (1 - heading.y) * .5;
-          const sourceY = Math.min((1 - projected.y) * .5, centerY - .24);
-          const depth = Math.max(.22, (lamp.position.z + textPlane.constant) / heightAtText);
-          lightField.setLight(centerX, sourceY, depth, 0, centerY - sourceY, -depth, .048 * rig.scale.x / heightAtText);
-        } else lightField.setLight(
+        // Feed the same optical source and direction to the text/air transport
+        // on every screen. Portrait changes composition, never the light source.
+        lightField.setLight(
           (projected.x + 1) * .5 * aspect, (1 - projected.y) * .5,
           Math.max(.035, (lamp.position.z + textPlane.constant) / heightAtText),
           (next.x - projected.x) * .5 * aspect, (projected.y - next.y) * .5,
           direction.z * .4 / heightAtText, .048 * rig.scale.x / heightAtText,
         );
-        lightField.draw(mobile || reduced.matches ? 0 : elapsed, power * .8, 0);
+        lightField.draw(reduced.matches ? 0 : elapsed, power * .8, 0);
         lastLightDraw = now;
+      }
+      if (root.dataset.scene === "loading") {
+        root.dataset.scene = "ready";
+        onStatus("ready");
       }
     }
     frame = reduced.matches && loaded ? 0 : requestAnimationFrame(tick);
   }
   function sync() {
     cancelAnimationFrame(frame); last = 0;
-    if (active && !document.hidden && !disposed) frame = requestAnimationFrame(tick);
+    if ((active || (loaded && root.dataset.scene === "loading")) && !document.hidden && !disposed) frame = requestAnimationFrame(tick);
   }
   const intersection = new IntersectionObserver(([entry]) => { active = entry.isIntersecting; sync(); }, { threshold: .02 });
   intersection.observe(root);
   document.addEventListener("visibilitychange", sync);
   reduced.addEventListener("change", sync);
-  const onLost = (event: Event) => { event.preventDefault(); root.dataset.scene = "unavailable"; cancelAnimationFrame(frame); };
+  const onLost = (event: Event) => { event.preventDefault(); root.dataset.scene = "unavailable"; onStatus("error"); cancelAnimationFrame(frame); };
   canvas.addEventListener("webglcontextlost", onLost);
-  const onRestored = () => { if (!disposed) { root.dataset.scene = loaded ? "ready" : "loading"; sync(); } };
+  const onRestored = () => { if (!disposed) { root.dataset.scene = "loading"; sceneNeedsRender = true; onStatus("loading"); sync(); } };
   canvas.addEventListener("webglcontextrestored", onRestored);
   const onLightLost = (event: Event) => {
     event.preventDefault();
@@ -368,7 +400,8 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
   void Promise.all([
     loader.loadAsync(MODEL),
     fetch(META, { signal: abort.signal }).then(response => { if (!response.ok) throw new Error("Missing robot metadata"); return response.json(); }),
-  ]).then(([gltf, metadata]: [Awaited<ReturnType<typeof loader.loadAsync>>, { joints: JointSpec[] }]) => {
+  ]).then(async ([gltf, metadata]: [Awaited<ReturnType<typeof loader.loadAsync>>, { joints: JointSpec[] }]) => {
+    await document.fonts.ready;
     if (disposed) { disposeObject(gltf.scene); return; }
     robot = gltf.scene;
     robot.traverse(object => {
@@ -391,6 +424,12 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     rig.add(robot);
     anchor = robot.getObjectByName("KuralLampLightAnchor");
     if (!anchor) throw new Error("The lamp attachment marker is missing");
+    if (!Array.isArray(metadata.joints) || metadata.joints.length === 0) throw new Error("Robot joints are missing");
+    for (const node of Object.keys(OPEN_POSE)) {
+      if (!robot.getObjectByName(node) || !metadata.joints.some(spec => spec.node === node)) {
+        throw new Error(`Required robot joint is missing: ${node}`);
+      }
+    }
     for (const spec of metadata.joints) {
       if (spec.node.endsWith("wrist_roll")) continue;
       const object = robot.getObjectByName(spec.node);
@@ -408,10 +447,9 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     solveTarget();
     for (const joint of joints) { joint.angle = joint.target; applyJoint(joint, joint.angle); }
     loaded = true; elapsed = 0;
-    root.dataset.scene = "ready";
     sync();
   }).catch(error => {
-    if (!disposed) { root.dataset.scene = "unavailable"; console.error("Kural live scene:", error); }
+    if (!disposed) { root.dataset.scene = "unavailable"; onStatus("error"); console.error("Kural live scene:", error); }
   });
   resize();
   return () => {

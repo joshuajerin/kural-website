@@ -1,79 +1,62 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import type { HeroLoadStatus } from "./hero-loading";
 import styles from "./loading-screen.module.css";
 
-const EXIT_DURATION_MS = 980;
-
-export function LoadingScreen() {
-  const [leaving, setLeaving] = useState(false);
+export function LoadingScreen({ status }: { status: HeroLoadStatus }) {
+  const [animationLoaded, setAnimationLoaded] = useState(false);
+  const [minimumShown, setMinimumShown] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const exitStarted = useRef(false);
+  const leaving = status === "ready" && minimumShown;
 
   useEffect(() => {
-    const videos = Array.from(
-      document.querySelectorAll<HTMLVideoElement>("video[data-loader-critical='true']"),
-    );
-    let exitTimer: number | undefined;
+    if (!animationLoaded) return;
+    const timer = window.setTimeout(() => setMinimumShown(true), 1200);
+    return () => window.clearTimeout(timer);
+  }, [animationLoaded]);
 
-    const isReady = (video: HTMLVideoElement) =>
-      video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA || video.error !== null;
-
-    const beginExit = () => {
-      if (exitStarted.current || !videos.every(isReady)) return;
-      exitStarted.current = true;
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setLeaving(true);
-          exitTimer = window.setTimeout(() => setHidden(true), EXIT_DURATION_MS);
-        });
-      });
-    };
-
-    if (videos.length === 0) {
-      beginExit();
-      return;
-    }
-
-    videos.forEach((video) => {
-      video.addEventListener("loadeddata", beginExit);
-      video.addEventListener("canplay", beginExit);
-      video.addEventListener("error", beginExit);
-    });
-    beginExit();
-
-    return () => {
-      videos.forEach((video) => {
-        video.removeEventListener("loadeddata", beginExit);
-        video.removeEventListener("canplay", beginExit);
-        video.removeEventListener("error", beginExit);
-      });
-      if (exitTimer !== undefined) window.clearTimeout(exitTimer);
-    };
-  }, []);
+  useEffect(() => {
+    if (hidden) return;
+    const previous = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = "hidden";
+    return () => { document.documentElement.style.overflow = previous; };
+  }, [hidden]);
 
   if (hidden) return null;
 
   return (
     <div
       className={`${styles.screen} ${leaving ? styles.leaving : ""}`}
+      data-page-loader
+      data-state={leaving ? "leaving" : status}
       role="status"
-      aria-label="Loading page"
+      aria-label={status === "error" ? "Robot could not load" : "Loading Kural"}
       aria-hidden={leaving}
+      onAnimationEnd={(event) => {
+        if (leaving && event.target === event.currentTarget) setHidden(true);
+      }}
     >
-      <video
-        className={styles.animation}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        poster="/media/loading-bot-poster.png"
-        aria-hidden="true"
-      >
-        <source src="/media/loading-bot-fixed-table.mp4" type="video/mp4" />
-      </video>
+      <div className={styles.content}>
+        <Image
+          className={styles.animation}
+          src="/media/loading-bot-tiny.gif"
+          width={96}
+          height={128}
+          unoptimized
+          loading="eager"
+          alt=""
+          onLoad={() => setAnimationLoaded(true)}
+          onError={() => setAnimationLoaded(true)}
+        />
+        {status === "error" && (
+          <div className={styles.error}>
+            <p>The robot couldn’t load.</p>
+            <button type="button" onClick={() => window.location.reload()}>Try again</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

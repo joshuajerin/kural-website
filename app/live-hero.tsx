@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useContext, useEffect, useRef, type ReactNode } from "react";
+import { HeroLoadingContext } from "./hero-loading";
 import styles from "./live-hero.module.css";
 
 export function LiveHero({
@@ -9,6 +10,7 @@ export function LiveHero({
   id = "hero",
   headingId = "hero-title",
 }: { children: ReactNode; className: string; id?: string; headingId?: string }) {
+  const setLoadStatus = useContext(HeroLoadingContext);
   const root = useRef<HTMLElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const light = useRef<HTMLCanvasElement>(null);
@@ -17,10 +19,14 @@ export function LiveHero({
     let dispose: (() => void) | undefined;
     void import("./live-robot-scene").then(({ mountRobotScene }) => {
       if (stopped || !root.current || !canvas.current) return;
-      dispose = mountRobotScene(root.current, canvas.current, light.current);
-    }).catch(() => { if (root.current) root.current.dataset.scene = "unavailable"; });
+      dispose = mountRobotScene(root.current, canvas.current, light.current, setLoadStatus);
+    }).catch(() => {
+      if (stopped) return;
+      if (root.current) root.current.dataset.scene = "unavailable";
+      setLoadStatus("error");
+    });
     return () => { stopped = true; dispose?.(); };
-  }, []);
+  }, [setLoadStatus]);
   return (
     <section id={id} ref={root} className={`${className} ${styles.stage}`} data-scene="loading" aria-labelledby={headingId}>
       <canvas ref={canvas} className={styles.canvas} aria-label="Interactive Kural robot. Move your pointer to aim its lamp." role="img" />

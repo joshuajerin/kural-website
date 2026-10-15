@@ -2,7 +2,7 @@ import { Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { LiveHero } from "./live-hero";
-import { LoadingScreen } from "./loading-screen";
+import { HeroLoading } from "./hero-loading";
 import { SiteHeader } from "./site-header";
 import { ShowcaseMedia } from "./showcase-media";
 import { ToolGallery } from "./tool-gallery";
@@ -20,17 +20,18 @@ export default function Home() {
 
   return (
     <main id="top">
-      <LoadingScreen />
-      <SiteHeader />
+      <HeroLoading>
+        <SiteHeader />
 
-      <LiveHero className={styles.hero} id="hero" headingId="hero-title">
-        <div className={styles.heroCopy} data-illuminated-copy>
-          <h1 id="hero-title" data-light-heading="Meet Kural">Meet Kural</h1>
-          <p className={styles.heroSummary}>personal robots for homes</p>
-          <Link className={styles.heroCta} href="#early-access">Pre-order Kural</Link>
-          <p className={styles.heroNote}>Join early access · No charge today</p>
-        </div>
-      </LiveHero>
+        <LiveHero className={styles.hero} id="hero" headingId="hero-title">
+          <div className={styles.heroCopy} data-illuminated-copy>
+            <h1 id="hero-title" data-light-heading="Meet Kural">Meet Kural</h1>
+            <p className={styles.heroSummary}>personal robots for homes</p>
+            <Link className={styles.heroCta} href="#early-access">Pre-order Kural</Link>
+            <p className={styles.heroNote}>Join early access · No charge today</p>
+          </div>
+        </LiveHero>
+      </HeroLoading>
 
       <section className={styles.showcase} id="demonstrations" aria-labelledby="showcase-title">
         <div className={`${styles.sectionHeading} ${styles.showcaseHeading}`}>
@@ -85,7 +86,6 @@ export default function Home() {
                 <h2 id="preorder-title">Join the first homes.</h2>
                 <p>Reserve your place. No charge today.</p>
               </div>
-              <div className={styles.priceLine}><span>From</span><strong>$49</strong><span>/ month</span></div>
               <div className={styles.formArea}>
                 <WaitlistForm configured={clerkConfigured} />
               </div>

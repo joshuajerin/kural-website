@@ -35,12 +35,14 @@ robot. This is a presentation constraint, not collision-aware hardware control.
 
 The arm approaches the chosen posture with short damping and a velocity limit.
 Leaving the widget holds the last target; it does not automatically recenter.
-Mobile places the receiving text farther behind the robot and keeps the lamp
-facing straight down within its joint and clearance limits. The mobile typography
-uses a fixed, centered lighting composition with the source above the headline
-and shadows below it, independently of wrist direction. This is an art-directed
-mobile projection, not the desktop's live optical ray. Pointer and touch movement do not steer it; light intensity
-and grain are fixed, and the interaction hint is hidden. Desktop retains cursor tracking.
+Portrait screens through 820 px use a larger, centered robot above the copy. The
+lamp stays static and aims down toward the actual headline position; pointer and
+touch input never steer it. The same projected lamp position, optical direction,
+aperture, inverse-square illumination, glyph shadows, and scattering shader drive
+both desktop and mobile. The former independently placed mobile light is removed.
+Grain/air motion remains animated unless reduced motion is requested. A fixed mobile
+robot renders geometry and its shadow map on demand while the light field updates
+at up to 30 fps. Both viewports use the same two-megapixel rendering budget.
 
 The spotlight follows the marker, uses inverse-square falloff, and renders a
 shadow map from the robot geometry. The previous `hero-light-field.ts` treatment

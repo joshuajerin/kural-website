@@ -283,7 +283,7 @@ export function createHeroLightField(canvas: HTMLCanvasElement) {
       const media = video?.getBoundingClientRect() || bounds;
       const copy = root.querySelector<HTMLElement>("[data-illuminated-copy]")!;
       const target = copy.getBoundingClientRect();
-      const mobile = window.matchMedia("(max-width: 640px)").matches;
+      const mobile = window.matchMedia("(max-width: 820px)").matches;
       // Crisp type and material surfaces render independently of the softer air.
       const scale = Math.min(window.devicePixelRatio || 1,2,Math.sqrt(2100000/(bounds.width*bounds.height)));
       canvas.width = Math.max(1,Math.round(bounds.width*scale));
