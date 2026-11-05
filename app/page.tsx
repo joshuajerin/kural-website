@@ -25,9 +25,9 @@ export default function Home() {
 
         <LiveHero className={styles.hero} id="hero" headingId="hero-title">
           <div className={styles.heroCopy} data-illuminated-copy>
-            <h1 id="hero-title" data-light-heading="Meet Kural">Meet Kural</h1>
+            <h1 id="hero-title" data-light-heading="Meet Poppy">Meet Poppy</h1>
             <p className={styles.heroSummary}>personal robots for homes</p>
-            <Link className={styles.heroCta} href="#early-access">Pre-order Kural</Link>
+            <Link className={styles.heroCta} href="#early-access">Pre-order Poppy</Link>
             <p className={styles.heroNote}>Join early access · No charge today</p>
           </div>
         </LiveHero>
