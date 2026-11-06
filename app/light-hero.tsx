@@ -135,7 +135,7 @@ export function LightHero({ children, className }: { children: ReactNode; classN
   return (
     <section ref={rootRef} className={`${className} ${styles.stage}`} aria-labelledby="hero-title" data-light-state="dark">
       <video ref={videoRef} className={styles.robot} muted playsInline preload="auto"
-        poster="/media/kural-camera-orbit-poster.png" aria-label="Kural lamp illuminating the headline, followed by a full robot orbit">
+        poster="/media/kural-camera-orbit-poster.png" aria-label="Poppy lamp illuminating the headline, followed by a full robot orbit">
         <source src="/media/kural-camera-orbit-preview.mp4" type="video/mp4" />
       </video>
       <div className={`${styles.robot} ${styles.openingFrame}`} aria-hidden="true" />

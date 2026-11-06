@@ -70,7 +70,7 @@ export class KuralController {
     readonly sessionId: string,
     readonly config: RobotControlConfig,
   ) {
-    if (config.wheels.length !== 3) throw new Error('Kural requires exactly three drive wheels')
+    if (config.wheels.length !== 3) throw new Error('Poppy requires exactly three drive wheels')
     this.wheelVelocities = Object.fromEntries(config.wheels.map((wheel) => [wheel.name, 0]))
   }
 

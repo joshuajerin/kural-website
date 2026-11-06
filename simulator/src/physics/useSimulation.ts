@@ -139,7 +139,7 @@ export function useSimulation(): SimulationApi {
     const url = URL.createObjectURL(new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' }))
     const anchor = document.createElement('a')
     anchor.href = url
-    anchor.download = `kural-${new Date().toISOString().replace(/[:.]/g, '-')}.json`
+    anchor.download = `poppy-${new Date().toISOString().replace(/[:.]/g, '-')}.json`
     anchor.click()
     setTimeout(() => URL.revokeObjectURL(url), 1000)
   }, [])
@@ -153,7 +153,7 @@ export function useSimulation(): SimulationApi {
       candidate.modelRevision !== DEFAULT_CONTROL_CONFIG.modelRevision ||
       candidate.configRevision !== DEFAULT_CONTROL_CONFIG.revision
     ) {
-      throw new Error('Recording was created for a different Kural model or control revision')
+      throw new Error('Recording was created for a different Poppy model or control revision')
     }
     if (!candidate.initialState) throw new Error('Recording has no initial simulation state')
     workerRef.current?.postMessage({ type: 'restore', state: candidate.initialState } satisfies MainToWorkerMessage)

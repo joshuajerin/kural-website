@@ -32,7 +32,7 @@ export function LoadingScreen({ status }: { status: HeroLoadStatus }) {
       data-page-loader
       data-state={leaving ? "leaving" : status}
       role="status"
-      aria-label={status === "error" ? "Robot could not load" : "Loading Kural"}
+      aria-label={status === "error" ? "Robot could not load" : "Loading Poppy"}
       aria-hidden={leaving}
       onAnimationEnd={(event) => {
         if (leaving && event.target === event.currentTarget) setHidden(true);

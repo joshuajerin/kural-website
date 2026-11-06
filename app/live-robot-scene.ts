@@ -153,7 +153,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     ctx.textBaseline = "middle";
     ctx.textAlign = mobile ? "center" : "left";
     ctx.fillStyle = "#ffffff";
-    ctx.fillText(heading.textContent || "Meet Kural", mobile ? rect.width / 2 : 0, rect.height * .49);
+    ctx.fillText(heading.textContent || "Meet Poppy", mobile ? rect.width / 2 : 0, rect.height * .49);
     textTexture?.dispose();
     textTexture = new THREE.CanvasTexture(text);
     textTexture.colorSpace = THREE.SRGBColorSpace;
@@ -303,7 +303,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
       if (!disposed) {
         root.dataset.scene = "unavailable";
         onStatus("error");
-        console.error("Kural first frame:", error);
+        console.error("Poppy first frame:", error);
       }
     }
   }
@@ -449,7 +449,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     loaded = true; elapsed = 0;
     sync();
   }).catch(error => {
-    if (!disposed) { root.dataset.scene = "unavailable"; onStatus("error"); console.error("Kural live scene:", error); }
+    if (!disposed) { root.dataset.scene = "unavailable"; onStatus("error"); console.error("Poppy live scene:", error); }
   });
   resize();
   return () => {
