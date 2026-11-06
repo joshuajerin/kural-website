@@ -41,7 +41,7 @@ export async function POST(request: Request) {
   const detail = error.errors?.[0];
   const duplicate = detail?.code === "form_identifier_exists";
   const message = duplicate
-    ? "You’re already on the Kural early-access list."
+    ? "You’re already on the Poppy early-access list."
     : detail?.long_message ?? detail?.message ?? "Unable to reserve early access.";
 
   return NextResponse.json({ error: message }, { status: duplicate ? 409 : 502 });

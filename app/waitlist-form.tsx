@@ -40,7 +40,7 @@ function ClerkWaitlistForm() {
         const providerMessage = result.error?.toLowerCase() ?? "";
         setMessage(
           providerMessage.includes("already")
-            ? "You’re already on the Kural early-access list."
+            ? "You’re already on the Poppy early-access list."
             : "We couldn’t reserve your place. Please check your email and try again.",
         );
         return;
@@ -60,7 +60,7 @@ function ClerkWaitlistForm() {
         <Check aria-hidden="true" size={28} />
         <div>
           <strong>Your place is reserved.</strong>
-          <p>We’ll email you when Kural early access opens.</p>
+          <p>We’ll email you when Poppy early access opens.</p>
         </div>
       </div>
     );

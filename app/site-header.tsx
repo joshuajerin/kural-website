@@ -28,8 +28,8 @@ export function SiteHeader() {
       className={`${styles.header} ${hasPassedHero ? styles.headerSolid : ""}`}
       ref={headerRef}
     >
-      <Link className={styles.wordmark} href="#top" aria-label="Poppy Robotics home">
-        <span className={styles.wordmarkText}>Poppy Robotics</span>
+      <Link className={styles.wordmark} href="#top" aria-label="Poppy home">
+        <span className={styles.wordmarkText}>Poppy</span>
       </Link>
       <Link className={styles.navCta} href="#early-access">Pre-order</Link>
     </header>

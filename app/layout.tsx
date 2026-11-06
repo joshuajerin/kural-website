@@ -2,32 +2,32 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const title = "Kural - Your Personal Robot Agent";
+const title = "Poppy Robotics - Your Personal Robot Agent";
 const description =
-  "Meet Kural, a modular mobile manipulator built to move, see, reach, and adapt across everyday spaces.";
+  "Meet Poppy, a modular mobile manipulator built to move, see, reach, and adapt across everyday spaces.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kural.website"),
   title,
   description,
-  applicationName: "Kural",
+  applicationName: "Poppy Robotics",
   icons: {
-    icon: { url: "/icon?brand=white-k-v2", type: "image/png", sizes: "64x64" },
-    shortcut: "/icon?brand=white-k-v2",
+    icon: { url: "/icon?brand=poppy-p-v1", type: "image/png", sizes: "64x64" },
+    shortcut: "/icon?brand=poppy-p-v1",
   },
   alternates: { canonical: "/" },
   openGraph: {
     title,
     description,
     url: "/",
-    siteName: "Kural",
+    siteName: "Poppy Robotics",
     type: "website",
     images: [
       {
-        url: "/og.png",
+        url: "/og.png?brand=poppy-v1",
         width: 1200,
         height: 630,
-        alt: "Kural - Your Personal Robot Agent",
+        alt: "Poppy Robotics - Your Personal Robot Agent",
       },
     ],
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og.png"],
+    images: ["/og.png?brand=poppy-v1"],
   },
 };
 

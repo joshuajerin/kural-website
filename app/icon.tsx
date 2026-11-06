@@ -19,7 +19,7 @@ export default function Icon() {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      K
+      P
     </div>,
     size,
   );

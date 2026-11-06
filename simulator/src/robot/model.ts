@@ -61,10 +61,10 @@ export interface KuralModelManifest {
 
 export async function loadKuralManifest(signal?: AbortSignal): Promise<KuralModelManifest> {
   const response = await fetch(KURAL_MODEL_URLS.manifest, { signal })
-  if (!response.ok) throw new Error(`Failed to load Kural model manifest (${response.status})`)
+  if (!response.ok) throw new Error(`Failed to load Poppy model manifest (${response.status})`)
   const manifest = (await response.json()) as KuralModelManifest
   if (manifest.assetVersion !== KURAL_MODEL_REVISION) {
-    throw new Error(`Kural model revision mismatch: expected ${KURAL_MODEL_REVISION}, received ${manifest.assetVersion}`)
+    throw new Error(`Poppy model revision mismatch: expected ${KURAL_MODEL_REVISION}, received ${manifest.assetVersion}`)
   }
   return manifest
 }
