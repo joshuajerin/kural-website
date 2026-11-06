@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prebuild": "npm --prefix simulator ci --ignore-scripts && npm --prefix simulator run build && node scripts/sync-simulator.mjs"
+    "prebuild": "npm --prefix simulator ci --include=dev --ignore-scripts && npm --prefix simulator run build && node scripts/sync-simulator.mjs"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.7.4",
