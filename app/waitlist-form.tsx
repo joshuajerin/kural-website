@@ -115,7 +115,7 @@ function UnconfiguredWaitlistForm() {
           <ArrowRight aria-hidden="true" size={18} />
         </button>
       </div>
-      <p className={styles.note} id="preview-note">Reservations open when Clerk is connected.</p>
+      <p className={styles.note} id="preview-note">Early-access reservations are currently unavailable.</p>
     </form>
   );
 }

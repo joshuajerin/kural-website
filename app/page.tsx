@@ -16,7 +16,8 @@ const agents = [
 ];
 
 export default function Home() {
-  const clerkConfigured = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+  const waitlistConfigured = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY)
+    || process.env.NEXT_PUBLIC_WAITLIST_PROXY === "true";
 
   return (
     <main id="top">
@@ -87,7 +88,7 @@ export default function Home() {
                 <p>Reserve your place. No charge today.</p>
               </div>
               <div className={styles.formArea}>
-                <WaitlistForm configured={clerkConfigured} />
+                <WaitlistForm configured={waitlistConfigured} />
               </div>
               <p className={styles.reservationNote}>Early-access registration only. No payment is collected.</p>
             </div>

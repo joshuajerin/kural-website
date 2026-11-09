@@ -10,11 +10,28 @@ export async function POST(request: Request) {
   const { email } = (await request.json().catch(() => ({}))) as { email?: unknown };
   const normalizedEmail = typeof email === "string" ? email.trim().toLowerCase() : "";
 
+  const secretKey = process.env.CLERK_SECRET_KEY;
+  if (!secretKey && process.env.NEXT_PUBLIC_WAITLIST_PROXY === "true") {
+    try {
+      // Keep the Clerk secret on the primary project and use its signup endpoint.
+      const upstream = await fetch("https://kural.website/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: normalizedEmail }),
+        redirect: "error",
+        signal: AbortSignal.timeout(10_000),
+      });
+      const result = await upstream.json();
+      return NextResponse.json(result, { status: upstream.status });
+    } catch {
+      return NextResponse.json({ error: "Reservations are temporarily unavailable." }, { status: 502 });
+    }
+  }
+
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
     return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
   }
 
-  const secretKey = process.env.CLERK_SECRET_KEY;
   if (!secretKey) {
     return NextResponse.json({ error: "Reservations are not configured." }, { status: 503 });
   }
