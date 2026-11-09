@@ -142,12 +142,14 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     const heading = root.querySelector<HTMLElement>("h1");
     if (!heading) return;
     const bounds = root.getBoundingClientRect(), rect = heading.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
     const worldAt = (px: number, py: number) => {
       raycaster.setFromCamera(new THREE.Vector2(px / bounds.width * 2 - 1, 1 - py / bounds.height * 2), camera);
-      return raycaster.ray.intersectPlane(textPlane, new THREE.Vector3())!;
+      return raycaster.ray.intersectPlane(textPlane, new THREE.Vector3());
     };
     const topLeft = worldAt(rect.left - bounds.left, rect.top - bounds.top);
     const bottomRight = worldAt(rect.right - bounds.left, rect.bottom - bounds.top);
+    if (!topLeft || !bottomRight) return;
     homeTarget.copy(topLeft).add(bottomRight).multiplyScalar(.5);
     if (!entered) { desired.copy(homeTarget); targetDirty = true; }
     if (mobile) {
@@ -186,6 +188,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
 
   function resize() {
     const rect = root.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
     sceneNeedsRender = true;
     const previousMobile = mobile;
     mobile = window.matchMedia("(max-width: 820px)").matches;
@@ -322,11 +325,11 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     }
     const targetDistance = Math.hypot((projectedTarget.x - projectedOrigin.x) * width / 2,
       (projectedTarget.y - projectedOrigin.y) * height / 2);
-    const length = Math.max(40, targetDistance * 1.45);
+    const length = Math.max(40, targetDistance * 2.1);
     mobileLight.style.visibility = "";
     mobileLight.style.left = `${(projectedOrigin.x + 1) * width / 2}px`;
     mobileLight.style.top = `${(1 - projectedOrigin.y) * height / 2}px`;
-    mobileLight.style.width = `${length * 1.15}px`;
+    mobileLight.style.width = `${length * 1.65}px`;
     mobileLight.style.height = `${length}px`;
     mobileLight.style.transform = `translateX(-50%) rotate(${Math.atan2(-dx, dy)}rad)`;
   }
@@ -344,7 +347,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
 
   function drawFrame(now: number) {
     const firstFrame = loaded && root.dataset.scene === "loading";
-    if (disposed || (!active && !firstFrame) || document.hidden) { frame = 0; return; }
+    if (disposed || (!active && !firstFrame) || document.hidden || !canvas.clientWidth || !canvas.clientHeight) { frame = 0; return; }
     const dt = last ? Math.min((now - last) / 1000, .05) : 1 / 60;
     last = now; elapsed += dt;
     if (loaded) {
@@ -362,8 +365,8 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
       lamp.target.position.copy(position).addScaledVector(direction, 3);
       // The loader owns the reveal. Its ready frame must already be fully lit.
       const power = 1;
-      lamp.intensity = mobile ? 5.5 : 8;
-      if (diffuser) diffuser.emissiveIntensity = mobile ? 1.6 : 2.5;
+      lamp.intensity = 8;
+      if (diffuser) diffuser.emissiveIntensity = 2.5;
       beam.position.copy(lamp.position);
       beam.quaternion.setFromUnitVectors(up, direction);
       beam.material.uniforms.source.value.copy(lamp.position);

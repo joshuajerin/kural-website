@@ -41,7 +41,7 @@ export function LoadingScreen({ status }: { status: HeroLoadStatus }) {
       <div className={styles.content}>
         <Image
           className={styles.animation}
-          src="/media/loading-bot-tiny.gif"
+          src="/media/poppy-loader-transparent.webp"
           width={96}
           height={128}
           unoptimized

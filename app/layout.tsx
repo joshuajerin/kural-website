@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   title,
   description,
   applicationName: "Poppy Robotics",
+  icons: {
+    icon: { url: "/poppy-favicon-v2.svg", type: "image/svg+xml" },
+    apple: { url: "/poppy-touch-v2.png", sizes: "180x180", type: "image/png" },
+  },
   alternates: { canonical: "/" },
   openGraph: {
     title,
