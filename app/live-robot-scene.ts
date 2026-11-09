@@ -62,12 +62,13 @@ function makeBeam() {
   return mesh;
 }
 
-export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, lightCanvas: HTMLCanvasElement | null, onStatus: (status: HeroLoadStatus) => void) {
+export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, lightCanvas: HTMLCanvasElement | null, mobileLight: HTMLDivElement | null, onStatus: (status: HeroLoadStatus) => void) {
   let disposed = false, frame = 0, active = true, loaded = false;
   let renderer: THREE.WebGLRenderer;
   try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: "high-performance" }); }
   catch { root.dataset.scene = "unavailable"; onStatus("error"); return () => {}; }
-  const lightField = lightCanvas ? createHeroLightField(lightCanvas) : null;
+  let lightField: ReturnType<typeof createHeroLightField> = null;
+  let lightAttempted = false;
   let lastLightDraw = 0;
   let lightFailed = false;
   renderer.setClearColor(0x000000, 1);
@@ -99,7 +100,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
   lamp.shadow.normalBias = .001; lamp.shadow.bias = -.00015;
   lamp.layers.enable(1);
   scene.add(lamp, lamp.target);
-  const beam = makeBeam(); beam.visible = !lightField; scene.add(beam);
+  const beam = makeBeam(); beam.visible = false; scene.add(beam);
   let robot: THREE.Group | undefined, anchor: THREE.Object3D | undefined;
   let title: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshStandardMaterial> | undefined;
   let textTexture: THREE.CanvasTexture | undefined;
@@ -141,6 +142,18 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     const heading = root.querySelector<HTMLElement>("h1");
     if (!heading) return;
     const bounds = root.getBoundingClientRect(), rect = heading.getBoundingClientRect();
+    const worldAt = (px: number, py: number) => {
+      raycaster.setFromCamera(new THREE.Vector2(px / bounds.width * 2 - 1, 1 - py / bounds.height * 2), camera);
+      return raycaster.ray.intersectPlane(textPlane, new THREE.Vector3())!;
+    };
+    const topLeft = worldAt(rect.left - bounds.left, rect.top - bounds.top);
+    const bottomRight = worldAt(rect.right - bounds.left, rect.bottom - bounds.top);
+    homeTarget.copy(topLeft).add(bottomRight).multiplyScalar(.5);
+    if (!entered) { desired.copy(homeTarget); targetDirty = true; }
+    if (mobile) {
+      if (title) title.visible = false;
+      return;
+    }
     const font = getComputedStyle(heading);
     const text = document.createElement("canvas");
     const scale = Math.min(window.devicePixelRatio, 2);
@@ -151,9 +164,9 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     ctx.font = `${font.fontWeight} ${font.fontSize} ${font.fontFamily}`;
     ctx.letterSpacing = font.letterSpacing;
     ctx.textBaseline = "middle";
-    ctx.textAlign = mobile ? "center" : "left";
+    ctx.textAlign = "left";
     ctx.fillStyle = "#ffffff";
-    ctx.fillText(heading.textContent || "Meet Kural", mobile ? rect.width / 2 : 0, rect.height * .49);
+    ctx.fillText(heading.textContent || "Meet Poppy", 0, rect.height * .49);
     textTexture?.dispose();
     textTexture = new THREE.CanvasTexture(text);
     textTexture.colorSpace = THREE.SRGBColorSpace;
@@ -165,18 +178,10 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
       }));
       title.receiveShadow = true; scene.add(title);
     } else { title.material.map = textTexture; title.material.emissiveMap = textTexture; title.material.needsUpdate = true; }
-    const worldAt = (px: number, py: number) => {
-      raycaster.setFromCamera(new THREE.Vector2(px / bounds.width * 2 - 1, 1 - py / bounds.height * 2), camera);
-      return raycaster.ray.intersectPlane(textPlane, new THREE.Vector3())!;
-    };
-    const topLeft = worldAt(rect.left - bounds.left, rect.top - bounds.top);
-    const bottomRight = worldAt(rect.right - bounds.left, rect.bottom - bounds.top);
-    title.position.copy(topLeft).add(bottomRight).multiplyScalar(.5);
+    title.position.copy(homeTarget);
     title.scale.set(bottomRight.x - topLeft.x, topLeft.y - bottomRight.y, 1);
     title.visible = !lightField || lightFailed;
     lightField?.measure(root);
-    homeTarget.copy(title.position);
-    if (!entered) { desired.copy(homeTarget); targetDirty = true; }
   }
 
   function resize() {
@@ -184,6 +189,11 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     sceneNeedsRender = true;
     const previousMobile = mobile;
     mobile = window.matchMedia("(max-width: 820px)").matches;
+    if (!mobile && lightCanvas && !lightAttempted) {
+      lightAttempted = true;
+      lightField = createHeroLightField(lightCanvas);
+    }
+    beam.visible = !mobile && (!lightField || lightFailed);
     textPlane.constant = .25;
     // Preserve crisp geometry on phone screens within the same pixel budget.
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2,
@@ -297,13 +307,37 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     }
   }
 
+  function placeMobileLight() {
+    if (!mobileLight) return;
+    const width = canvas.clientWidth, height = canvas.clientHeight;
+    projectedOrigin.copy(lamp.position).project(camera);
+    projectedEnd.copy(lamp.position).addScaledVector(direction, .4).project(camera);
+    projectedTarget.copy(homeTarget).project(camera);
+    const dx = (projectedEnd.x - projectedOrigin.x) * width / 2;
+    const dy = (projectedOrigin.y - projectedEnd.y) * height / 2;
+    const distance = Math.hypot(dx, dy);
+    if (distance < 1 || dy <= 0) {
+      mobileLight.style.visibility = "hidden";
+      return;
+    }
+    const targetDistance = Math.hypot((projectedTarget.x - projectedOrigin.x) * width / 2,
+      (projectedTarget.y - projectedOrigin.y) * height / 2);
+    const length = Math.max(40, targetDistance * 1.45);
+    mobileLight.style.visibility = "";
+    mobileLight.style.left = `${(projectedOrigin.x + 1) * width / 2}px`;
+    mobileLight.style.top = `${(1 - projectedOrigin.y) * height / 2}px`;
+    mobileLight.style.width = `${length * 1.15}px`;
+    mobileLight.style.height = `${length}px`;
+    mobileLight.style.transform = `translateX(-50%) rotate(${Math.atan2(-dx, dy)}rad)`;
+  }
+
   function tick(now: number) {
     try { drawFrame(now); }
     catch (error) {
       if (!disposed) {
         root.dataset.scene = "unavailable";
         onStatus("error");
-        console.error("Kural first frame:", error);
+        console.error("Poppy first frame:", error);
       }
     }
   }
@@ -328,35 +362,35 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
       lamp.target.position.copy(position).addScaledVector(direction, 3);
       // The loader owns the reveal. Its ready frame must already be fully lit.
       const power = 1;
-      lamp.intensity = 8 * power;
-      if (diffuser) diffuser.emissiveIntensity = 2.5 * power;
+      lamp.intensity = mobile ? 5.5 : 8;
+      if (diffuser) diffuser.emissiveIntensity = mobile ? 1.6 : 2.5;
       beam.position.copy(lamp.position);
       beam.quaternion.setFromUnitVectors(up, direction);
       beam.material.uniforms.source.value.copy(lamp.position);
       beam.material.uniforms.direction.value.copy(direction);
       beam.material.uniforms.time.value = reduced.matches ? 0 : elapsed;
       beam.material.uniforms.power.value = power;
-      // A stationary mobile robot needs one full-quality geometry/shadow pass.
-      // Keep the shared air/typography transport moving without redrawing it.
-      if (!mobile || !lightField || lightFailed || sceneNeedsRender) {
+      // Portrait holds a fixed pose, so update its robot and glow on layout changes.
+      if (!mobile || sceneNeedsRender) {
         renderer.clear();
         camera.layers.set(1);
         lamp.shadow.autoUpdate = true;
         renderer.render(scene, camera);
         // Retain the robot shadow map while lighting type with only the lamp.
         lamp.shadow.autoUpdate = false;
-        camera.layers.set(0);
-        renderer.render(scene, camera);
+        if (mobile) placeMobileLight();
+        else {
+          camera.layers.set(0);
+          renderer.render(scene, camera);
+        }
         sceneNeedsRender = false;
       }
-      if (lightField && !lightFailed && (now - lastLightDraw >= 1000 / 30 || reduced.matches)) {
+      if (!mobile && lightField && !lightFailed && (now - lastLightDraw >= 1000 / 30 || reduced.matches)) {
         const rect = root.getBoundingClientRect();
         const projected = lamp.position.clone().project(camera);
         const next = lamp.position.clone().addScaledVector(direction, .4).project(camera);
         const aspect = rect.width / rect.height;
         const heightAtText = 2 * (camera.position.z + textPlane.constant) * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-        // Feed the same optical source and direction to the text/air transport
-        // on every screen. Portrait changes composition, never the light source.
         lightField.setLight(
           (projected.x + 1) * .5 * aspect, (1 - projected.y) * .5,
           Math.max(.035, (lamp.position.z + textPlane.constant) / heightAtText),
@@ -371,7 +405,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
         onStatus("ready");
       }
     }
-    frame = reduced.matches && loaded ? 0 : requestAnimationFrame(tick);
+    frame = loaded && (mobile || reduced.matches) ? 0 : requestAnimationFrame(tick);
   }
   function sync() {
     cancelAnimationFrame(frame); last = 0;
@@ -388,8 +422,8 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
   const onLightLost = (event: Event) => {
     event.preventDefault();
     lightFailed = true;
-    beam.visible = true;
-    if (title) title.visible = true;
+    beam.visible = !mobile;
+    if (title) title.visible = !mobile;
     if (lightCanvas) lightCanvas.style.opacity = "0";
     sync();
   };
@@ -449,7 +483,7 @@ export function mountRobotScene(root: HTMLElement, canvas: HTMLCanvasElement, li
     loaded = true; elapsed = 0;
     sync();
   }).catch(error => {
-    if (!disposed) { root.dataset.scene = "unavailable"; onStatus("error"); console.error("Kural live scene:", error); }
+    if (!disposed) { root.dataset.scene = "unavailable"; onStatus("error"); console.error("Poppy live scene:", error); }
   });
   resize();
   return () => {

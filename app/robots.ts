@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "./site-url";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://kural.website/sitemap.xml",
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

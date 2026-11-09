@@ -454,7 +454,7 @@ async function initialize(modelUrl: string) {
     mujoco = await loadMujoco({
       locateFile: (path: string) => path.endsWith('.wasm') ? mujocoWasmUrl : path,
     })
-    post({ type: 'loading', detail: 'Compiling Kural model' })
+    post({ type: 'loading', detail: 'Compiling Poppy model' })
     const modelPath = await writeModelFiles(mujoco, modelUrl)
     model = mujoco.MjModel.from_xml_path(modelPath)
     data = new mujoco.MjData(model)

@@ -82,24 +82,24 @@ export function ShowcaseMedia({ variant }: { variant: "hero" | "feature" }) {
         poster={videoPoster}
         aria-label={
           variant === "hero"
-            ? "A full orbit reveal of Kural with its reading light module"
-            : `Kural demo: ${demo.label}`
+            ? "A full orbit reveal of Poppy with its reading light module"
+            : `Poppy demo: ${demo.label}`
         }
       >
         {variant === "feature" && demo.webm && (
           <source src={`/media/${demo.stem}.webm`} type="video/webm" />
         )}
         <source src={videoSource} type="video/mp4" />
-        Your browser does not support this Kural demo video.
+        Your browser does not support this Poppy demo video.
       </video>
 
       {variant === "feature" && (
-        <div className={styles.selector} role="group" aria-label="Kural demos">
+        <div className={styles.selector} role="group" aria-label="Poppy demos">
           <button
             className={styles.arrow}
             type="button"
             onClick={() => selectDemo(-1)}
-            aria-label="Previous Kural demo"
+            aria-label="Previous Poppy demo"
             aria-controls={videoId}
           >
             <ChevronLeft size={16} aria-hidden="true" />
@@ -111,7 +111,7 @@ export function ShowcaseMedia({ variant }: { variant: "hero" | "feature" }) {
             className={styles.arrow}
             type="button"
             onClick={() => selectDemo(1)}
-            aria-label="Next Kural demo"
+            aria-label="Next Poppy demo"
             aria-controls={videoId}
           >
             <ChevronRight size={16} aria-hidden="true" />

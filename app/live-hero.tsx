@@ -14,12 +14,13 @@ export function LiveHero({
   const root = useRef<HTMLElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const light = useRef<HTMLCanvasElement>(null);
+  const mobileLight = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let stopped = false;
     let dispose: (() => void) | undefined;
     void import("./live-robot-scene").then(({ mountRobotScene }) => {
       if (stopped || !root.current || !canvas.current) return;
-      dispose = mountRobotScene(root.current, canvas.current, light.current, setLoadStatus);
+      dispose = mountRobotScene(root.current, canvas.current, light.current, mobileLight.current, setLoadStatus);
     }).catch(() => {
       if (stopped) return;
       if (root.current) root.current.dataset.scene = "unavailable";
@@ -29,11 +30,12 @@ export function LiveHero({
   }, [setLoadStatus]);
   return (
     <section id={id} ref={root} className={`${className} ${styles.stage}`} data-scene="loading" aria-labelledby={headingId}>
-      <canvas ref={canvas} className={styles.canvas} aria-label="Interactive Kural robot. Move your pointer to aim its lamp." role="img" />
+      <canvas ref={canvas} className={styles.canvas} aria-label="Interactive Poppy robot. Move your pointer to aim its lamp." role="img" />
       <canvas ref={light} className={`${styles.canvas} ${styles.light}`} aria-hidden="true" />
+      <div ref={mobileLight} className={styles.mobileLight} aria-hidden="true" />
       {children}
-      <p className={styles.loading} role="status">Bringing Kural to life<span> · · ·</span></p>
-      <p className={styles.fallback}>The interactive robot needs WebGL. You can still explore Kural below.</p>
+      <p className={styles.loading} role="status">Bringing Poppy to life<span> · · ·</span></p>
+      <p className={styles.fallback}>The interactive robot needs WebGL. You can still explore Poppy below.</p>
     </section>
   );
 }

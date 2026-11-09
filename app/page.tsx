@@ -37,9 +37,9 @@ export default function Home() {
         <div className={`${styles.sectionHeading} ${styles.showcaseHeading}`}>
           <p className={styles.eyebrow}>Autonomous navigation · Visual intelligence</p>
           <h2 id="showcase-title">One platform.<br />Built to adapt.</h2>
-          <p>See how Kural reads a space, moves through it, and responds to what it sees.</p>
+          <p>See how Poppy reads a space, moves through it, and responds to what it sees.</p>
         </div>
-        <div className={styles.showcaseStage} role="region" aria-label="Kural navigation and vision demos">
+        <div className={styles.showcaseStage} role="region" aria-label="Poppy navigation and vision demos">
           <ShowcaseMedia variant="feature" />
           <div className={styles.showcaseFade} aria-hidden="true" />
         </div>
@@ -75,7 +75,7 @@ export default function Home() {
             <div className={styles.reservationPhoto}>
               <Image
                 src="/media/what-comes-next-kural.jpg"
-                alt="Kural robot fitted with its lamp tool at home."
+                alt="Poppy robot fitted with its lamp tool at home."
                 fill
                 sizes="(max-width: 640px) calc(100vw - 68px), (max-width: 1023px) 42vw, 480px"
               />
@@ -96,14 +96,14 @@ export default function Home() {
       </section>
 
       <footer className={styles.footer}>
-        <Link className={styles.footerWordmark} href="#top" aria-label="Kural home">kural</Link>
+        <Link className={styles.footerWordmark} href="#top" aria-label="Poppy Robotics home">Poppy Robotics</Link>
         <nav aria-label="Footer navigation">
           <Link href="#demonstrations">Demonstrations</Link>
           <Link href="#modules">Modules</Link>
           <Link href="https://github.com/joshuajerin/kural-skills">Skills</Link>
           <Link href="#early-access">Early access</Link>
         </nav>
-        <p>© {new Date().getFullYear()} Kural</p>
+        <p>© {new Date().getFullYear()} Poppy Robotics</p>
       </footer>
     </main>
   );

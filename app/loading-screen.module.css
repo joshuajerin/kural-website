@@ -16,9 +16,8 @@
   height: 128px;
   object-fit: contain;
   image-rendering: pixelated;
-  /* Lift the clip's near-white matte to the same white as the overlay. */
-  filter: brightness(1.06);
-  mix-blend-mode: multiply;
+  /* Match the GIF's matte to the white overlay before the whole screen fades. */
+  filter: brightness(1.08);
 }
 
 .error { margin-top: 18px; text-align: center; font-size: 12px; color: #62665f; }
